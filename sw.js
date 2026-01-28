@@ -1,4 +1,4 @@
-const CACHE_VERSION = "v4"; // 🔁 MUDE AQUI quando atualizar o site
+const CACHE_VERSION = "v5"; // 🔁 MUDE AQUI quando atualizar o site
 const CACHE_NAME = `app-cache-${CACHE_VERSION}`;
 
 const FILES_TO_CACHE = [
