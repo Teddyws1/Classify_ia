@@ -1,71 +1,44 @@
-const CACHE_VERSION = "v5"; // 🔁 mude quando atualizar
-const CACHE_NAME = `app-cache-${CACHE_VERSION}`;
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.addEventListener("controllerchange", () => {
+    // Aqui você decide o que fazer
+    console.log("Nova versão ativa");
+    window.location.reload();
+  });
 
-const FILES_TO_CACHE = [
-  "/",
-  "/index.html",
-  "/style.css",
-  "/app.js",
-  "/manifest.json"
-];
+  navigator.serviceWorker.ready.then((reg) => {
+    if (reg.waiting) {
+      mostrarAvisoUpdate(reg);
+    }
 
-// ================= INSTALL =================
-self.addEventListener("install", (event) => {
-  self.skipWaiting();
+    reg.addEventListener("updatefound", () => {
+      const newWorker = reg.installing;
+      newWorker.addEventListener("statechange", () => {
+        if (
+          newWorker.state === "installed" &&
+          navigator.serviceWorker.controller
+        ) {
+          mostrarAvisoUpdate(reg);
+        }
+      });
+    });
+  });
+}
 
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(FILES_TO_CACHE);
-    })
-  );
-});
+function mostrarAvisoUpdate(reg) {
+  const bar = document.createElement("div");
+  bar.className = "update-bar";
+  bar.innerHTML = `
+    <span>🚀 Nova versão disponível</span>
+    <button id="btnUpdate">Atualizar</button>
+  `;
+  document.body.appendChild(bar);
 
-// ================= ACTIVATE =================
-self.addEventListener("activate", (event) => {
-  event.waitUntil(
-    caches.keys().then((cacheNames) =>
-      Promise.all(
-        cacheNames.map((cache) => {
-          if (cache !== CACHE_NAME) {
-            return caches.delete(cache); // 🧹 limpa cache antigo
-          }
-        })
-      )
-    )
-  );
-
-  self.clients.claim();
-});
-
-// ================= FETCH =================
-self.addEventListener("fetch", (event) => {
-  event.respondWith(
-    caches.match(event.request).then((cached) => {
-      // 1️⃣ se existir no cache → usa
-      if (cached) return cached;
-
-      // 2️⃣ senão → busca da internet
-      return fetch(event.request)
-        .then((response) => {
-          // Salva no cache só se for válido
-          if (
-            response &&
-            response.status === 200 &&
-            response.type === "basic"
-          ) {
-            const responseClone = response.clone();
-            caches.open(CACHE_NAME).then((cache) => {
-              cache.put(event.request, responseClone);
-            });
-          }
-          return response;
-        })
-        .catch(() => {
-          // 3️⃣ fallback offline
-          if (event.request.mode === "navigate") {
-            return caches.match("/index.html");
-          }
-        });
-    })
-  );
+  document.getElementById("btnUpdate").onclick = () => {
+    reg.waiting.postMessage({ type: "SKIP_WAITING" });
+  };
+}
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
 });
