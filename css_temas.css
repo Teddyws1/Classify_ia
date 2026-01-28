@@ -1,0 +1,1584 @@
+/* ===================root=================*/
+/* root geral */
+/* ITEM COM BOTÃO */
+:root {
+    --bg-main: #0f172a;
+    /* O fundo que você escolheu */
+    --bg-item: #1e293b;
+    /* Um azul levemente mais claro para o card */
+    --accent-sun: #facc15;
+    /* Amarelo */
+    --accent-amber: #f59e0b;
+    /* Âmbar */
+    --text-bright: #f8fafc;
+    --text-dim: #94a3b8;
+}
+
+
+:root {
+    /* Surface / Backgrounds */
+    --bg: #2a0f26;
+    --card: #111827;
+    /* .main-header */
+    --bg-item: #3b1e2e;
+    /* .card ul li */
+    --bg-input: linear-gradient(180deg, #0f172a, #020617);
+
+    /* Text Colors */
+    --text: #ffffff;
+    /*.lista-ia a*/
+    /* color da letra painel de compartilha */
+    --text-bright: #b8b8b8;
+    --about-text: #000000;
+    /* letra do .about-text */
+    --text-dark: #000000;
+
+
+
+    --accent-hover: #f59e0b;
+
+    --link: #ffffff;
+    /*links dos li*/
+    --success: #c522a2;
+
+    /* Borders & Details */
+    --border: #1f2937;
+    /*.card as bordas*/
+    --shadow: rgba(0, 0, 0, 0.45);
+    --overlay: rgba(0, 0, 0, 0.55);
+}
+
+
+
+:root {
+    --text-muted: #000000;
+    /* texto secundário / sobre-texto */
+}
+
+/* ==================== TEMA CLARO ==================== */
+.light .about-text {
+    color: var(--text-muted);
+    /* texto escuro para contraste */
+    border-left: 3px solid var(--accent);
+    /* mantém destaque */
+    opacity: 0.9;
+}
+
+
+/* ==================== TEMA CLARO ==================== */
+.light {
+    /* ==================== FUNDO E TEXTO ==================== */
+    --bg: #103d69;
+    /* fundo geral */
+    --card: #d4d4d4;
+    /* fundo de cards, modais e seções */
+    --text: #0f172a;
+    /* cor do texto principal */
+    --muted: #000000;
+    /* cor de textos secundários */
+    --accent: #ffffff;
+    /* cor de destaque (links, alertas, badges) */
+    --border: #c0c0c0;
+    /* bordas */
+    --link: #000000;
+    /* links e hover de links */
+    --input-bg: #ffffff;
+    /* fundo de inputs */
+    --input-text: #0f172a;
+    /* texto de inputs */
+    --input-border: #d1d5db;
+    /* borda de inputs */
+    --highlight-bg: rgba(245, 158, 11, 0.1);
+    /* destaque de spans e barra  de scroll */
+    --scroll-thumb: #838282;
+    /* scrollbars thumb */
+    --scroll-track: rgba(0, 0, 0, 0.05);
+    /* scrollbars track */
+
+    /* ==================== BOTÕES ==================== */
+    --btn-bg: linear-gradient(135deg, #facc15, #f59e0b);
+    --btn-text: #111;
+    --btn-hover-bg: #fbbf24;
+
+    /* BOTÃO DE AVISO */
+    --toggle-btn-bg: #e0f2ff;
+    --toggle-btn-color: #1e3a8a;
+    --toggle-btn-hover: #bae6fd;
+
+    /* SPAN E BADGES */
+    --span-bg: #d1d1d1;
+    --span-color: #1e3a8a;
+    --span-shadow: rgba(31, 41, 55, 0.08);
+
+    /* SOCIAL ICONS */
+    --social-bg: #972323;
+    --social-hover: rgba(30, 58, 138, 0.15);
+    --social-color: #1657d8;
+
+    /* MODAIS E OVERLAYS */
+    --overlay-bg: rgba(0, 0, 0, 0.15);
+}
+
+/* ==================== BODY ==================== */
+.light body {
+    background-color: #ffffff;
+    color: var(--text);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ==================== VARIÁVEIS PARA TÍTULO ==================== */
+:root {
+    --title-color: #000000;
+    /* cor principal do título */
+    --title-font-size-min: 1.4rem;
+    /* tamanho mínimo */
+    --title-font-size-vw: 2.5vw;
+    /* tamanho relativo à viewport */
+    --title-font-size-max: 1.8rem;
+    /* tamanho máximo */
+}
+
+/* ==================== ESTILO TEMA CLARO PARA TÍTULO ==================== */
+.light .title h1 {
+    margin: 0;
+    font-size: clamp(var(--title-font-size-min), var(--title-font-size-vw), var(--title-font-size-max));
+    color: var(--title-color);
+}
+
+
+/* ==================== LINKS ==================== */
+/* TEMA CLARO */
+.light {
+    /* ... suas outras variáveis (bg-body, card-bg, etc) ... */
+
+    /* Força a cor preta nas âncoras dos cards no modo claro */
+    --card-link-color: #000000;
+    --link: #000000;
+}
+
+/* Aplicação garantida nas âncoras */
+.light .card ul li a {
+    color: var(--card-link-color) !important;
+}
+
+/* ==================== INPUTS ==================== */
+.light input, .light textarea, .light select {
+    background-color: var(--input-bg);
+    color: var(--input-text);
+    border: 1px solid var(--input-border);
+}
+
+/* ==================== BOTÕES ==================== */
+
+/* ==================== BOTÃO DE AVISO ==================== */
+:root {
+    --toggle-btn-bg: #ffffff;
+    /* fundo padrão do botão */
+    --toggle-btn-color: #111;
+    /* cor do texto */
+    --toggle-btn-hover: #ffffff;
+    /* fundo ao passar o mouse */
+    --toggle-btn-shadow: 0 4px 12px rgba(0, 0, 0, 0.192);
+    /* sombra padrão */
+    --toggle-btn-hover-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+    /* sombra no hover */
+}
+
+/* ==================== TEMA CLARO ==================== */
+.light #toggleCardDeAviso {
+    background-color: var(--toggle-btn-bg);
+    color: var(--toggle-btn-color);
+    box-shadow: var(--toggle-btn-shadow);
+    /* sombra padrão */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+/* ==================== HOVER BOTÃO DE recomedação ==================== */
+.light #toggleCardDeAviso:hover {
+    background-color: var(--toggle-btn-hover);
+    box-shadow: var(--toggle-btn-hover-shadow);
+    /* sombra mais intensa */
+    /* transform removido para não mexer o botão */
+}
+
+
+/* ==================== SPAN EM CARDS ==================== */
+:root {
+    /* Variáveis para o tema claro dos spans */
+    --span-bg: #9e9e9e;
+    /* fundo claro do span */
+    --span-color: #ffffff;
+    /* texto escuro */
+    --span-shadow: rgba(0, 0, 0, 0.1);
+    /* sombra leve */
+}
+
+.light .card h2 span {
+    background-color: var(--span-bg);
+    color: var(--span-color);
+    box-shadow: 0 2px 6px var(--span-shadow);
+}
+
+/* ==================== VARIÁVEIS PARA TÍTULO DE CARD ==================== */
+:root {
+    --card-title-color: #000000;
+    /* cor do título */
+    --card-title-border: var(--border);
+    /* cor da borda inferior */
+    --card-title-padding-bottom: 6px;
+    /* espaçamento inferior */
+}
+
+/* ==================== ESTILO TEMA CLARO PARA .CARD H2 ==================== */
+.light .card h2 {
+    margin-top: 0;
+    color: var(--card-title-color);
+    border-bottom: 1px solid var(--card-title-border);
+    padding-bottom: var(--card-title-padding-bottom);
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* ==================== VER MAIS BUTTON ==================== */
+/* ==================== TEMA CLARO - BOTÃO "VER MAIS" ==================== */
+:root {
+    /* Variáveis para o tema claro do botão */
+    --btn-bg: #ffffff;
+    /* Fundo amarelo */
+    --btn-text: #111;
+    /* Texto preto */
+    --btn-hover-bg: #f1f1f1bd;
+    /* Fundo hover ligeiramente mais escuro */
+    --btn-hover-shadow: rgba(0, 0, 0, 0.699);
+    /* Sombra do hover */
+}
+
+/* Aplicando tema claro */
+.light .ver-mais-btn {
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.light .ver-mais-btn ion-icon {
+    color: var(--btn-text);
+}
+
+/* Hover tema claro */
+.light .ver-mais-btn:hover {
+    background: var(--btn-hover-bg);
+    box-shadow: 0 6px 14px var(--btn-hover-shadow);
+    transform: translateY(-1px);
+}
+
+/* Foco acessível tema claro */
+.light .ver-mais-btn:focus-visible {
+    outline: 2px solid var(--btn-text);
+    outline-offset: 3px;
+}
+
+
+/* ==================== TEMA CLARO SOCIAL ICONS ==================== */
+:root.light {
+    --social-bg: rgb(125, 125, 126);
+    /* Fundo padrão do ícone */
+    --social-color: #ffffff;
+    /* Cor do ícone */
+    --social-hover: rgba(255, 0, 119, 0.466);
+    /* Fundo quando hover */
+    --social-shadow: rgba(0, 0, 0, 0.12);
+    /* Sombra sutil */
+}
+
+
+/* ==================== VARIÁVEIS PARA .SEGUI nos==================== */
+:root {
+    --segui-color: #000000;
+    /* cor principal do elemento */
+    --segui-top: 74%;
+    /* posição vertical */
+    --segui-left: 35%;
+    /* posição horizontal */
+}
+
+/* ==================== ESTILO TEMA CLARO PARA .SEGUI ==================== */
+.light .segui {
+    color: var(--segui-color);
+    position: absolute;
+    top: var(--segui-top);
+    left: var(--segui-left);
+}
+
+/* ==================== VARIÁVEIS PARA .VERSAOBOX STRONG ==================== */
+:root {
+    --versaobox-strong-color: #000000;
+    /* cor do destaque */
+    --versaobox-strong-font-size: 0.7rem;
+    /* tamanho da fonte */
+    --versaobox-strong-font-weight: 600;
+    /* peso da fonte */
+}
+
+/* ==================== ESTILO TEMA CLARO PARA .VERSAOBOX STRONG ==================== */
+.light .versaobox strong {
+    display: block;
+    color: var(--versaobox-strong-color);
+    font-size: var(--versaobox-strong-font-size);
+    font-weight: var(--versaobox-strong-font-weight);
+}
+
+
+
+/* ==================== BOTÃO FECHAR ==================== */
+.light .btn-close {
+    color: var(--muted);
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.light .btn-close:hover {
+    background: var(--accent);
+    color: #111;
+}
+
+/* ==================== OVERLAY ==================== */
+.light .overlay-bg {
+    background: var(--overlay-bg);
+}
+
+/* ==================== SCROLLBAR ==================== */
+.light ::-webkit-scrollbar {
+    width: 8px;
+}
+
+.light ::-webkit-scrollbar-track {
+    background: var(--scroll-track);
+}
+
+.light ::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-thumb);
+    border-radius: 4px;
+}
+
+
+
+/* ==================== TEMA CLARO - CARD LIST ITEM ==================== */
+:root {
+    /* Fundo do item do card no tema claro */
+    --bg-item: #f9fafb;
+    /* branco/acinzentado suave */
+    --text-item: #111111;
+    /* texto escuro para contraste */
+    --border-item: #000000;
+    /* borda clara */
+    --shadow-item: rgba(206, 203, 203, 0.808);
+    /* sombra leve no hover */
+}
+
+/* Aplicando tema claro aos itens do card */
+.light .card ul li {
+    background: var(--bg-item);
+    color: var(--text-item);
+    border: 1px solid var(--border-item);
+    border-radius: 12px;
+    padding: 16px 20px;
+    transition: transform 0.4s var(--modal-ease),
+        background 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+    animation: slideInLight 0.6s ease-out backwards;
+}
+
+/* Hover tema claro */
+.light .card ul li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px var(--shadow-item);
+    background: var(--bg-item);
+    /* fundo permanece suave */
+    border-color: var(--border-item);
+}
+
+/* ==============================
+   ICONE-P - TEMA CLARO
+   ============================== */
+.icone-p {
+    color: #cccccc96;
+    /* padrão dark/transparente */
+    transition: color 0.3s ease;
+}
+
+.light .icone-p {
+    color: #2c2c2c;
+    font-size: large;
+}
+
+/* ==================== TEMA CLARO - ABAS ==================== */
+.light .tab-btn {
+    background: var(--bg-card);
+    /* fundo claro do botão */
+    border: 1px solid var(--border-color);
+    /* borda suave */
+    color: var(--text-color);
+    /* texto principal escuro */
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 18px;
+    border-radius: 20px;
+    /* estilo pílula */
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover / foco */
+.light .tab-btn:hover,
+.light .tab-btn:focus {
+    background: var(--highlight-bg);
+    /* destaque ao passar o mouse */
+    color: var(--accent-color);
+    /* cor do texto de destaque */
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+    /* leve elevação */
+}
+
+/* Aba ativa */
+.light .tab-btn.active {
+    background: var(--accent-color);
+    /* cor de destaque da aba ativa */
+    color: #ffffff;
+    /* texto branco na aba ativa */
+    border-color: var(--accent-color);
+}
+
+
+/*nav*/
+/* ==================== VARIÁVEIS TEMA CLARO ==================== */
+:root.light {
+    --bg: #f8fafc;
+    /* Fundo geral da página */
+    --bg-card: #ffffff;
+    /* Fundo dos cards e botões */
+    --text-color: #1f2937;
+    /* Texto principal */
+    --text-dim: #475569;
+    /* Texto secundário */
+    --accent-color: #919192;
+    /* Destaques e elementos ativos */
+    --border-color: #e5e7eb;
+    /* Bordas suaves */
+    --highlight-bg: rgba(30, 58, 138, 0.1);
+    /* Fundo de hover */
+    --social-bg: rgba(176, 176, 180, 0.514);
+    /* Fundo ícones sociais */
+    --social-color: #1e3a8a;
+    /* Cor ícones sociais */
+    --social-hover: rgba(255, 238, 0, 0.466);
+    /* Fundo hover ícones */
+    --social-shadow: rgba(0, 0, 0, 0.12);
+    /* Sombra ícones */
+}
+
+/* ==================== TEMA CLARO - BOTÕES DE ABA ==================== */
+.light .tab-btn {
+    background: var(--bg-card);
+    /* fundo do botão */
+    border: 1px solid var(--border-color);
+    /* borda suave */
+    color: var(--text-dim);
+    /* texto secundário */
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 18px;
+    border-radius: 20px;
+    /* estilo pílula */
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+/* Hover / foco */
+.light .tab-btn:hover,
+.light .tab-btn:focus {
+    background: var(--highlight-bg);
+    /* fundo de destaque */
+    color: var(--accent-color);
+    /* texto em destaque */
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+    /* leve elevação */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Aba ativa */
+.light .tab-btn.active {
+    background: var(--accent-color);
+    /* cor da aba ativa */
+    color: #ffffff;
+    /* texto branco na aba ativa */
+    border-color: var(--accent-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(0);
+}
+
+
+
+/* ==================== VARIÁVEIS – TEMA CLARO ==================== */
+:root.light {
+    --ia-badge-bg: #1f1f1e00;
+    /* amarelo claro */
+    --ia-badge-text: #282829;
+    /* cinza escuro */
+    --ia-badge-shadow: rgba(0, 0, 0, 0.08);
+}
+
+/* ==================== IA BADGE – TEMA CLARO ==================== */
+.light .ia-badge {
+    background: var(--ia-badge-bg);
+    color: var(--ia-badge-text);
+    box-shadow: 0 2px 6px var(--ia-badge-shadow);
+}
+
+/* icone de js */
+/* ==================== VARIÁVEIS DO BADGE IA ==================== */
+:root.light {
+    /* tema claro */
+    --ia-badge-icon-color: #000000;
+    /* continua branco */
+}
+
+/* modal de atualização */
+/* === Tema Claro === */
+:root {
+    /* Cores principais */
+    --background: #f5f5f5;
+    --text-color: #000000;
+
+    /* Cartões */
+    --card-glass: #ffffffcc;
+    /* leve efeito glass */
+    --border-glass: rgba(0, 0, 0, 0.1);
+    --shadow-premium: 0 8px 24px rgba(0, 0, 0, 0.15);
+
+    /* Outros elementos */
+    --primary-color: #e24aa8;
+    --secondary-color: #50e3c2;
+}
+
+
+/* lis do sistema de autalização*/
+
+/* ==================== VARIÁVEIS DO BOTÃO DE UPDATE ==================== */
+:root {
+    --btn-update-bg: #ffffff;
+    /* fundo do botão */
+    --btn-update-text: #111111;
+    /* cor do texto */
+    --btn-update-border-radius: 12px;
+    /* borda arredondada */
+    --btn-update-padding: 12px 20px;
+    /* espaçamento interno */
+    --btn-update-font-weight: 700;
+    /* peso da fonte */
+    --btn-update-shadow: 0 4px 12px rgba(255, 255, 255, 0.596);
+    /* sombra embaixo */
+}
+
+/* ==================== BOTÃO DE UPDATE TEMA CLARO ==================== */
+.light .btn-open-update-logs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: var(--btn-update-padding);
+    background: var(--btn-update-bg);
+    color: var(--btn-update-text);
+    border: none;
+    border-radius: var(--btn-update-border-radius);
+    font-weight: var(--btn-update-font-weight);
+    cursor: pointer;
+    box-shadow: var(--btn-update-shadow);
+    /* sombra padrão */
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==================== HOVER BOTÃO DE UPDATE ==================== */
+.light .btn-open-update-logs:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+    /* sombra mais intensa no hover */
+}
+
+
+
+
+/* ==================== VARIÁVEIS PARA #SOBRE ==================== */
+:root {
+    --sobre-color: #000000;
+    /* cor do texto */
+    --sobre-font-size: 24px;
+    /* tamanho da fonte */
+    --sobre-font-weight: 600;
+    /* peso da fonte */
+    --sobre-margin: 24px 0;
+    /* margem vertical */
+    --sobre-letter-spacing: 1px;
+    /* espaçamento entre letras */
+    --sobre-text-align: center;
+    /* alinhamento do texto */
+}
+
+/* ==================== ESTILO TEMA CLARO PARA #SOBRE ==================== */
+.light #Sobre {
+    color: var(--sobre-color);
+    text-align: var(--sobre-text-align);
+    font-size: var(--sobre-font-size);
+    font-weight: var(--sobre-font-weight);
+    margin: var(--sobre-margin);
+    letter-spacing: var(--sobre-letter-spacing);
+}
+
+/* ==================== VARIÁVEIS PARA .DIVIDER ==================== */
+:root {
+    --divider-bg: #555555;
+    /* cor da linha/divisor */
+    --divider-height: 1px;
+    /* altura da linha */
+    --divider-margin: 24px 0;
+    /* margem vertical */
+}
+
+/* ==================== ESTILO TEMA CLARO PARA .DIVIDER ==================== */
+.light .divider {
+    border: none;
+    height: var(--divider-height);
+    background: var(--divider-bg);
+    margin: var(--divider-margin);
+}
+
+/* ==================== VARIÁVEIS PARA BOTÃO FECHAR ==================== */
+:root {
+    --close-btn-bg: rgb(187, 187, 187);
+    /* fundo do botão fechar */
+    --color: --text;
+    --close-btn-size: 32px;
+    /* largura e altura */
+    --close-btn-font-size: 1.2rem;
+    /* tamanho da fonte */
+    --close-btn-font-weight: bold;
+    /* peso da fonte */
+    --close-btn-radius: 50%;
+    /* borda arredondada */
+    --close-btn-top: 12px;
+    /* posição topo */
+    --close-btn-right: 12px;
+    /* posição direita */
+    --close-btn-transition: 0.25s;
+    /* transição suave */
+}
+
+/* ==================== BOTÃO FECHAR TEMA CLARO ==================== */
+.light #closeCardDeAviso {
+    position: absolute;
+    top: var(--close-btn-top);
+    right: var(--close-btn-right);
+    width: var(--close-btn-size);
+    height: var(--close-btn-size);
+    background: var(--close-btn-bg);
+    border: none;
+    color: var(---text);
+    border-radius: var(--close-btn-radius);
+    font-size: var(--close-btn-font-size);
+    font-weight: var(--close-btn-font-weight);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--close-btn-transition);
+}
+
+/* ==================== ROOT: HOVER BOTÃO DE FECHAR #closeCardDeAviso ==================== */
+:root {
+    /* Fundo ao passar o mouse */
+    --close-btn-hover-bg: #facc15;
+    /* Fundo destacado no hover */
+
+    /* Cor do ícone/texto ao passar o mouse */
+    --close-btn-hover-color: #111;
+    /* Cor do ícone/texto em hover */
+
+    /* Transformação ao passar o mouse */
+    --close-btn-hover-transform: rotate(90deg);
+    /* Rotação divertida ao hover */
+}
+
+#closeCardDeAviso:hover {
+    background: var(--close-btn-hover-bg);
+    color: var(--close-btn-hover-color);
+    transform: var(--close-btn-hover-transform);
+}
+
+
+/* ==================== VARIÁVEIS BOTÃO SHARE ==================== */
+:root {
+    --share-btn-bg: none;
+    /* fundo do botão */
+    --share-btn-border: none;
+    /* borda do botão */
+    --share-btn-cursor: pointer;
+    /* cursor */
+    --share-btn-font-size: 15px;
+    /* tamanho da fonte */
+    --share-btn-color: #000000;
+    /* cor do texto / variavel muted */
+}
+
+/* ==================== ESTILO TEMA CLARO BOTÃO SHARE ==================== */
+.light .share-btn {
+    background: var(--share-btn-bg);
+    border: var(--share-btn-border);
+    cursor: var(--share-btn-cursor);
+    font-size: var(--share-btn-font-size);
+    color: var(--share-btn-color);
+}
+
+/* ==================== VARIÁVEIS BOTÃO FECHAR UPDATE CARD ==================== */
+:root {
+    --btn-close-bg: transparent;
+    /* fundo do botão */
+    --btn-close-border: none;
+    /* borda */
+    --btn-close-color: #6b7280;
+    /* cor padrão (muted) */
+    --btn-close-hover-color: #facc15;
+    /* cor no hover */
+    --btn-close-top: 15px;
+    /* posição topo */
+    --btn-close-right: 15px;
+    /* posição direita */
+    --btn-close-icon-size: 24px;
+    /* tamanho do ícone */
+    --btn-close-transition: color 0.3s ease;
+    /* transição da cor */
+}
+
+/* ==================== ESTILO TEMA CLARO PARA BOTÃO FECHAR UPDATE CARD ==================== */
+.light .btn-close-update-card {
+    position: absolute;
+    top: var(--btn-close-top);
+    right: var(--btn-close-right);
+
+    background: var(--btn-close-bg) !important;
+    border: var(--btn-close-border);
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    cursor: pointer;
+    color: var(--btn-close-color);
+    transition: var(--btn-close-transition);
+}
+
+/* ==================== ÍCONE IONICON ==================== */
+.light .btn-close-update-card ion-icon {
+    font-size: var(--btn-close-icon-size);
+    pointer-events: none;
+    /* clique registrado no botão, não no ícone */
+}
+
+/* ==================== HOVER E FOCUS ==================== */
+.light .btn-close-update-card:hover {
+    color: var(--btn-close-hover-color);
+}
+
+.light .btn-close-update-card:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* ==================== VARIÁVEIS PARA ION ICON DO SEARCH BOX ==================== */
+:root {
+    --search-icon-left: 12px;
+    /* distância da esquerda */
+    --search-icon-top: 50%;
+    /* posição vertical */
+    --search-icon-transform: translateY(-50%);
+    /* centraliza verticalmente */
+    --search-icon-font-size: 25px;
+    /* tamanho do ícone */
+    --search-icon-color: #000000;
+    /* cor do ícone */
+}
+
+/* ==================== ESTILO TEMA CLARO PARA ION ICON DO SEARCH BOX ==================== */
+.light .search-box ion-icon {
+    position: absolute;
+    left: var(--search-icon-left);
+    top: var(--search-icon-top);
+    transform: var(--search-icon-transform);
+    font-size: var(--search-icon-font-size);
+    color: var(--search-icon-color);
+}
+
+/* ==================== VARIÁVEIS DE FOCO PARA SEARCH BOX ==================== */
+:root {
+    --search-focus-border: #cecdcdfa;
+    /* cor da borda ao focar */
+    --search-focus-shadow: 0 0 0 3px #000000;
+    /* sombra ao focar */
+    --search-focus-transform: scale(1.02);
+    /* leve aumento ao focar */
+    --search-focus-transition: 0.3s ease;
+    /* transição suave */
+}
+
+/* ==================== ESTILO TEMA CLARO PARA SEARCH BOX INPUT FOCUS ==================== */
+.light .search-box input:focus {
+    border-color: var(--search-focus-border);
+    box-shadow: var(--search-focus-shadow);
+    transform: var(--search-focus-transform);
+    transition: var(--search-focus-transition);
+}
+
+/* ==================== VARIÁVEIS PARA LISTA IA ==================== */
+:root {
+    /* Lista principal */
+    --lista-ia-display: flex;
+    --lista-ia-list-style: none;
+    --lista-ia-padding: 0;
+    --lista-ia-margin: 0;
+    --lista-ia-gap: 20px;
+    --lista-ia-perspective: 1500px;
+    /* profundidade para 3D */
+
+    /* Itens da lista (li) */
+    --lista-ia-li-flex: 0 0 auto;
+    --lista-ia-li-display: flex;
+    --lista-ia-li-flex-direction: column;
+    --lista-ia-li-align: center;
+    --lista-ia-li-width: 120px;
+    --lista-ia-li-padding: 15px;
+    --lista-ia-li-border-radius: 20px;
+    --lista-ia-li-bg: linear-gradient(145deg, #ffffff, #e0e0e0);
+    --lista-ia-li-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    --lista-ia-li-transition: transform 0.3s ease, box-shadow 0.3s ease;
+    --lista-ia-li-transform-style: preserve-3d;
+    --lista-ia-li-cursor: pointer;
+
+    /* Ícones dentro dos itens (img) */
+    --lista-ia-img-width: 58px;
+    --lista-ia-img-height: 58px;
+    --lista-ia-img-border-radius: 22px;
+    --lista-ia-img-bg: linear-gradient(145deg, #facc15, #161618);
+    --lista-ia-img-margin-bottom: 12px;
+    --lista-ia-img-border: 1px solid var(--border-color);
+    --lista-ia-img-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    --lista-ia-img-object-fit: contain;
+    --lista-ia-img-transition: transform 0.3s ease, box-shadow 0.3s ease;
+    --lista-ia-img-image-rendering: auto;
+    --lista-ia-img-transform: none;
+}
+
+/* ==================== ESTILO TEMA CLARO PARA LISTA IA ==================== */
+.light .lista-ia {
+    display: var(--lista-ia-display);
+    list-style: var(--lista-ia-list-style);
+    padding: var(--lista-ia-padding);
+    margin: var(--lista-ia-margin);
+    gap: var(--lista-ia-gap);
+    perspective: var(--lista-ia-perspective);
+}
+
+.light .lista-ia li {
+    flex: var(--lista-ia-li-flex);
+    display: var(--lista-ia-li-display);
+    flex-direction: var(--lista-ia-li-flex-direction);
+    align-items: var(--lista-ia-li-align);
+    width: var(--lista-ia-li-width);
+    padding: var(--lista-ia-li-padding);
+    border-radius: var(--lista-ia-li-border-radius);
+    background: var(--lista-ia-li-bg);
+    box-shadow: var(--lista-ia-li-box-shadow);
+    transition: var(--lista-ia-li-transition);
+    transform-style: var(--lista-ia-li-transform-style);
+    cursor: var(--lista-ia-li-cursor);
+}
+
+.light .lista-ia img {
+    width: var(--lista-ia-img-width);
+    height: var(--lista-ia-img-height);
+    border-radius: var(--lista-ia-img-border-radius);
+    background: var(--lista-ia-img-bg);
+    margin-bottom: var(--lista-ia-img-margin-bottom);
+    border: var(--lista-ia-img-border);
+    box-shadow: var(--lista-ia-img-box-shadow);
+    object-fit: var(--lista-ia-img-object-fit);
+    transition: var(--lista-ia-img-transition);
+    image-rendering: var(--lista-ia-img-image-rendering);
+    transform: var(--lista-ia-img-transform);
+}
+
+/* ==================== VARIÁVEIS PARA RANKING .LISTA-IA A B ==================== */
+:root {
+    --ranking-color: #000000;
+    --ranking-font-weight: 700;
+    /* peso da fonte */
+    --ranking-margin-right: 2px;
+    /* margem direita entre números */
+}
+
+/* ==================== ESTILO TEMA CLARO PARA RANKING ==================== */
+.light .lista-ia a b {
+    color: var(--ranking-color);
+    font-weight: var(--ranking-font-weight);
+    margin-right: var(--ranking-margin-right);
+}
+
+/* ==================== VARIÁVEIS PARA CARDS (.UPDATE-CARD-MAIN, .CARD-TAGS-INFO) ==================== */
+:root {
+    --color: var(--text);
+    --card-bg: #ffffff;
+    /* fundo do card */
+    --card-border: 1px solid var(--border-glass);
+    /* borda do card */
+    --card-border-radius: 24px;
+    /* borda arredondada */
+    --card-width: 100%;
+    /* largura total */
+    --card-max-width: 440px;
+    /* largura máxima */
+    --card-padding: 30px;
+    /* espaçamento interno */
+    --card-position: relative;
+    /* posição relativa */
+    --card-box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    /* sombra */
+    --card-animation: cardPopUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* animação */
+}
+
+/* ==================== ESTILO TEMA CLARO PARA CARDS ==================== */
+.light .update-card-main,
+.light .card-tags-info {
+    background: var(--card-bg);
+    border: var(--card-border);
+    border-radius: var(--card-border-radius);
+    width: var(--card-width);
+    max-width: var(--card-max-width);
+    padding: var(--card-padding);
+    position: var(--card-position);
+    box-shadow: var(--card-box-shadow);
+    animation: var(--card-animation);
+    color: var(---text)
+}
+
+/* ==================== VARIÁVEIS PARA .TAB-TRIGGER ==================== */
+:root {
+    --tab-bg: rgba(255, 255, 255, 0.767);
+    /* fundo do tab */
+    --tab-border: 1px solid var(--about-text);
+    /* borda do tab */
+    --tab-color: #000000;
+    /* cor do texto */
+    --tab-padding: 8px 16px;
+    /* espaçamento interno */
+    --tab-border-radius: 12px;
+    /* borda arredondada */
+    --tab-font-size: 0.75rem;
+    /* tamanho da fonte */
+    --tab-font-weight: 700;
+    /* peso da fonte */
+    --tab-cursor: pointer;
+    /* cursor */
+    --tab-transition: var(--transition);
+    /* transição */
+    --tab-white-space: nowrap;
+    /* sem quebra de linha */
+}
+
+/* ==================== ESTILO TEMA CLARO PARA .TAB-TRIGGER ==================== */
+.light .tab-trigger {
+    background: var(--tab-bg);
+    border: var(--tab-border);
+    color: var(--tab-color);
+    padding: var(--tab-padding);
+    border-radius: var(--tab-border-radius);
+    font-size: var(--tab-font-size);
+    font-weight: var(--tab-font-weight);
+    cursor: var(--tab-cursor);
+    transition: var(--tab-transition);
+    white-space: var(--tab-white-space);
+}
+
+/* ==================== VARIÁVEIS PARA .TAB-TRIGGER.ACTIVE ==================== */
+:root {
+    --tab-active-bg: #d4d4d4;
+    /* fundo quando ativo */
+    --tab-active-color: #020617;
+    /* cor do texto quando ativo */
+    --tab-active-border-color: var(--accent);
+    /* borda quando ativo */
+    --tab-active-box-shadow: 0 0 15px var(#000000);
+    /* sombra quando ativo */
+}
+
+/* ==================== ESTILO TEMA CLARO PARA .TAB-TRIGGER.ACTIVE ==================== */
+.light .tab-trigger.active {
+    background: var(--tab-active-bg);
+    color: var(--tab-active-color);
+    border-color: var(--tab-active-border-color);
+    box-shadow: var(--tab-active-box-shadow);
+}
+
+/* ==================== VARIÁVEIS PARA .MODAL-BOX H2 ==================== */
+:root {
+    --modal-title-color: #000000;
+    /* cor do título */
+    --modal-title-font-size: 1.25rem;
+    /* tamanho da fonte */
+    --modal-title-font-weight: 600;
+    /* peso da fonte */
+    --modal-title-gap: 4px;
+    /* espaçamento entre elementos internos */
+    --modal-title-line-height: 1.2;
+    /* altura da linha */
+    --modal-title-white-space: nowrap;
+    /* sem quebra de linha */
+}
+
+/* ==================== ESTILO TEMA CLARO PARA .MODAL-BOX H2 ==================== */
+.light .modal-box h2 {
+    margin: 0;
+    font-size: var(--modal-title-font-size);
+    font-weight: var(--modal-title-font-weight);
+    color: var(--modal-title-color);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--modal-title-gap);
+    line-height: var(--modal-title-line-height);
+    white-space: var(--modal-title-white-space);
+}
+
+/* ==================== VARIÁVEIS PARA ITENS DE UPDATE COM SOMBRA E COR ==================== */
+:root {
+    --update-item-bg: #fcfdff;
+    /* fundo padrão do item */
+    --update-item-color: #000000;
+    /* cor do texto */
+    --update-item-border: 1px solid var(--border-glass);
+    /* borda do item */
+    --update-item-border-radius: 16px;
+    /* borda arredondada */
+    --update-item-padding: 16px;
+    /* espaçamento interno */
+    --update-item-margin-bottom: 12px;
+    /* margem inferior entre itens */
+    --update-item-transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    /* transição suave */
+    --update-item-hover-bg: rgba(236, 236, 236, 0.87);
+    /* fundo ao passar o mouse */
+    --update-item-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    /* sombra padrão */
+    --update-item-hover-box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    /* sombra ao hover */
+}
+
+/* ==================== ESTILO TEMA CLARO PARA ITENS DE UPDATE ==================== */
+.light .update-items-list li,
+.light .tag-detail-item {
+    background: var(--update-item-bg);
+    color: var(--update-item-color);
+    border: var(--update-item-border);
+    border-radius: var(--update-item-border-radius);
+    padding: var(--update-item-padding);
+    margin-bottom: var(--update-item-margin-bottom);
+    box-shadow: var(#ffffff);
+    transition: var(--update-item-transition);
+    cursor: pointer;
+}
+
+.light .update-items-list li:hover,
+.light .tag-detail-item:hover {
+    background: var(--update-item-hover-bg);
+    box-shadow: var(--update-item-hover-box-shadow);
+}
+
+/* ==================== VARIÁVEIS PARA PARÁGRAFOS EM .UPDATE-ITEMS-LIST ==================== */
+:root {
+    --update-item-p-margin: 0;
+    /* margem do parágrafo */
+    --update-item-p-font-size: 0.85rem;
+    /* tamanho da fonte */
+    --update-item-p-color: var(--text);
+    /* cor do texto */
+    --update-item-p-line-height: 1.4;
+    /* altura da linha */
+    --update-item-p-font-style: normal;
+    /* estilo da fonte */
+}
+
+/* ==================== ESTILO TEMA CLARO PARA PARÁGRAFOS EM .UPDATE-ITEMS-LIST ==================== */
+.light .update-items-list p {
+    margin: var(--update-item-p-margin);
+    font-size: var(--update-item-p-font-size);
+    color: var(--update-item-p-color);
+    line-height: var(--update-item-p-line-height);
+    font-style: var(--update-item-p-font-style);
+}
+
+/* ==================== VARIÁVEIS PARA .BTN-INFO-TAGS ==================== */
+:root {
+    --btn-info-bg: #ffffff;
+    /* fundo padrão do botão */
+    --btn-info-border: 1px solid var(--border-glass);
+    /* borda do botão */
+    --btn-info-color: var(--text-muted);
+    /* cor do texto */
+    --btn-info-padding: 10px;
+    /* espaçamento interno */
+    --btn-info-border-radius: 12px;
+    /* borda arredondada */
+    --btn-info-font-size: 0.8rem;
+    /* tamanho da fonte */
+    --btn-info-display: flex;
+    /* display do botão */
+    --btn-info-align-items: center;
+    /* alinhamento vertical */
+    --btn-info-justify-content: center;
+    /* alinhamento horizontal */
+    --btn-info-gap: 8px;
+    /* espaçamento entre itens internos */
+    --btn-info-cursor: pointer;
+    /* cursor */
+    --btn-info-transition: var(--transition);
+    /* transição */
+    --btn-info-hover-bg: #e7e7e7;
+    /* fundo ao passar o mouse */
+    --btn-info-hover-color: #000000;
+    /* cor do texto ao passar o mouse */
+}
+
+/* ==================== VARIÁVEIS PARA .BTN-INFO-TAGS ==================== */
+:root {
+    /* Layout e tipografia */
+    --btn-info-display: inline-flex;
+    /* display do botão */
+    --btn-info-align-items: center;
+    /* alinhamento vertical */
+    --btn-info-gap: 8px;
+    /* espaço entre ícone e texto */
+    --btn-info-padding: 6px 12px;
+    /* padding interno */
+    --btn-info-border-radius: 8px;
+    /* cantos arredondados */
+    --btn-info-font-size: 14px;
+    /* tamanho da fonte */
+    --btn-info-cursor: pointer;
+    /* cursor */
+
+    /* Cores */
+    --btn-info-bg: transparent;
+    /* fundo padrão */
+    --btn-info-color: #696969;
+    /* cor do texto padrão */
+    --btn-info-hover-bg: rgba(165, 30, 30, 0);
+    /* fundo ao hover */
+    --btn-info-hover-color: #000000;
+    /* cor do texto ao hover */
+
+    /* Borda */
+    --btn-info-border: 1px solid transparent;
+    /* borda padrão */
+
+    /* Sombra e clique */
+    --btn-info-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 8px 12px rgba(0, 0, 0, 0.15);
+    /* sombra ao pressionar */
+    --btn-info-active-transform: translateY(2px);
+    /* efeito de clique */
+
+    /* Ícone */
+    --btn-info-icon-size: 1.2rem;
+    /* tamanho do ícone */
+    --btn-info-icon-hover-transform: rotate(15deg);
+    /* efeito lúdico no hover */
+    --btn-info-icon-hover-color: #facc15;
+    /* cor do ícone ao hover */
+
+    /* Transições */
+    --btn-info-transition: all 0.2s ease;
+    --btn-info-icon-transition: transform 0.2s ease;
+}
+
+/* ==================== ESTILO TEMA CLARO PARA .BTN-INFO-TAGS ==================== */
+.light .btn-info-tags {
+    display: var(--btn-info-display);
+    align-items: var(--btn-info-align-items);
+    gap: var(--btn-info-gap);
+    padding: var(--btn-info-padding);
+    border-radius: var(--btn-info-border-radius);
+    font-size: var(--btn-info-font-size);
+    cursor: var(--btn-info-cursor);
+    background: var(--btn-info-bg);
+    color: var(--btn-info-color);
+    border: var(--btn-info-border);
+    transition: var(--btn-info-transition);
+}
+
+.light .btn-info-tags ion-icon {
+    font-size: var(--btn-info-icon-size);
+    transition: var(--btn-info-icon-transition);
+}
+
+.light .btn-info-tags:hover {
+    background: var(--btn-info-hover-bg);
+    color: var(--btn-info-hover-color);
+}
+
+.light .btn-info-tags:hover ion-icon {
+    transform: var(--btn-info-icon-hover-transform);
+    color: var(--btn-info-icon-hover-color);
+}
+
+.light .btn-info-tags:active {
+    transform: var(--btn-info-active-transform);
+    box-shadow: var(--btn-info-box-shadow);
+}
+
+
+
+/* ==================== VARIÁVEIS PARA .SUBTITLE ==================== */
+:root {
+    --subtitle-color: #000000;
+    /* cor do subtítulo (cinza claro azulado) */
+    --subtitle-font-size: 0.875rem;
+    /* tamanho da fonte */
+    --subtitle-text-transform: uppercase;
+    /* transforma o texto em maiúsculas */
+    --subtitle-letter-spacing: 1px;
+    /* espaçamento entre letras */
+    --subtitle-margin-bottom: 20px;
+    /* margem inferior */
+    --subtitle-display: block;
+    /* display */
+    --subtitle-font-family: 'Inter', sans-serif;
+    /* família da fonte */
+}
+
+/* ==================== ESTILO TEMA CLARO PARA .SUBTITLE ==================== */
+.light .subtitle {
+    color: var(--subtitle-color);
+    font-size: var(--subtitle-font-size);
+    text-transform: var(--subtitle-text-transform);
+    letter-spacing: var(--subtitle-letter-spacing);
+    margin-bottom: var(--subtitle-margin-bottom);
+    display: var(--subtitle-display);
+    font-family: var(--subtitle-font-family);
+}
+
+/* ==================== VARIÁVEIS PARA #GLOSSÁRIODETAGS ==================== */
+:root {
+    --glossario-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* família da fonte */
+    --glossario-color: #000000;
+    /* cor do texto */
+    --glossario-font-size: 1.5rem;
+    /* tamanho da fonte */
+    --glossario-padding-bottom: 10px;
+    /* padding inferior */
+    --glossario-border-bottom: 2px solid #facc15;
+    /* borda inferior */
+    --glossario-display: inline-block;
+    /* display para borda acompanhar o texto */
+    --glossario-margin-top: -6px;
+    /* margem superior */
+}
+
+/* ==================== ESTILO TEMA CLARO PARA #GLOSSÁRIODETAGS ==================== */
+.light #GlossáriodeTags {
+    font-family: var(--glossario-font-family);
+    color: var(--glossario-color);
+    font-size: var(--glossario-font-size);
+    padding-bottom: var(--glossario-padding-bottom);
+    border-bottom: var(--glossario-border-bottom);
+    display: var(--glossario-display);
+    margin-top: var(--glossario-margin-top);
+}
+
+/* ==================== VARIÁVEIS PARA .UPDATE-ITEMS-WRAPPER E .TAGS-SCROLL-AREA ==================== */
+:root {
+    --scrollable-max-height: 300px;
+    /* altura máxima */
+    --scrollable-padding-right: 8px;
+    /* padding direito */
+    --scrollable-margin-bottom: 20px;
+    /* margem inferior */
+    --scrollable-bg: rgba(255, 255, 255, 0);
+    /* fundo leve */
+    --scrollable-border-radius: 12px;
+    /* cantos arredondados */
+    --scrollable-padding: 12px;
+    /* padding interno uniforme */
+    --scrollable-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0);
+    /* sombra interna sutil */
+
+    /* Scrollbar */
+    --scrollbar-width: 8px;
+    /* largura da barra */
+    --scrollbar-thumb-bg: rgb(0, 0, 0);
+    /* cor do thumb */
+    --scrollbar-thumb-hover-bg: rgba(200, 200, 200, 0.8);
+    /* cor do thumb ao hover */
+    --scrollbar-thumb-border-radius: 8px;
+    /* cantos do thumb */
+}
+
+/* ==================== ESTILO TEMA CLARO PARA .UPDATE-ITEMS-WRAPPER E .TAGS-SCROLL-AREA ==================== */
+.light .update-items-wrapper,
+.light .tags-scroll-area {
+    max-height: var(--scrollable-max-height);
+    overflow-y: auto;
+    padding-right: var(--scrollable-padding-right);
+    margin-bottom: var(--scrollable-margin-bottom);
+    background-color: var(--scrollable-bg);
+    border-radius: var(--scrollable-border-radius);
+    padding: var(--scrollable-padding);
+    box-shadow: var(--scrollable-box-shadow);
+    scrollbar-width: thin;
+    /* para Firefox */
+    scrollbar-color: var(--scrollbar-thumb-bg) transparent;
+    /* para Firefox */
+}
+
+/* Scrollbar para Chrome, Edge e Safari */
+.light .update-items-wrapper::-webkit-scrollbar,
+.light .tags-scroll-area::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+}
+
+.light .update-items-wrapper::-webkit-scrollbar-track,
+.light .tags-scroll-area::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.light .update-items-wrapper::-webkit-scrollbar-thumb,
+.light .tags-scroll-area::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb-bg);
+    border-radius: var(--scrollbar-thumb-border-radius);
+    transition: background 0.2s ease;
+}
+
+.light .update-items-wrapper::-webkit-scrollbar-thumb:hover,
+.light .tags-scroll-area::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-thumb-hover-bg);
+}
+
+/* ==================== VARIÁVEIS PARA .BTN-TAGS-ENTENDIDO ==================== */
+:root {
+    --btn-tags-bg: #ffffff;
+    /* fundo do botão */
+    --btn-tags-color: #000000;
+    /* cor do texto */
+    --btn-tags-font-weight: 700;
+    /* peso da fonte */
+    --btn-tags-font-size: 0.75rem;
+    /* tamanho da fonte */
+    --btn-tags-text-transform: uppercase;
+    /* transformar texto em maiúsculas */
+    --btn-tags-padding: 6px 12px;
+    /* padding interno */
+    --btn-tags-border: none;
+    /* borda */
+    --btn-tags-border-radius: 4px;
+    /* borda arredondada */
+    --btn-tags-display: block;
+    /* display */
+    --btn-tags-margin-left: auto;
+    /* alinhamento à direita */
+    --btn-tags-cursor: pointer;
+    /* cursor */
+
+    /* Sombra 3D padrão */
+    --btn-tags-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 8px 12px rgba(0, 0, 0, 0.15);
+
+    /* Transição */
+    --btn-tags-transition: transform 0.1s ease, box-shadow 0.2s ease;
+
+    /* Hover */
+    --btn-tags-hover-transform: translateY(-2px);
+    --btn-tags-hover-box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25), 0 12px 20px rgba(0, 0, 0, 0.15);
+
+    /* Active */
+    --btn-tags-active-transform: scale(0.95);
+    --btn-tags-active-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ==================== ESTILO TEMA CLARO PARA .BTN-TAGS-ENTENDIDO ==================== */
+.light .btn-tags-entendido {
+    background-color: var(--btn-tags-bg);
+    color: var(--btn-tags-color);
+    font-weight: var(--btn-tags-font-weight);
+    font-size: var(--btn-tags-font-size);
+    text-transform: var(--btn-tags-text-transform);
+    padding: var(--btn-tags-padding);
+    border: var(--btn-tags-border);
+    border-radius: 10px;
+    display: var(--btn-tags-display);
+    margin-left: var(--btn-tags-margin-left);
+    cursor: var(--btn-tags-cursor);
+    box-shadow: var(--btn-tags-box-shadow);
+    transition: var(--btn-tags-transition);
+}
+
+/* Hover - leve elevação com sombra */
+.light .btn-tags-entendido:hover {
+    transform: var(--btn-tags-hover-transform);
+    box-shadow: var(--btn-tags-hover-box-shadow);
+}
+
+/* Active - efeito "apertar" com sombra reduzida */
+.light .btn-tags-entendido:active {
+    transform: var(--btn-tags-active-transform);
+    box-shadow: var(--btn-tags-active-box-shadow);
+}
+
+
+/* ==================== icone color ==================== */
+/* ==================== VARIÁVEIS PARA ICONE DE #GLOSSÁRIODETAGS ==================== */
+:root {
+    --glossario-icon-size: 1.8rem;
+    /* tamanho do ícone */
+    --glossario-icon-color: rgb(0, 0, 0);
+    /* cor do ícone padrão */
+    --glossario-icon-hover-color: #8a731a;
+    /* cor do ícone ao passar o mouse */
+    --glossario-icon-transition: transform 0.3s ease, color 0.3s ease;
+    /* transição suave */
+    --glossario-icon-hover-scale: 1.2;
+    /* escala do ícone ao hover */
+}
+
+/* ==================== ESTILO TEMA CLARO PARA ICONE DE #GLOSSÁRIODETAGS ==================== */
+.light #GlossáriodeTags ion-icon {
+    font-size: var(--glossario-icon-size);
+    color: var(--glossario-icon-color);
+    transition: var(--glossario-icon-transition);
+}
+
+.light #GlossáriodeTags:hover ion-icon {
+    transform: scale(var(--glossario-icon-hover-scale));
+    color: var(--glossario-icon-hover-color);
+}
+
+/* ==================== VARIÁVEIS PARA #GLOSSÁRIODETAGS ==================== */
+:root {
+    /* Tipografia e layout do título */
+    --glossario-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* família da fonte */
+    --glossario-color: #000000;
+    /* cor do texto */
+    --glossario-font-size: 1.5rem;
+    /* tamanho da fonte */
+    --glossario-padding-bottom: 10px;
+    /* padding inferior */
+    --glossario-border-bottom: 2px solid #facc15;
+    /* borda inferior */
+    --glossario-display: inline-block;
+    /* display para borda acompanhar o texto */
+    --glossario-margin-top: -6px;
+    /* margem superior */
+
+    /* Ícone */
+    --glossario-icon-size: 1.8rem;
+    /* tamanho do ícone */
+    --glossario-icon-color: rgb(0, 0, 0);
+    /* cor padrão do ícone */
+    --glossario-icon-hover-color: #facc15;
+    /* cor do ícone ao passar o mouse */
+    --glossario-icon-transition: transform 0.3s ease, color 0.3s ease;
+    /* transição suave */
+    --glossario-icon-hover-scale: 1.2;
+    /* escala do ícone ao hover */
+}
+
+/* ==================== ESTILO TEMA CLARO PARA #GLOSSÁRIODETAGS ==================== */
+.light #GlossáriodeTags {
+    font-family: var(--glossario-font-family);
+    color: var(--glossario-color);
+    font-size: var(--glossario-font-size);
+    padding-bottom: var(--glossario-padding-bottom);
+    border-bottom: var(--glossario-border-bottom);
+    display: var(--glossario-display);
+    margin-top: var(--glossario-margin-top);
+}
+
+.light #GlossáriodeTags ion-icon {
+    font-size: var(--glossario-icon-size);
+    color: var(--glossario-icon-color);
+    transition: var(--glossario-icon-transition);
+}
+
+.light #GlossáriodeTags:hover ion-icon {
+    transform: scale(var(--glossario-icon-hover-scale));
+    color: var(--glossario-icon-hover-color);
+}
+
+
+/* ==================== VARIÁVEIS PARA ICONE EM .TAB-TRIGGER ==================== */
+:root {
+    --tab-icon-size: 1.2rem;
+    /* tamanho do ícone */
+    --tab-icon-color: #000000;
+    /* cor padrão do ícone */
+    --tab-icon-hover-color: #181714;
+    /* cor do ícone ao passar o mouse */
+    --tab-icon-active-color: #000000;
+    /* cor do ícone quando ativo */
+    --tab-icon-transition: transform 0.2s ease, color 0.3s ease;
+    /* transição */
+    --tab-icon-hover-scale: 1.2;
+    /* escala ao hover */
+}
+
+/* ==================== ESTILO TEMA CLARO PARA ICONE EM .TAB-TRIGGER ==================== */
+.light .tab-trigger ion-icon {
+    font-size: var(--tab-icon-size);
+    color: var(--tab-icon-color);
+    transition: var(--tab-icon-transition);
+}
+
+.light .tab-trigger:hover ion-icon {
+    transform: scale(var(--tab-icon-hover-scale));
+    color: var(--tab-icon-hover-color);
+}
+
+.light .tab-trigger.active ion-icon {
+    color: var(--tab-icon-active-color);
+}
+
+/*==========card de aviso=========*/
+/* ==================== STATUS LIDO ==================== */
+/* Configuração de Cores e Estilos Globais */
+:root {
+    /* DARK MODE (Padrão do seu código) */
+    --bg-card: #111827;
+    --bg-modal: #111827;
+    --bg-overlay: rgba(2, 6, 23, 0.6);
+    --border-card: #011a31;
+    --text-main: #e5e7eb;
+    --text-button: #000000;
+    --shadow-card: rgba(0, 0, 0, 0.4);
+    --shadow-modal: rgba(255, 255, 255, 0.13);
+
+    /* CORES DE DESTAQUE (Comuns aos dois) */
+    --primary: #facc15;
+    --primary-hover: #e7b500;
+    --success: #16a34a;
+    --success-light: #22c55e;
+}
+
+/* Variáveis para o .about-card */

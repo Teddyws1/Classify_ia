@@ -1,0 +1,4066 @@
+@charset "UTF-8";
+
+* {
+  box-sizing: border-box;
+  font-family: Inter, system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+html, body {
+  touch-action: manipulation;
+}
+
+
+body {
+  margin: 20px;
+  padding: 0;
+  width: calc(100% - 40px);
+  max-width: calc(100vw - 40px);
+  box-sizing: border-box;
+  background-color: var(--bg-main);
+  color: var(--text);
+  font-style: oblique;
+  transition: background 0.3s ease;
+  position: relative;
+  min-height: calc(100vh - 40px);
+  user-select: none;
+  -webkit-user-select: none;
+  overflow-x: hidden;
+}
+
+/* Aplicação universal para evitar bugs em cards de vídeo/design */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Aplicação universal do box-sizing para todos os elementos */
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* trava scroll da página */
+body.no-scroll {
+  overflow: hidden;
+}
+
+/* ================== HEADER ================== */
+.main-header {
+  max-width: calc(1300px - var(--sidebar-space));
+  margin: 16px auto 30px;
+  /* centraliza corretamente */
+  padding: 20px 24px;
+
+  text-align: center;
+  border-radius: 18px;
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+
+/* Layout principal */
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: nowrap;
+}
+
+
+/* Título */
+.title h1 {
+  margin: 0;
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  color: var(--accent);
+}
+
+.title p {
+  margin: 6px 0 0;
+  font-size: .9rem;
+  color: var(--muted);
+}
+
+
+/* ================== CONTROLS ================== */
+.controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Input */
+.controls input {
+  min-width: 220px;
+  width: 100%;
+  max-width: 280px;
+  padding: 12px 14px;
+  font-size: 1rem;
+  border-radius: 12px;
+}
+
+/* Botão */
+.controls button {
+  min-width: 48px;
+  min-height: 48px;
+  font-size: 1.2rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* li/mark da barra de pesquisa */
+li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+
+/* =====================fim da li/mark========== */
+
+/* ================== MOBILE ================== */
+@media (max-width: 600px) {
+  .header-content {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .controls {
+    width: 100%;
+  }
+
+  .controls input {
+    max-width: 100%;
+  }
+
+  .controls button {
+    width: 100%;
+  }
+}
+
+/* ================== EXTRA PEQUENO (ex: 360px) ================== */
+@media (max-width: 380px) {
+  .controls button {
+    font-size: 1rem;
+  }
+}
+
+
+input,
+button {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+}
+
+button {
+  cursor: pointer;
+  background: #1d5c64;
+  color: #000;
+  font-weight: bold;
+}
+
+/* icone de lupa */
+.search-box {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+}
+
+/* ícone lupa */
+
+.search-box {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+}
+
+.search-box ion-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 25px;
+  color: #facc15;
+}
+
+
+.search-box input {
+  width: 100%;
+  padding: 12px 44px 12px 44px;
+  /* espaço ícone + botão */
+  border-radius: 14px;
+  border: 1px solid #1f2937;
+
+  background: linear-gradient(180deg, #0f172a, #020617);
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+
+  outline: none;
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease,
+    transform 0.15s ease;
+}
+
+/* ======================
+   TEMA CLARO – INPUT
+====================== */
+.light .search-box input {
+  background: #ffffff;
+  /* fundo branco */
+  color: #000000;
+  /* texto escuro */
+  border: 1px solid #d1d5db;
+  /* cinza claro */
+  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.08);
+}
+
+
+/* placeholder */
+.search-box input::placeholder {
+  color: #94a3b8;
+}
+
+/* foco com animação */
+.search-box input:focus {
+  border-color: #c49d0170;
+  box-shadow: 0 0 0 3px #facc15;
+  transform: scale(1.02);
+}
+
+/* animação do ícone no foco */
+.search-box input:focus+.clear-btn~.icon-search,
+.search-box input:focus~.icon-search {
+  color: #e5ff00;
+  transform: translateY(-50%) scale(1.15);
+}
+
+/* placeholder */
+.search-box input::placeholder {
+  color: #8b949e;
+}
+
+/* botão limpar */
+.clear-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: #8b949e;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.clear-btn:hover {
+  color: #ff0000;
+  transform: translateY(-50%) scale(1.15);
+}
+
+/* botão aparece quando tem texto */
+.search-box.has-text .clear-btn {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.search-box.has-text .clear-btn {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  /* Dê uma folga da borda direita */
+  transform: translateY(-50%);
+  /* Centraliza perfeitamente no meio da altura */
+  opacity: 1;
+  pointer-events: auto;
+  background: transparent;
+  /* Garante que não haja fundo sobrando */
+  border: none;
+}
+
+
+.grid {
+  max-width: 1300px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+
+  padding: clamp(12px, 3vw, 18px);
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 2vw, 16px);
+}
+
+
+.badge-new {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #22c55e;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 0 16px 0 16px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+
+.card li {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 8px;
+}
+
+
+
+.card h2 {
+  margin-top: 0;
+  color: var(--accent);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  flex-wrap: wrap;
+}
+
+
+.card span {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.card li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-right: 42px;
+  /* reserva espaço pro badge */
+}
+
+/* sitema de ver mais/menos */
+
+/* esconde os itens extras */
+.card li.hidden {
+  display: none;
+}
+
+/* fundo escuro */
+.overlay-bg {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .55);
+  backdrop-filter: blur(3px);
+  z-index: 900;
+  opacity: 0;
+  pointer-events: none;
+  transition: .25s;
+}
+
+.overlay-bg.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/*===============barra de scroll modal===============*/
+
+/* ==========================================================================
+   SCROLLBAR ADAPTÁVEL (DESKTOP, TABLET E MOBILE)
+   ========================================================================== */
+
+.card.overlay-open ul {
+  /* Habilita o scroll com resposta tátil suave no iOS/Android */
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  /* Fluidez extra em iPhones/iPads */
+
+  /* Espaço de segurança para a barra não encostar no conteúdo */
+  padding-right: 10px;
+
+  /* Suporte Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #facc15 rgba(255, 255, 255, 0.05);
+}
+
+/* Largura da barra ajustada para telas de toque */
+.card.overlay-open ul::-webkit-scrollbar {
+  width: 6px;
+  /* Mais fina para tablets e celulares */
+}
+
+/* Trilha (Track) com recuo interno para não vazar do card */
+.card.overlay-open ul::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  /* Afasta a barra das bordas arredondadas (18px) do seu modal */
+  margin: 12px 5px;
+}
+
+/* Indicador (Thumb) - Ouro Premium */
+.card.overlay-open ul::-webkit-scrollbar-thumb {
+  background: #facc15;
+  border-radius: 20px;
+  /* Brilho sutil para telas de alta densidade (PPI) */
+  box-shadow: 0 0 10px rgba(250, 204, 21, 0.2);
+
+  /* Efeito de preenchimento para não colar nas laterais da trilha */
+  border: 1.5px solid transparent;
+  background-clip: content-box;
+}
+
+/* Ajuste específico para Telas Pequenas (Mobile) */
+@media (max-width: 600px) {
+  .card.overlay-open ul::-webkit-scrollbar {
+    width: 4px;
+    /* Barra ainda mais discreta no celular */
+  }
+
+  .card.overlay-open ul {
+    padding-right: 6px;
+    /* Ajusta o modal para ocupar mais espaço na tela do celular */
+    width: min(95vw, 420px);
+    max-height: 80vh;
+  }
+}
+
+/*===============fim da barra de scroll modal===============*/
+/* modal central */
+.card.overlay-open ul {
+  position: fixed;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+
+  width: min(90vw, 420px);
+  max-height: 70vh;
+
+  overflow-y: auto;
+  /* scroll vertical interno */
+  overflow-x: hidden;
+  /* bloqueia scroll horizontal */
+
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px 26px;
+
+  z-index: 1000;
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+  animation: modalIn 0.25s ease;
+}
+
+/* =========================
+   ANIMAÇÃO SUAVE
+========================= */
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* botão fechar */
+.btn-close {
+  position: fixed;
+  top: 1px;
+  right: 2px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: #ffffff0f;
+  backdrop-filter: blur(6px);
+  color: #ffffff;
+  font-size: 1.3rem;
+  font-weight: bold;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .45);
+  transition: .25s ease;
+  z-index: 10001;
+}
+
+
+/* =========================
+   GARANTIA ANTI SCROLL HORIZONTAL
+========================= */
+.card.overlay-open ul * {
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* hover bonito */
+.btn-fechar-modal:hover {
+  background: #facc15;
+  color: #111;
+  transform: scale(1.08) rotate(90deg);
+}
+
+
+/* button de ver mais/menos */
+.ver-mais-btn {
+  margin-top: clamp(10px, 2vw, 14px);
+  padding: clamp(8px, 2vw, 10px) clamp(14px, 3vw, 18px);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  width: fit-content;
+  max-width: 100%;
+
+  background: linear-gradient(135deg, #facc15, #f59e0b);
+  color: #111;
+
+  border: none;
+  border-radius: 999px;
+
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  font-weight: 600;
+
+  cursor: pointer;
+  user-select: none;
+
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+  transform: translateY(1px);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+}
+
+/* ícone */
+.ver-mais-btn ion-icon {
+  font-size: 1.2rem;
+  transform: translateY(2px);
+  /* sempre abaixo */
+  transition: transform .25s ease;
+}
+
+
+
+.ver-mais-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+  filter: brightness(1.05);
+}
+
+.ver-mais-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+}
+
+.ver-mais-btn:focus-visible {
+  outline: 2px solid #facc15;
+  outline-offset: 3px;
+}
+
+
+/* fim button de ver mais/menos */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+
+li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.lista-ia li img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  border-radius: 10px;
+
+  background: rgba(145, 14, 14, 0.1);
+  padding: 4px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+  /* Essencial para 8K: suavização de bordas */
+  image-rendering: -webkit-optimize-contrast;
+  backface-visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Efeito no hover do item da lista */
+.lista-ia li:hover img {
+  transform: scale(1.2) translateY(-2px);
+  /* Aumento mais dinâmico */
+  box-shadow: 0 6px 15px rgba(250, 204, 21, 0.3);
+  /* Glow leve no hover */
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* efeito no hover do item */
+li:hover img {
+  transform: scale(1.2);
+  /* um pouco mais de destaque */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .35);
+}
+
+
+:root {
+  --link: #facc15;
+  /* Seu Amarelo Ouro */
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+  position: relative;
+  font-weight: 700;
+  display: inline-block;
+  transition: var(--transition);
+  padding-bottom: 2px;
+  /* Espaço para a linha não encostar na letra */
+}
+
+/* Criamos a linha personalizada (em vez do underline padrão) */
+a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  /* Começa no meio */
+  width: 0;
+  /* Começa sem largura */
+  height: 2px;
+  /* Espessura da linha */
+  background-color: var(--link);
+  transition: var(--transition);
+  transform: translateX(-50%);
+  /* Garante que ela cresça para os dois lados */
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(250, 204, 21, 0.3);
+  /* Brilho suave */
+}
+
+/* --- ESTADO HOVER --- */
+
+a:hover {
+  color: #fff;
+  /* Texto brilha levemente em branco */
+  text-shadow: 0 0 10px rgba(250, 204, 21, 0.5);
+}
+
+a:hover::after {
+  width: 100%;
+  /* A linha expande até cobrir o texto todo */
+  background-color: #fff;
+  /* A linha também pode brilhar em branco */
+}
+
+/* Feedback de clique suave */
+a:active {
+  opacity: 0.7;
+}
+
+footer {
+  text-align: center;
+  margin-top: 40px;
+  color: #c0c0bfcb;
+}
+
+/* ================== SOCIAL FOOTER ================== */
+footer .social {
+  top: -12px;
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+footer .social span {
+  font-size: .85rem;
+  opacity: .85;
+}
+
+footer .social a {
+  position: relative;
+}
+
+/* Ícones */
+footer .social img {
+  width: 18px;
+  height: 18px;
+  filter: invert(80%);
+  transition: .2s ease;
+}
+
+.light footer .social img {
+  filter: none;
+}
+
+footer .social a:hover img {
+  transform: scale(1.25);
+}
+
+/* Tooltip */
+footer .social a::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--card);
+  color: var(--text);
+  padding: 4px 8px;
+  font-size: .7rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  border: 1px solid var(--border);
+  transition: .2s;
+}
+
+.ion-icon {
+  color: #facc15;
+}
+
+/* fim do footer */
+/* BOTÃO ABRIR */
+.open-sidebar {
+  position: fixed;
+  top: -6px;
+  left: -6px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  /* fundo removido */
+  color: var(--accent);
+  /* usa a cor do tema */
+  font-size: 1.9rem;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 14px;
+  z-index: 999;
+  transition: color 0.25s ease, transform 0.2s ease;
+}
+
+
+.open-sidebar.hide {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(.8);
+}
+
+
+/* OVERLAY */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .5);
+  opacity: 0;
+  pointer-events: none;
+  transition: .35s;
+  z-index: 1000;
+}
+
+.overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* SIDEBAR */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -340px;
+  width: 311px;
+  height: 100%;
+  background: var(--card);
+  color: var(--text);
+  padding: 22px 22px 22px 5px;
+  transition: .4s cubic-bezier(.4, 0, .2, 1);
+  z-index: 1001;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+/* FECHAR */
+.close-sidebar {
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.2rem;
+  cursor: pointer;
+  float: right;
+}
+
+/* TEXTO */
+.about-text {
+  color: #fff;
+  font-size: .92rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  padding-left: 12px;
+  border-left: 3px solid var(--accent);
+  opacity: .9;
+}
+
+
+.section {
+  margin-bottom: 18px;
+}
+
+
+html.light .idea-card {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* Header */
+.idea-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.idea-header img {
+  width: 22px;
+  filter: invert(1);
+}
+
+html.light .idea-header img {
+  filter: invert(0);
+}
+
+
+/* CRIADOR */
+.creator span {
+  font-weight: bold;
+}
+
+.socials a {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+
+.segui {
+  color: var(--accent);
+  position: absolute;
+  top: 74%;
+  left: 35%;
+}
+
+/* REDES */
+.socials {
+  position: absolute;
+  bottom: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  top: 81%;
+  padding: 0 18px;
+  border-radius: 18px;
+}
+
+
+.socials a:hover {
+  transform: translateY(-3px);
+  background: var(--accent);
+}
+
+.socials img {
+  width: 20px;
+  filter: invert(1);
+}
+
+html.light .socials img {
+  filter: invert(0);
+}
+
+
+
+/*botão de ou/sepreferir */
+#ou {
+  position: relative;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #888;
+  margin: 20px 0;
+  text-transform: uppercase;
+}
+
+/* linhas laterais */
+#ou::before,
+#ou::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background-color: #ddd;
+}
+
+#ou::before {
+  left: 0;
+}
+
+#ou::after {
+  right: 0;
+}
+
+#ou {
+  position: relative;
+  text-align: center;
+  font-size: 13px;
+  font-weight: bold;
+  color: #aaa;
+  margin: 24px 0;
+  letter-spacing: 2px;
+}
+
+#ou::before,
+#ou::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 38%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #facc15);
+}
+
+#ou::after {
+  background: linear-gradient(to left, transparent, #facc15);
+}
+
+#preferir {
+  font-size: 16px;
+  font-weight: 700;
+  color: #b1b1b1;
+  text-align: center;
+  margin: 32px 0 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+/* fim botão de ou/sepreferir */
+.app-version {
+  position: absolute;
+  bottom: 2px;
+  /* 👈 altura fixa e consistente */
+  left: 0;
+  right: 0;
+
+  text-align: center;
+  font-size: .7rem;
+  color: var(--muted);
+  opacity: .85;
+}
+
+.app-version strong {
+  display: block;
+  font-size: .8rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* verão box */
+.versaobox {
+  position: absolute;
+  bottom: 2px;
+  /* 👈 altura fixa e consistente */
+  left: 0;
+  right: 0;
+
+  text-align: center;
+  font-size: .7rem;
+  color: var(--muted);
+  opacity: .85;
+}
+
+.versaobox strong {
+  display: block;
+  font-size: .8rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+
+
+#Sobre {
+  color: #facc15;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 24px 0;
+  letter-spacing: 1px;
+}
+
+
+/* HOVER */
+.update-info-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(250, 204, 21, 0.35);
+}
+
+/* CLIQUE */
+.update-info-btn:active {
+  transform: scale(0.96);
+}
+
+
+/* MODAL */
+.update-info-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .55);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: .3s;
+  z-index: 9999;
+}
+
+.update-info-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.update-info-box {
+  background: var(--card);
+  max-width: 460px;
+  width: 92%;
+  margin: 10vh auto;
+  padding: 22px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  position: relative;
+}
+
+.close-update-info {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  border: none;
+  background: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* LISTA COM SCROLL INTELIGENTE */
+.update-list {
+  margin: 12px 0 18px;
+  padding: 0;
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  max-height: 260px;
+  /* ≈ altura para 5 itens */
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+  /* Firefox */
+  scrollbar-color: var(--accent) transparent;
+}
+
+/* ITEM */
+.update-list li {
+  position: relative;
+  padding: 10px 12px 10px 34px;
+  font-size: .8rem;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  line-height: 1.4;
+}
+
+/* TEXTO */
+.update-list .li-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+/* EXPANDIDO */
+.update-list li.open .li-text {
+  line-clamp: unset;
+  -webkit-line-clamp: unset;
+}
+
+/* divisorio de abas */
+.divider {
+  border: none;
+  height: 1px;
+  background: #ffcf33;
+  margin: 24px 0;
+}
+
+
+/* =============================
+   DIVISÓRIA COM TEXTO
+   =============================== */
+.divider-text {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 48px 0 24px;
+  left: 3px;
+  position: absolute;
+  top: 81%;
+}
+
+/* Linhas laterais */
+.divider-text::before,
+.divider-text::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg,
+      transparent,
+      var(--border),
+      transparent);
+
+  opacity: 0.8;
+}
+
+/* Texto central */
+.divider-text span {
+  padding: 0 12px;
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .divider-text {
+    margin: 40px 0 20px;
+  }
+
+  .divider-text span {
+    font-size: .65rem;
+  }
+}
+
+/* ===============================
+   🧩 Badge responsivo e seguro
+   =============================== */
+
+/* ícone + texto dentro do h2 */
+.card h2 span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+
+  /* 🔒 nunca sai da div pai */
+  max-width: 100%;
+  overflow: hidden;
+
+  /* 🔠 texto seguro */
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  /* 📏 tamanho adaptável */
+  padding: 0.25rem 0.625rem;
+  border-radius: 999px;
+
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+
+  /* 🎨 cores */
+  background: #121d33;
+  color: #4f8cff;
+
+  /* ✨ visual */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+
+  /* 🧠 compatibilidade total */
+  box-sizing: border-box;
+}
+
+/* ícone dentro do span */
+.card h2 span ion-icon,
+.card h2 span svg {
+  flex-shrink: 0;
+  /* impede esmagar o ícone */
+  font-size: 0.85em;
+}
+
+@media (max-width: 480px) {
+  .card h2 span {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    gap: 0.3rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  .card h2 span {
+    font-size: 0.8rem;
+  }
+}
+
+/* icone de atenção nova ia */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+}
+
+
+/* hover */
+.card h2 span:hover {
+  background: rgba(79, 140, 255, .2);
+  transform: translateY(-1px);
+}
+
+.card h2 {
+  margin-top: 0;
+  color: #facc15;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card h2 span {
+  flex: 0 0 auto;
+  /* ❌ não deixa esticar */
+}
+
+
+/* icon de compartilhar */
+.share-btn {
+  all: unset;
+  position: absolute;
+  /* 🔥 tira do fluxo */
+  right: 12px;
+  /* posição real */
+  top: 22%;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #d1890c;
+  border: 1px solid var(--border);
+  z-index: 2;
+}
+
+/* ÍCONE */
+.share-btn ion-icon {
+  font-size: 1.3rem;
+  color: #000;
+}
+
+/* HOVER */
+.share-btn:hover {
+  background: rgb(218, 203, 0);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* ACTIVE */
+.share-btn:active {
+  transform: scale(0.94);
+}
+
+/* FOCUS (acessibilidade) */
+.share-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .share-btn {
+    width: 26px;
+    height: 26px;
+  }
+
+  .share-btn ion-icon {
+    font-size: 0.95rem;
+  }
+}
+
+/*bloqueia compartilha */
+.card ul li {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  /* Cria um espaço físico obrigatório entre os itens */
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  /* Bloqueia vazamentos laterais */
+  box-sizing: border-box;
+  /* Garante que o padding não estoure o card */
+  position: relative;
+  /* 🔴 ISSO É ESSENCIAL */
+}
+
+.share-lock-card {
+  position: fixed;
+  /* 🔥 acima de tudo */
+  background: linear-gradient(180deg, #123B40, #296573);
+  color: #e5e7eb;
+
+  width: 170px;
+  padding: 10px 12px;
+  border-radius: 12px;
+
+  border: 1px solid rgba(255, 255, 255, .08);
+  box-shadow: 0 12px 30px #ffffff3d;
+
+  font-size: 11px;
+  text-align: center;
+
+  z-index: 999999;
+  /* 🔥 mais alto que qualquer overlay */
+  pointer-events: none;
+  /* não bloqueia clique da página */
+
+  animation: miniGlobalIn .22s ease forwards;
+}
+
+.share-lock-card img {
+  width: 100%;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 6px;
+}
+
+.share-lock-card strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  color: #facc15;
+}
+
+@keyframes miniGlobalIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+
+/*fim bloqueia compartilha */
+/* painel de compartilhar */
+/* Container pai (li) */
+.card ul li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  /* Reserva espaço de 44px na direita para o ícone fixo */
+  padding: 10px 44px 10px 14px;
+  margin-bottom: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  min-height: 50px;
+
+  /* Trava o painel amarelo dentro do arredondamento do card */
+  overflow: hidden;
+}
+
+/* Link da IA */
+.card ul li a {
+  /* 👇 O link agora é elástico: ele cresce, mas aceita diminuir */
+  flex: 0 1 auto;
+  min-width: 0;
+
+  color: #facc15;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* Adiciona "..." se o nome for muito longo */
+}
+
+/* Botão de Fechar (X) interno do painel */
+.btn-close-overlay {
+  /* Remove estilos padrões de sistema */
+  all: unset;
+  cursor: pointer;
+
+  /* Tamanho do botão */
+  width: 32px;
+  height: 32px;
+
+  /* Centralização perfeita do ícone Ionicon */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Visual e Cores */
+  background: rgba(0, 0, 0, 0.08);
+  /* Fundo levemente escuro no amarelo */
+  color: #000;
+  /* Ícone preto */
+  border-radius: 50%;
+  /* Botão circular */
+
+  /* Posicionamento (Opcional: se quiser ele isolado no canto do painel) */
+  transition: all 0.3s ease;
+}
+
+/* Efeitos ao passar o mouse */
+.btn-close-overlay:hover {
+  background: rgba(0, 0, 0, 0.15);
+  transform: rotate(90deg) scale(1.1);
+}
+
+/* Efeito ao clicar */
+.btn-close-overlay:active {
+  transform: scale(0.9);
+}
+
+/* Ajuste do tamanho do ícone interno */
+.btn-close-overlay ion-icon {
+  font-size: 1.4rem;
+  --ionicon-stroke-width: 45px;
+  /* Deixa o X um pouco mais espesso */
+}
+
+/* Painel Amarelo que abre ao clicar */
+.side-overlay {
+  position: absolute;
+  inset: 0;
+  background: #facc15;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  z-index: 10;
+
+  transform: translateX(101%);
+  /* Escondido à direita */
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Container que agrupa os botões (dentro do side-overlay) */
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  /* Espaço uniforme entre os ícones */
+  flex: 1;
+}
+
+/* Estilo base para cada botão de ação */
+.social-links button[data-action] {
+  all: unset;
+  /* Remove bordas e fundos padrão de botão */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  /* Cantos levemente arredondados */
+  background: rgba(173, 11, 11, 0.05);
+  /* Fundo sutil para destacar no amarelo */
+  color: #111;
+  /* Cor dos ícones (preto para contraste no amarelo) */
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Ajuste do tamanho do ícone Ionicons */
+.social-links button[data-action] ion-icon {
+  font-size: 1.4rem;
+  border-radius: 8px;
+}
+
+/* --- EFEITOS DE HOVER (PASSAR O MOUSE) --- */
+
+.social-links button[data-action]:hover {
+  background: rgba(192, 179, 0, 0.932);
+  transform: translateY(-4px);
+  /* Pequeno pulo para cima */
+}
+
+/* Cores específicas no hover (Opcional, mas fica excelente) */
+.social-links button[data-action="copy"]:hover {
+  color: #383838;
+}
+
+.social-links button[data-action="whats"]:hover {
+  color: #09cf13;
+}
+
+/* Verde WhatsApp */
+.social-links button[data-action="x"]:hover {
+  color: #000;
+}
+
+.social-links button[data-action="face"]:hover {
+  color: #036af1;
+}
+
+/* Azul Facebook */
+
+/* Efeito de clique */
+.social-links button[data-action]:active {
+  transform: scale(0.9);
+}
+
+li.overlay-open .side-overlay {
+  transform: translateX(0);
+  /* Desliza para dentro */
+}
+
+/* Ícones sociais dentro do painel aberto */
+.social-links button {
+  all: unset;
+  cursor: pointer;
+  color: #000;
+  /* Ícones pretos no fundo amarelo */
+  font-size: 1.3rem;
+  transition: 0.2s;
+}
+
+
+/*fim card de aviso */
+/* H4 */
+.contact-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin: 20px 0 10px;
+
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+
+  color: #ffffff;
+}
+
+.contact-title ion-icon {
+  font-size: 20px;
+  color: #facc15;
+  /* verde destaque */
+}
+
+/* fim h4 */
+/* novos ias */
+/* Container da linha da IA (o <li>) */
+.card ul li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 14px;
+  gap: 8px;
+  /* Espaço mínimo garantido entre imagem, texto e badge */
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Nome da IA */
+.card ul li a {
+  flex: 0 1 auto;
+  /* Permite que o link encolha para dar espaço ao badge */
+  min-width: 0;
+  /* Necessário para o truncamento de texto funcionar */
+  color: #facc15;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* Adiciona os "..." se o nome for longo */
+}
+
+/* Badge (NOVO / IA Novas) */
+.ia-badge {
+  /* Mudamos de absolute para flexível */
+  flex-shrink: 0;
+  margin-left: auto;
+  /* Empurra o badge para a direita, mas respeitando o texto */
+  margin-right: 40px;
+  /* Reserva espaço para o botão de compartilhar */
+
+  font-weight: 800;
+  font-size: 0.65rem;
+  padding: 2px 6px;
+  border-radius: 999px;
+
+  color: #111;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+li:not(:has(.ia-badge)) {
+  padding-right: 16px;
+}
+
+.ia-badge ion-icon {
+  font-size: 0.85rem;
+  color: var(--ia-badge-icon-color);
+}
+
+
+
+
+/* ÍCONE */
+.ia-list img {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  background: #fff;
+}
+
+/* Destaque da busca */
+mark {
+  background-color: #ffcf33;
+  color: #000000;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  border-radius: 4px;
+  padding: 0 2px;
+}
+
+/* Container do item (li) ajustado para o botão de compartilhar */
+.ia-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  /* Necessário para posicionar o menu */
+  padding: 10px;
+}
+
+/* Agrupamento de Imagem + Link */
+.tool-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Botão de Compartilhar */
+.share-btn {
+  background: #facc15;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--text-color);
+  /* Use sua variável de cor */
+  position: absolute;
+  right: 12px;
+  border-radius: 12px;
+  transition: opacity 0.3s;
+}
+
+.share-btn:hover {
+  opacity: 1;
+}
+
+/* Menu de Compartilhamento */
+.share-menu {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--bg-card);
+  /* Cor de fundo do seu card */
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.share-menu button {
+  padding: 8px 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.share-menu button:hover {
+  background: #1d5c64b7;
+}
+
+/* Impedir scroll quando modal/sidebar está aberto */
+.no-scroll {
+  overflow: hidden;
+}
+
+/* ===== FUNDO ===== */
+/* ================= MODAL OVERLAY ================= */
+.modal-news {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .6);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 16px;
+}
+
+.modal-news.active {
+  display: flex;
+  animation: fadeIn .3s ease;
+}
+
+/* ================= MODAL BOX ================= */
+.modal-box {
+  background: #111;
+  padding: 28px 26px 24px;
+  border-radius: 22px;
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, .6);
+  border: 1px solid rgba(250, 204, 21, .25);
+  animation: slideUp .35s ease;
+}
+
+/* ================= TÍTULO ================= */
+.modal-box h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #facc15;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.modal-box h2 ion-icon {
+  font-size: 1.2rem;
+  color: #facc15;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+/* iocne  */
+
+.update-title-ui {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.update-title-ui ion-icon {
+  font-size: 2.2rem;
+  color: #ffb400;
+  transition: color 0.3s ease;
+}
+
+/* Keyframes para balançar */
+@keyframes swing {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  20% {
+    transform: rotate(15deg);
+  }
+
+  40% {
+    transform: rotate(-10deg);
+  }
+
+  60% {
+    transform: rotate(5deg);
+  }
+
+  80% {
+    transform: rotate(-5deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* Classe para ativar o balanço */
+.swing {
+  animation: swing 0.6s ease-in-out;
+}
+
+
+/* fim do iocne  */
+/* ================= BOTÃO FECHAR ================= */
+.close-modal {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  background: rgba(255, 255, 255, .06);
+  border: none;
+  color: #c52323;
+  font-size: 1.1rem;
+
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: .25s;
+
+  /* 👇 centraliza o X perfeitamente */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+
+.close-modal:hover {
+  background: #facc15;
+  color: #111;
+  transform: rotate(90deg);
+}
+
+/* ================= SCROLL AREA ================= */
+.scroll-area {
+  max-height: 280px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+/* Scroll moderno */
+.scroll-area::-webkit-scrollbar {
+  width: 5px;
+}
+
+.scroll-area::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, .05);
+}
+
+.scroll-area::-webkit-scrollbar-thumb {
+  background: #facc15;
+  border-radius: 10px;
+}
+
+
+/*NOTIFICAÇÃO*/
+/* Botão Fechar do Toast */
+.close-toast {
+  background: none;
+  border: none;
+  color: var(--text-dim, #94a3b8);
+  font-size: 22px;
+  cursor: pointer;
+  padding: 0 0 0 10px;
+  line-height: 1;
+  transition: color 0.2s;
+  align-self: flex-start;
+  /* Alinha no topo se o texto for grande */
+}
+
+.close-toast:hover {
+  color: #facc15;
+  /* Vermelho ao passar o mouse */
+}
+
+.text-box p {
+  margin: 0;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.progress-bar {
+  height: 4px;
+  background: var(--primary);
+  width: 100%;
+  transform-origin: left;
+  animation: shrink 5s linear forwards;
+  animation-play-state: paused;
+}
+
+@keyframes shrink {
+  from {
+    transform: scaleX(1);
+  }
+
+  to {
+    transform: scaleX(0);
+  }
+}
+
+/* MAIN CARD */
+.main-card {
+  background: var(--card);
+  padding: 40px;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: center;
+}
+
+.btn-main {
+  background: var(--primary);
+  border: none;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: 0.3s;
+}
+
+.btn-main:hover {
+  transform: scale(1.05);
+}
+
+/* MODAL */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-box {
+  background: #1f2937;
+  color: #000;
+  padding: 35px;
+  border-radius: 24px;
+  width: 380px;
+  animation: pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.news-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.news-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: #f1f5f9;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+/*fim NOTIFICAÇÃO*/
+
+/* card altas*/
+.tabs-header {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  padding: 10px 0;
+  background: var(--bg-dark);
+}
+
+.tab-btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  background: color-mix(in srgb, var(--glass) 85%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border-color) 70%, transparent);
+  color: var(--text-dim);
+
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.35px;
+
+  padding: 11px 24px;
+  border-radius: 999px;
+
+  cursor: pointer;
+  user-select: none;
+
+  transition:
+    color .35s ease,
+    border-color .35s ease,
+    background .35s ease,
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+.tab-btn.active {
+  color: var(--accent);
+  border-color: var(--accent);
+
+  background: color-mix(in srgb,
+      var(--accent) 12%,
+      var(--glass));
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  transform: translateY(-3px);
+}
+
+.tab-btn.active::after {
+  width: 75%;
+}
+
+
+@media (max-width: 600px) {
+  .tabs-header {
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .tabs-header::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab-btn {
+    font-size: 13px;
+    padding: 9px 18px;
+    white-space: nowrap;
+  }
+}
+
+/* ================= HOVER ================= */
+.tab-btn:hover {
+  color: var(--text);
+  border-color: var(--accent-color);
+  transform: translateY(-1.5px);
+}
+
+.tab-btn:hover::before {
+  opacity: .18;
+  transform: translateX(140%);
+}
+
+/* ================= ACTIVE ================= */
+.tab-btn.active {
+  color: #facc15;
+  border-color: transparent;
+  transform: translateY(-6px);
+  font-style: oblique;
+  font-size: 15px;
+}
+
+.tab-btn.active::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.tab-btn.active::after {
+  opacity: .6;
+}
+
+/* ================= UNDERLINE FLUÍDO ================= */
+.tab-btn span,
+.tab-btn {
+  --line-width: 0%;
+}
+
+.tab-btn::marker {
+  display: none;
+}
+
+.tab-btn.active {
+  --line-width: 70%;
+}
+
+.tab-btn::selection {
+  background: transparent;
+}
+
+/* ================= CLICK ================= */
+.tab-btn:active {
+  transform: scale(.95);
+}
+
+
+/* --- Conteúdo e Carrossel --- */
+.tab-content {
+  display: none;
+
+  animation: focusIn 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: filter, transform, opacity;
+
+}
+
+
+
+/* icone com animação */
+
+@keyframes focusIn {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+    transform: scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+}
+
+
+/*fim icone com animação */
+.tab-content.active {
+  display: block;
+}
+
+.scroll-wrapper {
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 15px 5px;
+  cursor: grab;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scroll-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.lista-ia {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 20px;
+  perspective: 1500px;
+  /* profundidade para 3D */
+}
+
+/* --- Itens da Lista (Div 3D) --- */
+.lista-ia li {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 120px;
+  padding: 15px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #0f172a, #172442);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+/* --- Ícones dentro da div (parados) --- */
+.lista-ia img {
+  width: 58px;
+  height: 58px;
+  border-radius: 22px;
+  /* Aqui garante o arredondado */
+  background: linear-gradient(145deg, #2a2a2e, #161618);
+  margin-bottom: 12px;
+  border: 1px solid rgba(250, 204, 21, 0.4);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+
+  /* Renderização Ultra-Smooth para 4K/8K */
+  image-rendering: auto;
+  /* Deixa o navegador suavizar as bordas */
+  -webkit-font-smoothing: antialiased;
+
+  /* Mantém o ícone centralizado e nítido sem esticar */
+  object-fit: contain;
+  padding: 10px;
+  box-sizing: border-box;
+
+  /* Camada de nitidez extra */
+  filter: contrast(1.05) saturate(1.1);
+  transition: all 0.3s ease;
+}
+
+/* Efeito ao passar o mouse */
+.lista-ia img:hover {
+  transform: scale(1.1);
+  border-color: #facc15;
+  box-shadow: 0 0 15px rgba(250, 204, 21, 0.5);
+}
+
+.lista-ia li:hover img {
+  border-color: var(--accent-color);
+  box-shadow: 0 4px 12px #ffcf3357;
+}
+
+.lista-ia a {
+  font-size: 14px;
+  /* Aumentado levemente para melhor leitura em 4K */
+  color: transparent;
+  /* Necessário para o gradiente aparecer */
+  text-decoration: none;
+  font-weight: 700;
+  /* Mais negrito destaca o efeito de cor */
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  /* Garante que o width 100% funcione */
+
+  /* 👇 EFEITO COBRA (GRADIENTE ANIMADO) */
+  background: linear-gradient(90deg,
+      #facc15,
+      #172442,
+      #facc15,
+      #ffffff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  /* 👇 ANIMAÇÃO */
+  animation: efeitoCobra 3s linear infinite;
+  transition: transform 0.3s ease;
+}
+
+/* Hover para dar destaque ao clicar */
+.lista-ia a:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 5px rgba(250, 204, 21, 0.5));
+}
+
+@keyframes efeitoCobra {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Estilo do ranking #1, #2 no JS */
+.lista-ia a b {
+  color: var(--accent-color);
+  font-weight: 700;
+  margin-right: 2px;
+}
+
+/* Animações */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsividade: imagens menores em telas muito pequenas */
+@media (max-width: 400px) {
+  .lista-ia li {
+    width: 80px;
+  }
+
+  .lista-ia img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.TOP {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+
+  color: #1f2937;
+  border-radius: 999px;
+  user-select: none;
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, .25),
+    inset 0 -1px 2px rgba(0, 0, 0, .2);
+}
+
+/* 🥇 OURO */
+.TOP.gold {
+  background: linear-gradient(135deg, #facc15, #f59e0b);
+  color: #422006;
+}
+
+.TOP.gold::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(250, 204, 21, .6), transparent 70%);
+  filter: blur(10px);
+  z-index: -1;
+}
+
+/* 🥈 PRATA */
+.TOP.silver {
+  background: linear-gradient(135deg, #e5e7eb, #94a3b8);
+  color: #1f2937;
+}
+
+.TOP.silver::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(226, 232, 240, .6), transparent 70%);
+  filter: blur(8px);
+  z-index: -1;
+}
+
+/* 🥉 BRONZE */
+.TOP.bronze {
+  background: linear-gradient(135deg, #fb923c, #92400e);
+  color: #fff7ed;
+}
+
+.TOP.bronze::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(251, 146, 60, .6), transparent 70%);
+  filter: blur(8px);
+  z-index: -1;
+}
+
+.TOP.gold {
+  animation: goldPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes goldPulse {
+  0% {
+    transform: scale(.95);
+    opacity: .85;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(.95);
+    opacity: .85;
+  }
+}
+
+/* icones / letras */
+.hint-scroll {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  width: 100%;
+  font-size: 13px;
+  font-weight: 500;
+  color: #94a3b8;
+  margin-top: 10px;
+  user-select: none;
+}
+
+/* Ícone animado */
+.hint-scroll ion-icon {
+  font-size: 16px;
+  color: #facc15;
+  animation: slideArrow 1.4s infinite ease-in-out;
+}
+
+/* Animação */
+@keyframes slideArrow {
+  0% {
+    transform: translateX(0);
+    opacity: .5;
+  }
+
+  50% {
+    transform: translateX(6px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: .5;
+  }
+}
+
+/*fim icones / letras */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+}
+
+.ia-nova-indicador {
+  position: absolute;
+  top: -10px;
+  right: 14px;
+
+  padding: 0 12px;
+  height: 22px;
+
+  border-radius: 999px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 0.65rem;
+  font-weight: 800;
+  white-space: nowrap;
+
+  background: linear-gradient(135deg, #fde047, #f59e0b);
+  color: #f37373;
+
+  box-shadow:
+    0 6px 14px rgba(245, 158, 11, 0.45),
+    0 0 0 3px rgba(245, 158, 11, 0.18);
+}
+
+/* sisteam de ia nova para divs */
+
+.badge-new-ia-count {
+  margin-left: 8px;
+  padding: 4px 10px;
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: #fff;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.badge-new-ia-count ion-icon {
+  font-size: 14px;
+}
+
+
+/*fim sisteam de ia nova para divs */
+/* Botão */
+.btn-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .65);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 1000;
+}
+
+/* Container */
+.modal-container {
+  background: var(--box);
+  width: 100%;
+  max-width: 520px;
+  padding: 24px;
+  border-radius: 14px;
+  position: relative;
+}
+
+/* Fechar */
+.btn-close {
+  position: absolute;
+  top: -4px;
+  right: -6px;
+  background: transparent;
+  border: 0;
+  outline: none;
+  box-shadow: none;
+  color: #facc15;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0;
+}
+
+
+/* Conteúdo */
+h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 22px;
+}
+
+
+.news-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.news-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, .04);
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+
+.news-list ion-icon {
+  color: var(--primary);
+  font-size: 18px;
+}
+
+/* button recomendação */
+/* ==================== ESTILO DO BOTÃO DE RECOMENDAÇÃO ==================== */
+
+
+
+/* ==================== BOTÃO DE ALTERNAR TEMA (VERSÃO MINIMALISTA) ==================== */
+
+#themeToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Posicionamento para ficar no local azul */
+  position: absolute;
+  bottom: 25px;
+  right: 8px;
+  width: 45px;
+  height: 38px;
+  padding: 0;
+  top: 90%;
+  background-color: #ffce0a4d;
+  color: #000;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  z-index: 10;
+}
+
+/* Ícone do tema */
+.theme-icon {
+  display: inline-flex;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Hover */
+#themeToggle:hover {
+  background-color: #ffb400;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+#themeToggle:hover .theme-icon {
+  transform: rotate(15deg) scale(1.2);
+}
+
+/* Clique */
+#themeToggle:active {
+  transform: scale(0.98);
+}
+
+/* Tema escuro ativado */
+body.dark-theme {
+  background-color: #111827;
+  color: #fff;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+body.dark-theme #themeToggle {
+  background-color: #1f2937;
+  color: #facc15;
+}
+
+body.dark-theme #themeToggle:hover {
+  background-color: #374151;
+}
+
+/* ==================== fim to temas) ==================== */
+/* SISTEMA DE VERÇÃO */
+/* Botão de abrir específico */
+.btn-open-update-logs {
+  position: absolute;
+  top: 90%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #facc15, #f59e0b);
+  color: #000000;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-open-update-logs:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(250, 204, 21, 0.3);
+}
+
+
+
+/* Container de Scroll */
+.update-items-wrapper {
+  max-height: 215px;
+  /* Trava visual para 4 itens */
+  overflow-y: auto;
+  margin: 20px 0;
+  padding-right: 5px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
+}
+
+/* Lista de Itens */
+.update-items-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.update-items-list li {
+  counter-increment: item;
+  background: rgba(175, 33, 33, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 12px 12px 44px;
+  /* espaço para o número */
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: 0.2s;
+  position: relative;
+}
+
+.update-items-list li::before {
+  content: counter(item);
+  position: absolute;
+  left: 14px;
+  top: 14px;
+
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 0.75rem;
+  font-weight: 700;
+
+  background: var(--accent);
+  color: #000;
+}
+
+.update-items-list li:hover {
+  border-color: var(--accent);
+  background: rgba(250, 204, 21, 0.05);
+}
+
+/* Tags internas */
+.update-tag {
+  font-size: 0.6rem;
+  font-weight: 900;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.update-items-list p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text);
+  font-style: normal;
+}
+
+
+.btn-close-update-card {
+  position: absolute;
+  top: 15px;
+  color: #ffffff;
+  right: 15px;
+  background: transparent !important;
+  border: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+/* Tamanho do ícone Ionicons */
+.btn-close-update-card ion-icon {
+  font-size: 24px;
+  pointer-events: none;
+}
+
+/* Efeito Hover e Focus */
+
+.btn-close-update-card:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Estilo do Scrollbar Webkit */
+.update-items-wrapper::-webkit-scrollbar {
+  width: 4px;
+}
+
+.update-items-wrapper::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 10px;
+}
+
+
+/* sisteam de logs do js card */
+/* --- Overlay e Modal (Usando sua base) --- */
+.modal-news {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .7);
+  backdrop-filter: blur(8px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-news.active {
+  display: flex;
+  animation: fadeIn 0.3s ease;
+}
+
+.update-card-main {
+  background: var(--card);
+  /* Sua variável */
+  border: 1px solid #facc15;
+  padding: 25px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 440px;
+  position: relative;
+}
+
+/* --- Sistema de Abas --- */
+.tab-navigation-container {
+  display: flex;
+  gap: 8px;
+  margin: 15px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  /* Scroll horizontal no mobile */
+}
+
+.tab-trigger {
+  all: unset;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--muted);
+  transition: 0.3s;
+
+}
+
+/* Esconde a barra de scroll no Chrome, Safari e Opera */
+.tab-navigation-container::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-trigger.active {
+  background: var(--accent);
+  /* Amarelo */
+  color: #111;
+}
+
+/*icones*/
+/* icones "Tudo"*/
+.tab-trigger ion-icon {
+  font-size: 1.2rem;
+  color: #ffffff;
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.tab-trigger:hover ion-icon {
+  transform: scale(1.2);
+  color: #facc15;
+}
+
+.tab-trigger.active ion-icon {
+  color: #000000;
+}
+
+/*fim icones*/
+/* --- Container de Scroll (Trava após 4 itens) --- */
+.update-items-wrapper {
+  max-height: 230px;
+  /* Aproximadamente 4 itens e meio */
+  overflow-y: auto;
+  padding-right: 8px;
+  margin-bottom: 20px;
+
+}
+
+.update-items-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+}
+
+.update-items-list li {
+  background: rgba(168, 43, 43, 0.02);
+  border: 1px solid var(--border);
+  padding: 12px;
+  border-radius: 12px;
+  animation: slideUp 0.3s ease forwards;
+}
+
+.update-tag-badge {
+  font-size: 0.65rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.update-items-list p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text);
+  line-height: 1.4;
+  font-style: normal;
+}
+
+/* --- Scrollbar Custom --- */
+.update-items-wrapper::-webkit-scrollbar {
+  width: 4px;
+}
+
+.update-items-wrapper::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 10px;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* tags */
+/* ==========================================================================
+   1. VARIÁVEIS E CONFIGURAÇÕES TÉCNICAS
+   ========================================================================== */
+:root {
+  /* Cores de Fundo e Cartão */
+  --bg-overlay: rgba(2, 6, 23, 0.85);
+  --card-glass: rgba(15, 23, 42, 0.75);
+  --border-glass: rgba(255, 255, 255, 0.1);
+
+  /* Cores de Ação */
+  --accent: #facc15;
+  /* Amarelo principal */
+  --accent-hover: #eab308;
+  --text-primary: #f8fafc;
+  --text-muted: #94a3b8;
+
+  /* Cores das Tags (Badges) */
+  --tag-new: #22c55e;
+  --tag-fix: #ef4444;
+  --tag-ui: #3b82f6;
+  --tag-hot: #f97316;
+  --tag-ia: #facc15;
+
+  /* Animações e Efeitos */
+  --shadow-premium: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Trava o scroll da página de fundo quando o modal abre */
+body.no-scroll {
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   2. ESTRUTURA DOS MODAIS (OVERLAYS)
+   ========================================================================== */
+.modal-news, .modal-tags-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: var(--bg-overlay);
+  backdrop-filter: blur(10px);
+  /* Efeito de desfoque no fundo */
+  display: none;
+  /* Controlado via JS (classe .active) */
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-news.active, .modal-tags-overlay.active {
+  display: flex;
+  background-color: #0000003d;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* ==========================================================================
+   3. O CARD PRINCIPAL (DESIGN PREMIUM)
+   ========================================================================== */
+
+
+/* ==========================================================================
+   4. SISTEMA DE ABAS (TABS)
+   ========================================================================== */
+.tab-navigation-container {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+  padding-bottom: 8px;
+  overflow-x: auto;
+  /* Scroll horizontal se houver muitas abas */
+  scrollbar-width: none;
+}
+
+.tab-trigger {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass);
+  color: var(--text-muted);
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.tab-trigger.active {
+  background: var(--accent);
+  color: #020617;
+  border-color: var(--accent);
+}
+
+/* ==========================================================================
+   5. LISTA DE ATUALIZAÇÕES E SCROLL
+   ========================================================================== */
+.update-items-wrapper {
+  max-height: 320px;
+  /* Trava após ~4-5 itens */
+  overflow-y: auto;
+  padding-right: 8px;
+  margin-bottom: 25px;
+}
+
+/* Estilização da Barra de Scroll */
+.update-items-wrapper::-webkit-scrollbar {
+  width: 5px;
+}
+
+.update-items-wrapper::-webkit-scrollbar-thumb {
+  background: var(--border-glass);
+  border-radius: 10px;
+}
+
+.update-items-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.update-items-list li {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-glass);
+  border-radius: 16px;
+  padding: 15px;
+  margin-bottom: 12px;
+  transition: var(--transition);
+  animation: itemSlideIn 0.4s ease forwards;
+}
+
+.update-items-list li:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ==========================================================================
+   6. BADGES (ETIQUETAS)
+   ========================================================================== */
+.badge {
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.b-new {
+  background: rgba(34, 197, 94, 0.2);
+  color: var(--tag-new);
+  border: 1px solid var(--tag-new);
+}
+
+.b-fix {
+  background: rgba(239, 68, 68, 0.2);
+  color: var(--tag-fix);
+  border: 1px solid var(--tag-fix);
+}
+
+.b-ui {
+  background: rgba(59, 130, 246, 0.2);
+  color: var(--tag-ui);
+  border: 1px solid var(--tag-ui);
+}
+
+.b-ia {
+  background: rgba(250, 204, 21, 0.2);
+  color: var(--tag-ia);
+  border: 1px solid var(--tag-ia);
+}
+
+.b-hot {
+  background: rgba(249, 115, 22, 0.2);
+  color: var(--tag-hot);
+  border: 1px solid var(--tag-hot);
+}
+
+.update-items-list p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+
+/* ==========================================================================
+   2. ESTRUTURA DOS MODAIS (NOTAS E TAGS)
+   ========================================================================== */
+.modal-news,
+.modal-tags-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: var(--bg-overlay);
+  backdrop-filter: blur(12px);
+  display: none;
+  /* Ativado via JS com .active */
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-news.active,
+.modal-tags-overlay.active {
+  display: flex;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* ==========================================================================
+   3. DESIGN DO CARD (GLASSMORPHISM)
+   ========================================================================== */
+.update-card-main,
+.card-tags-info {
+  background: #111827;
+  border: 1px solid var(--border-glass);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 440px;
+  padding: 30px;
+  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  animation: cardPopUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Títulos */
+.update-title-ui {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: #cbd5e1;
+  /* Cinza claro azulado */
+  font-size: 0.872rem;
+  text-transform: uppercase;
+  /* Dá um ar mais profissional/etiqueta */
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  display: block;
+  font-family: 'Inter', sans-serif;
+
+}
+
+.update-items-wrapper,
+.tags-scroll-area {
+  max-height: 300px;
+  /* altura máxima */
+  overflow-y: auto;
+  /* habilita rolagem vertical */
+  padding-right: 8px;
+  /* espaço interno à direita */
+  margin-bottom: 20px;
+  /* espaçamento inferior */
+  background-color: rgba(255, 255, 255, 0.05);
+  /* fundo leve para destaque */
+  border-radius: 12px;
+  /* cantos arredondados */
+  padding: 12px;
+  /* padding interno uniforme */
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+  /* sombra interna sutil */
+  scrollbar-width: thin;
+  /* para Firefox */
+  scrollbar-color: rgba(200, 200, 200, 0.5) transparent;
+  /* para Firefox */
+}
+
+/* Scrollbar para Chrome, Edge e Safari */
+.update-items-wrapper::-webkit-scrollbar,
+.tags-scroll-area::-webkit-scrollbar {
+  width: 8px;
+}
+
+.update-items-wrapper::-webkit-scrollbar-track,
+.tags-scroll-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.update-items-wrapper::-webkit-scrollbar-thumb,
+.tags-scroll-area::-webkit-scrollbar-thumb {
+  background-color: rgba(200, 200, 200, 0.5);
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.update-items-wrapper::-webkit-scrollbar-thumb:hover,
+.tags-scroll-area::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(200, 200, 200, 0.8);
+}
+
+
+/* ==========================================================================
+   4. NAVEGAÇÃO POR ABAS (TABS)
+   ========================================================================== */
+.tab-navigation-container {
+  display: flex;
+  gap: 8px;
+  margin: 20px 0;
+  overflow-x: auto;
+  padding-bottom: 5px;
+}
+
+.tab-trigger {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass);
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.tab-trigger.active {
+  background: var(--accent);
+  color: #020617;
+  border-color: var(--accent);
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+
+/* ==========================================================================
+   5. LISTAGEM E SCROLL
+   ========================================================================== */
+/* Scrollbar Style */
+.update-items-wrapper::-webkit-scrollbar {
+  width: 4px;
+}
+
+.update-items-wrapper::-webkit-scrollbar-thumb {
+  background: var(--border-glass);
+  border-radius: 10px;
+}
+
+.update-items-list {
+  list-style: none;
+  padding: 0;
+}
+
+.tag-detail-item {
+  background: rgba(17, 24, 39, 0.7);
+  /* Transparência para o efeito vidro */
+  backdrop-filter: blur(12px);
+  /* Desfoque de fundo */
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-glass);
+  border-radius: 16px;
+  padding: 1.25rem;
+  /* Unidades relativas (rem) são melhores */
+  margin-bottom: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  /* Alinhamento flexbox costuma ser útil */
+  align-items: center;
+}
+
+/* Interação de Hover */
+.tag-detail-item:hover {
+  background: rgba(17, 24, 39, 0.9);
+  transform: translateY(-2px);
+  /* Leve elevação */
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================================================
+   6. BADGES (TAGS) - CORES CORRIGIDAS
+   ========================================================================== */
+.badge {
+  font-size: 0.65rem;
+  font-weight: 900;
+  padding: 4px 10px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  display: inline-flex;
+  margin-bottom: 8px;
+}
+
+.b-new {
+  background: rgba(19, 211, 19, 0.2);
+  color: var(--tag-new);
+  border: 1px solid var(--tag-new);
+}
+
+.b-fix {
+  background: rgba(235, 39, 39, 0.699);
+  color: var(--tag-fix);
+  border: 1px solid var(--tag-fix);
+}
+
+.b-ui {
+  background: rgba(59, 130, 246, 0.2);
+  color: var(--tag-ui);
+  border: 1px solid var(--tag-ui);
+}
+
+.b-ia {
+  background: rgba(250, 204, 21, 0.2);
+  color: var(--tag-ia);
+  border: 1px solid var(--tag-ia);
+}
+
+.b-hot {
+  background: rgba(249, 115, 22, 0.2);
+  color: var(--tag-hot);
+  border: 1px solid var(--tag-hot);
+}
+
+.tag-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   7. BOTÕES DE AÇÃO
+   ========================================================================== */
+.btn-confirm-update {
+  width: 100%;
+  padding: 14px;
+  background: var(--accent);
+  color: #020617;
+  border: none;
+  border-radius: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+
+  /* Sombra inicial 3D */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25), 0 12px 20px rgba(0, 0, 0, 0.15);
+  margin-bottom: 10px;
+}
+
+.btn-confirm-update:hover {
+  /* Levanta o botão */
+  transform: translateY(-4px);
+
+  /* Sombra mais intensa */
+  box-shadow: 0 10px 14px rgba(0, 0, 0, 0.35), 0 18px 24px rgba(0, 0, 0, 0.25);
+}
+
+.btn-confirm-update:active {
+  /* Botão "pressionado" */
+  transform: translateY(2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-info-tags {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  /* Espaço entre ícone e texto */
+  background: transparent;
+  color: #9ca3af;
+  /* Cinza suave */
+  border: 1px solid transparent;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-info-tags ion-icon {
+  font-size: 1.2rem;
+  transition: transform 0.2s ease;
+}
+
+.btn-info-tags:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+.btn-info-tags:hover ion-icon {
+  transform: rotate(15deg);
+  /* Pequeno detalhe lúdico */
+  color: #3b82f6;
+  /* Azul highlight */
+}
+
+.btn-info-tags:active {
+  /* Botão "pressionado" */
+  transform: translateY(2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+.btn-registry-close {
+  /* Posicionamento */
+  position: absolute;
+  top: 15px;
+  right: 15px;
+
+  /* Tamanho e Forma */
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Estilo Visual */
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: #94a3b8;
+  /* Cor suave */
+
+  /* Interação */
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
+}
+
+/* Tamanho do Ícone */
+.btn-registry-close ion-icon {
+  font-size: 1.4rem;
+  --ionicon-stroke-width: 40px;
+  /* Deixa o ícone um pouco mais espesso */
+}
+
+/* Efeito Hover */
+.btn-registry-close:hover {
+  background: rgba(239, 68, 68, 0.1);
+  /* Fundo avermelhado sutil */
+  color: #ef4444;
+  /* Ícone fica vermelho */
+  border-color: rgba(239, 68, 68, 0.2);
+  transform: rotate(90deg);
+  /* Gira levemente ao passar o mouse */
+}
+
+.btn-registry-close:active {
+  transform: scale(0.9) rotate(90deg);
+}
+
+.btn-close-update-card:hover {
+  color: var(--tag-fix);
+}
+
+/* ==========================================================================
+   8. ANIMAÇÕES (KEYFRAMES)
+   ========================================================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes cardPopUp {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Botão de fechamento do modal de tags - só ícone */
+.btn-close-tags {
+  position: absolute;
+  /* posiciona dentro do card */
+  top: 12px;
+  /* distância do topo */
+  right: 12px;
+  /* distância da direita */
+  cursor: pointer;
+  background: transparent;
+  /* sem fundo */
+  border: none;
+  /* sem borda */
+  color: #ffffff;
+  /* cor do X */
+  font-size: 1.5rem;
+  /* tamanho do ícone */
+  font-weight: bold;
+  transition: all 0.2s ease;
+  /* transições suaves */
+  z-index: 10;
+  /* acima de outros elementos */
+}
+
+/* efeito hover */
+.btn-close-tags:hover {
+  color: #facc15;
+  /* muda cor ao passar o mouse */
+  transform: scale(1.1);
+  /* leve aumento */
+}
+
+/* efeito ao clicar */
+.btn-close-tags:active {
+  transform: scale(0.95);
+  /* efeito de pressão */
+  color: #d97706;
+  /* cor mais escura ao clicar */
+}
+
+
+.btn-tags-entendido {
+  cursor: pointer;
+  background: linear-gradient(135deg, #facc15, #f59e0b);
+  color: #000;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+
+  /* Tamanho Compacto */
+  padding: 6px 12px;
+  border: none;
+  border-radius: 10px;
+
+  /* Alinhamento Moderno */
+  display: block;
+  /* Transforma em bloco */
+  margin-left: auto;
+  /* Empurra tudo para a direita */
+
+  /* Efeito de Clique */
+  transition: transform 0.1s active;
+}
+
+.btn-tags-entendido:active {
+  transform: scale(0.95);
+  /* Efeito de "apertar" */
+}
+
+/*fim da tags */
+
+/*letra da GlossáriodeTags */
+#GlossáriodeTags {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #ffffff;
+  font-size: 1.5rem;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #facc15;
+  display: inline-block;
+  /* Faz a borda acompanhar o tamanho do texto */
+  margin-top: -6px;
+}
+
+/*Estilo do ícone */
+#GlossáriodeTags ion-icon {
+  font-size: 1.8rem;
+  /* tamanho do ícone */
+  color: rgb(255, 255, 255);
+  /* cor do ícone */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Hover para efeito interativo */
+#GlossáriodeTags:hover ion-icon {
+  transform: scale(1.2);
+  color: #facc15;
+}
+
+/*fim da GlossáriodeTags */
+/* sistema aviso */
+
+/* ===============================
+   BASE DO BADGE
+================================ */
+.status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 22px;
+  height: 22px;
+
+  user-select: none;
+}
+
+/* ===============================
+   NOVA / ENVIADA ✔
+================================ */
+.status.novo ion-icon {
+  font-size: 18px;
+  color: #9ca3af;
+  position: absolute;
+  bottom: 27%;
+}
+
+/* ===============================
+   ENTREGUE ✔✔ (opcional)
+================================ */
+.status.entregue ion-icon {
+  font-size: 18px;
+  color: #215bbe;
+}
+
+/* ===============================
+   LIDA ✔✔ (WhatsApp)
+================================ */
+.status.lido ion-icon {
+  font-size: 18px;
+  color: #34b7f1;
+  position: absolute;
+  bottom: 27%;
+  /* azul WhatsApp */
+}
+
+/* ===============================
+   ANIMAÇÃO AO VIRAR LIDA
+================================ */
+.status.lido ion-icon {
+  animation: read-pop 0.25s ease-out;
+}
+
+@keyframes read-pop {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ===============================
+   ACESSIBILIDADE / HOVER
+================================ */
+.status:hover ion-icon {
+  opacity: 0.85;
+}
+
+
+/* BOTÃO DO CARD */
+/* BOTÕES */
+.system-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  background: linear-gradient(135deg, #facc15, #f59e0b);
+  color: rgb(48, 48, 48);
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 25%;
+  right: 49%;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.system-button ion-icon {
+  font-size: 18px;
+}
+
+/* Hover */
+.system-button:hover {
+  background-color: #1558b0;
+  transform: translateY(-2px);
+}
+
+/* Estado lido */
+.system-button.read {
+  background-color: #4caf50;
+  /* verde */
+  color: #fff;
+}
+
+
+/* =========================
+   MODAL OVERLAY
+========================= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.6);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* =========================
+   MODAL
+========================= */
+.modal {
+  background: var(--bg-modal);
+  color: var(--text-main);
+  padding: 24px 26px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 420px;
+  border: 1px solid var(--primary);
+  box-shadow: 0 20px 40px var(--shadow-modal);
+  animation: modalFade 0.25s ease;
+}
+
+@keyframes modalFade {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* TÍTULO */
+.modal h2 {
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+
+/* TEXTO */
+.modal p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* BOTÃO MODAL */
+.modal button {
+  margin-top: 18px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  border: none;
+  background: #facc15;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s ease;
+}
+
+.modal button:hover {
+  background: #e7b500;
+}
+
+
+/*img tela media */
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.527);
+  /* Fundo preto transparente */
+  backdrop-filter: blur(8px);
+  /* Desfoca o fundo para foco total */
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  text-align: center;
+  animation: zoomIn 0.3s ease-out;
+}
+
+.modal-content img {
+  width: 150px;
+  /* Tamanho Médio que você pediu */
+  height: 150px;
+  border-radius: 30px;
+  background: #161618;
+  border: 2px solid #facc15;
+  box-shadow: 0 0 30px rgba(250, 204, 21, 0.4);
+  object-fit: contain;
+  padding: 15px;
+}
+
+.modal-content h3 {
+  color: #fff;
+  margin-top: 15px;
+  font-family: sans-serif;
+  letter-spacing: 1px;
+}
+
+.close-modal {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+
+  /* Posicionamento (ajuste conforme necessário) */
+
+
+  padding: 10px;
+  line-height: 20px;
+
+  /* Transição suave */
+  transition: all 0.3s ease;
+  border-radius: 50%;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+}
+
+/* Efeito ao passar o mouse ou focar */
+.close-modal:hover,
+.close-modal:focus {
+  color: #333;
+  background-color: rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/*fim img tela media*/
+/*===============icone da central de atualizações===============*/
+.empty-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 20px;
+  width: 100%;
+  text-align: center;
+  animation: fadeIn 0.4s ease;
+}
+
+.empty-results ion-icon {
+  font-size: 3.5rem;
+  color: #333;
+  /* Cor discreta para o ícone */
+  margin-bottom: 15px;
+  opacity: 0.6;
+}
+
+.empty-results p {
+  color: #6e6e6e;
+  /* O amarelo do seu tema */
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin: 0;
+  font-style: oblique;
+  /* Mantendo o padrão do seu site */
+}
+
+.empty-results span {
+  color: #929292;
+  font-size: 0.85rem;
+  margin-top: 8px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*===============fim icone da central de atualizações===============*/
+/* Container centralizado para o estado vazio */
+
+/*==========nenhuma mensagem do mensagem do sistema===============*/
+.empty-state-msg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 10px;
+  text-align: center;
+}
+
+/* Estilo do ícone */
+.empty-state-msg ion-icon {
+  font-size: 3.5rem;
+  color: #333;
+  /* Cor neutra para o modo escuro */
+  margin-bottom: 15px;
+  opacity: 0.6;
+}
+
+/* Texto principal amarelo gold */
+.empty-state-msg p {
+  color: #facc15;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin: 0;
+  font-style: oblique;
+  /* Mantendo a identidade visual do body */
+}
+
+/* Subtexto cinza */
+.empty-state-msg span {
+  color: #929292;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+/*==========fim nenhuma mensagem do mensagem do sistema===============*/
+
+
+/*==========sistema de tela cheia===============*/
+#toggleFullscreen {
+  padding: 14px 22px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  bottom: 25%;
+  left: 56%;
+  width: 103px;
+  height: 39px;
+  background: linear-gradient(135deg,
+      rgb(250, 204, 21),
+      rgb(245, 158, 11));
+
+  color: #1f2937;
+  font-size: 15px;
+  font-weight: 600;
+
+  display: flex;
+  /* centraliza conteúdo */
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+#toggleFullscreen ion-icon {
+  font-size: 2.9em;
+  /* 🔽 menor, proporcional ao botão */
+  pointer-events: none;
+}
+
+/*========== fim sistema de tela cheia===============*/

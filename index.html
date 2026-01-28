@@ -1,0 +1,1279 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Classify IA</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="theme-color" content="#f59e0b" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/ionicons@7.1.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://cdn.jsdelivr.net/npm/ionicons@7.1.2/dist/ionicons/ionicons.js"
+    ></script>
+
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css_temas.css" />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+
+    <!---js de atualização-->
+    <script src="script_atualização.js" defer></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <link rel="manifest" href="/Classify/manifest.json" />
+    <meta name="theme-color" content="#000000" />
+    <link
+      rel="shortcut icon"
+      href="img/favicon_io_sem fundo/favicon.ico"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <!-- SIDEBAR button -->
+    <!-- BOTÃO ABRIR -->
+    <button id="openSidebar" class="open-sidebar">☰</button>
+
+    <!-- OVERLAY -->
+    <div id="overlay" class="overlay"></div>
+    <!-- SIDEBAR -->
+
+    <aside id="sidebar" class="sidebar">
+      <button id="closeSidebar" class="close-sidebar">✕</button>
+
+      <h2 id="Sobre">Sobre o Projeto</h2>
+      <p class="about-text">
+        Este projeto foi desenvolvido para organizar ferramentas de Inteligência
+        Artificial, tornando a pesquisa mais rápida, prática e eficiente.
+      </p>
+      <hr class="divider" />
+      <button class="btn-open-update-logs" onclick="handleUpdateModal(true)">
+        <ion-icon name="newspaper-outline"></ion-icon>
+        Notas de Atualização
+      </button>
+      <!--sistema de tela cheia-->
+
+      <button id="toggleFullscreen">
+        <ion-icon id="fsIcon" name="expand-outline"></ion-icon>
+        <span class="text">Tela cheia</span>
+      </button>
+
+      <!--fim sistema de tela cheia-->
+
+      <div id="updateLogOverlay" class="modal-news">
+        <div class="modal-box update-card-main">
+          <button
+            class="btn-close-update-card"
+            onclick="handleUpdateModal(false)"
+          >
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+
+          <h2 class="update-title-ui">
+            <ion-icon name="notifications-outline"></ion-icon>
+            Central de Atualizações
+          </h2>
+
+          <div class="tab-navigation-container">
+            <button class="tab-trigger active" onclick="switchTab('ALL', this)">
+              <ion-icon name="layers-outline"></ion-icon>
+              Tudo
+            </button>
+
+            <button class="tab-trigger" onclick="switchTab('NEW', this)">
+              <ion-icon name="sparkles-outline"></ion-icon>
+              New
+            </button>
+
+            <button class="tab-trigger" onclick="switchTab('FIX', this)">
+              <ion-icon name="hammer-outline"></ion-icon>
+              Fix
+            </button>
+
+            <button class="tab-trigger" onclick="switchTab('UI', this)">
+              <ion-icon name="desktop-outline"></ion-icon>
+              UI
+            </button>
+            <button class="tab-trigger" onclick="switchTab('IA', this)">
+              <span class="ia-icon-box">
+                <ion-icon name="brain-outline"></ion-icon>
+                <ion-icon
+                  name="hardware-chip-outline"
+                  class="chip-icon"
+                ></ion-icon>
+              </span>
+              IA
+            </button>
+          </div>
+
+          <div class="update-items-wrapper">
+            <ul id="renderTarget" class="update-items-list"></ul>
+          </div>
+
+          <button class="btn-confirm-update" onclick="handleUpdateModal(false)">
+            Entendido
+          </button>
+          <button
+            class="btn-info-tags"
+            onclick="handleTagsModal(true)"
+            aria-label="Saiba mais sobre as tags"
+          >
+            <ion-icon name="help-circle-outline" aria-hidden="true"></ion-icon>
+            <span>O que significa as tags?</span>
+          </button>
+        </div>
+      </div>
+      <!--card de tag-->
+
+      <div id="tagsModalOverlay" class="modal-tags-overlay">
+        <div class="card-tags-info">
+          <button class="btn-close-tags" onclick="handleTagsModal(false)">
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+
+          <h3 id="GlossáriodeTags">
+            <ion-icon name="library-outline"></ion-icon>
+            Glossário de Tags
+          </h3>
+
+          <p class="subtitle">Entenda o que cada sinalização significa:</p>
+
+          <div class="tags-scroll-area">
+            <div class="tag-detail-item">
+              <div class="tag-head">
+                <span class="badge b-new">NEW</span> ✨
+              </div>
+              <p>
+                <strong>Novo:</strong> Funcionalidades que não existiam. Use
+                para novidades reais no sistema.
+              </p>
+            </div>
+
+            <div class="tag-detail-item">
+              <div class="tag-head">
+                <span class="badge b-fix">FIX</span> 🛠️
+              </div>
+              <p>
+                <strong>Correção:</strong> Quando algo estava quebrado ou com
+                erro e foi consertado.
+              </p>
+            </div>
+
+            <div class="tag-detail-item">
+              <div class="tag-head"><span class="badge b-ui">UI</span> 🎨</div>
+              <p>
+                <strong>Interface:</strong> Mudanças visuais, cores, fontes e
+                design em geral.
+              </p>
+            </div>
+
+            <div class="tag-detail-item">
+              <div class="tag-head">
+                <span class="badge b-hot">HOT</span> 🔥
+              </div>
+              <p>
+                <strong>Urgente:</strong> Melhoras de velocidade ou atualizações
+                muito importantes.
+              </p>
+            </div>
+
+            <div class="tag-detail-item">
+              <div class="tag-head"><span class="badge b-ia">IA</span> 🤖</div>
+              <p>
+                <strong>Inteligência:</strong> Funções que usam tecnologia de
+                Inteligência Artificial.
+              </p>
+            </div>
+          </div>
+
+          <button class="btn-tags-entendido" onclick="handleTagsModal(false)">
+            Entendido!
+          </button>
+        </div>
+      </div>
+      <br />
+      <!--fim card de tag-->
+      <!--aviso do sistema-->
+
+      <!-- BOTÃO / CARD -->
+      <div class="system-card">
+        <span class="status enviado" id="statusBadge">
+          <ion-icon name="checkmark-outline"></ion-icon>
+        </span>
+
+        <button id="openModal" class="system-button">
+          <ion-icon name="notifications-outline"></ion-icon>
+          mensagem
+        </button>
+      </div>
+
+      <!-- MODAL -->
+      <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+          <h2 id="Mensagemms">
+            <ion-icon name="notifications-outline"></ion-icon> Mensagem do
+            Sistema
+          </h2>
+          <p id="systemMessageText">
+            novo atualizações disponível! verifique as notas de atualização na
+            seção
+          </p>
+
+          <button id="closeModal">Fechar</button>
+        </div>
+      </div>
+
+      <!--fim do aviso do sistema-->
+      <!--fim SISTEMA DE VERÇÃO-->
+      <div class="section">
+        <h3 class="segui">segui nós</h3>
+        <div class="creator">
+          <div class="socials">
+            <a
+              href="https://www.instagram.com/teddy_machado007"
+              target="_blank"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"
+              />
+            </a>
+            <a href="https://www.tiktok.com/@teddy_machado007" target="_blank">
+              <img
+                src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg"
+              />
+            </a>
+            <a href="https://github.com/Teddyws1" target="_blank">
+              <img
+                src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Botão para alternar tema -->
+      <button id="themeToggle">
+        <span class="theme-icon">☀️</span>
+        <span class="theme-text"></span>
+      </button>
+
+      <!-- Ionicons CDN -->
+      <script
+        type="module"
+        src="https://cdn.jsdelivr.net/npm/ionicons@7.1.2/dist/ionicons/ionicons.esm.js"
+      ></script>
+      <script
+        nomodule
+        src="https://cdn.jsdelivr.net/npm/ionicons@7.1.2/dist/ionicons/ionicons.js"
+      ></script>
+
+      <!-- Divider -->
+      <div class="divider-text">
+        <span>CONFIGURAÇÕES</span>
+      </div>
+      <!-- BOTÃO ABRIR -->
+
+      <div class="app-container">
+        <!-- conteúdo -->
+        <div class="versaobox">
+          <span>Versão</span>
+          <strong>v 5.10.9 beta</strong>
+        </div>
+      </div>
+    </aside>
+    <!--fim  SIDEBAR -->
+    <header class="main-header">
+      <div class="header-content">
+        <div class="title">
+          <h1>Classify IA</h1>
+          <p id="total"></p>
+        </div>
+
+        <div class="search-box">
+          <ion-icon name="search-outline" class="icon-search"></ion-icon>
+
+          <input
+            id="search"
+            type="text"
+            placeholder="Buscar ferramenta..."
+            aria-label="Buscar ferramenta"
+          />
+
+          <button id="clearSearch" class="clear-btn" aria-label="Limpar busca">
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="tabs-container">
+      <div class="tabs-header">
+        <button class="tab-btn active" data-tab="recomendados">
+          Recomendados
+        </button>
+        <button class="tab-btn" data-tab="acessados">Mais Acessados</button>
+        <button class="tab-btn" data-tab="melhores">Melhores</button>
+      </div>
+
+      <p class="hint-scroll">
+        Deslize para ver as IAs
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+      </p>
+
+      <div id="recomendados" class="tab-content active">
+        <div class="scroll-wrapper">
+          <ul class="lista-ia">
+            <li class="top-1">
+              <img
+                src="https://www.google.com/s2/favicons?domain=openai.com&sz=32"
+              />
+              <a href="https://chat.openai.com" target="_blank" rel="noopener">
+                ChatGPT
+              </a>
+              <span class="TOP gold">TOP</span>
+            </li>
+
+            <li class="top-2">
+              <img
+                src="https://www.google.com/s2/favicons?domain=google.com&sz=32"
+              />
+              <a
+                href="https://gemini.google.com"
+                target="_blank"
+                rel="noopener"
+              >
+                Gemini
+              </a>
+              <span class="TOP silver">TOP</span>
+            </li>
+
+            <li class="top-3">
+              <img
+                src="https://www.google.com/s2/favicons?domain=deepseek.com&sz=32"
+              />
+              <a
+                href="https://www.deepseek.com/chat"
+                target="_blank"
+                rel="noopener"
+              >
+                DeepSeek
+              </a>
+              <span class="TOP bronze">TOP</span>
+            </li>
+            <li>
+              <img
+                src="https://leonardo.ai/favicon.ico"
+                alt="Leonardo AI"
+                class="ia-icon"
+              />
+              <a href="https://leonardo.ai" target="_blank" class="ia-link">
+                Leonardo AI
+              </a>
+            </li>
+            <li>
+              <img
+                src="https://www.google.com/s2/favicons?domain=perplexity.ai&sz=32"
+              />
+              <a
+                href="https://www.perplexity.ai"
+                target="_blank"
+                rel="noopener"
+              >
+                Perplexity
+              </a>
+            </li>
+
+            <li>
+              <img
+                src="https://www.google.com/s2/favicons?domain=mapamental.app&sz=32"
+              />
+              <a href="https://mapamental.app" target="_blank"
+                >MapaMental.app</a
+              >
+            </li>
+
+            <li>
+              <img
+                src="https://www.google.com/s2/favicons?domain=openai.com&sz=32"
+              />
+              <a href="https://labs.openai.com" target="_blank" rel="noopener">
+                DALL·E
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="acessados" class="tab-content">
+        <div class="scroll-wrapper">
+          <ul class="lista-ia">
+            <li class="top-1">
+              <img
+                src="https://www.google.com/s2/favicons?domain=chatgpt.com&sz=64"
+              />
+              <a href="https://chat.openai.com" target="_blank" rel="noopener">
+                ChatGPT
+              </a>
+              <span class="TOP gold">TOP</span>
+            </li>
+
+            <li class="top-2">
+              <img
+                src="https://www.google.com/s2/favicons?domain=canva.com&sz=64"
+              />
+              <a href="https://www.canva.com" target="_blank" rel="noopener">
+                Canva
+              </a>
+              <span class="TOP silver">TOP</span>
+            </li>
+
+            <li class="top-3">
+              <img
+                src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=64"
+              />
+              <a
+                href="https://gemini.google.com"
+                target="_blank"
+                rel="noopener"
+              >
+                Gemini
+              </a>
+              <span class="TOP bronze">TOP</span>
+            </li>
+
+            <li>
+              <img
+                src="https://www.google.com/s2/favicons?domain=microsoft.com&sz=64"
+              />
+              <a
+                href="https://copilot.microsoft.com"
+                target="_blank"
+                rel="noopener"
+              >
+                Copilot
+              </a>
+            </li>
+
+            <li>
+              <img
+                src="https://www.google.com/s2/favicons?domain=midjourney.com&sz=64"
+              />
+              <a
+                href="https://www.midjourney.com"
+                target="_blank"
+                rel="noopener"
+              >
+                Midjourney
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="melhores" class="tab-content">
+        <div class="scroll-wrapper">
+          <ul class="lista-ia">
+            <li class="top-2">
+              <img
+                src="https://www.google.com/s2/favicons?domain=deepseek.com&sz=64"
+              />
+              <a
+                href="https://www.deepseek.com/chat"
+                target="_blank"
+                rel="noopener"
+              >
+                DeepSeek
+              </a>
+              <span class="TOP gold">TOP</span>
+            </li>
+
+            <li class="top-2">
+              <img
+                src="https://www.google.com/s2/favicons?domain=ciciai.com&sz=64"
+              />
+              <a href="https://www.ciciai.com" target="_blank" rel="noopener">
+                CiciAI
+              </a>
+              <span class="TOP silver">TOP</span>
+            </li>
+
+            <li>
+              <img
+                src="https://www.google.com/s2/favicons?domain=pika.art&sz=64"
+              />
+              <a href="https://pika.art" target="_blank" rel="noopener">
+                Pika Art
+              </a>
+              <span class="TOP bronze">TOP</span>
+            </li>
+
+            <li>
+              <img
+                src="https://www.google.com/s2/favicons?domain=mapamental.app&sz=32"
+              />
+              <a href="https://mapamental.app" target="_blank"
+                >MapaMental.app</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--fim card altas-->
+
+    <!--======================cards======================-->
+    <section class="grid">
+      <!-- IDEIAS -->
+      <div class="card" data-category>
+        <h2><ion-icon name="bulb-outline"></ion-icon> Ideias <span></span></h2>
+        <ul>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=openai.com&sz=32"
+            /><a href="https://chat.openai.com" target="_blank">ChatGPT</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=google.com&sz=32"
+            /><a href="https://gemini.google.com" target="_blank">Gemini</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=bing.com&sz=32"
+            /><a href="https://www.bing.com/chat" target="_blank">Bing Chat</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=perplexity.ai&sz=32"
+            /><a href="https://www.perplexity.ai" target="_blank">Perplexity</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=claude.ai&sz=32"
+            /><a href="https://claude.ai" target="_blank">Claude</a>
+          </li>
+          <li data-new="2026-01-10">
+            <img
+              src="https://www.google.com/s2/favicons?domain=deepseek.com&sz=32"
+              alt="DeepSeek"
+            />
+            <a href="https://www.deepseek.com" target="_blank">DeepSeek</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- CHATBOT -->
+      <div class="card" data-category>
+        <h2>
+          <ion-icon name="hardware-chip-outline"></ion-icon> Chatbot
+          <span></span>
+        </h2>
+        <ul>
+          <li data-new="2026-01-10">
+            <img
+              src="https://www.google.com/s2/favicons?domain=autocoder.cc&sz=32"
+              alt="AutoCoder AI"
+            />
+            <a
+              href="https://www.autocoder.cc/platform?ref=producthunt&utm_source=aipure"
+              target="_blank"
+            >
+              AutoCoder AI
+            </a>
+          </li>
+          <li data-new="2026-01-10">
+            <img
+              src="https://www.google.com/s2/favicons?domain=emergent.sh&sz=32"
+              alt="Emergent AI"
+            />
+            <a href="https://app.emergent.sh/home" target="_blank"
+              >Emergent AI</a
+            >
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=monica.im&sz=32"
+            /><a href="https://monica.im" target="_blank">Monica AI</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=maxai.me&sz=32"
+            /><a href="https://maxai.me" target="_blank">MaxAI</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=poe.com&sz=32"
+            /><a href="https://poe.com" target="_blank">Poe</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=microsoft.com&sz=32"
+            /><a href="https://copilot.microsoft.com" target="_blank"
+              >Copilot</a
+            >
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=liner.ai&sz=32"
+            /><a href="https://liner.ai" target="_blank">Liner</a>
+          </li>
+          <li data-new="2026-01-10">
+            <img
+              src="https://www.google.com/s2/favicons?domain=ciciai.com&sz=32"
+              alt="Cici AI"
+            />
+            <a href="https://www.ciciai.com" target="_blank">Dola AI</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- WEBSITE -->
+      <div class="card" data-category>
+        <h2>
+          <ion-icon name="earth-outline"></ion-icon> Website <span></span>
+        </h2>
+        <ul>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=dora.run&sz=32"
+            /><a href="https://www.dora.run" target="_blank">Dora</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=durable.co&sz=32"
+            /><a href="https://durable.co" target="_blank">Durable</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=wegic.ai&sz=32"
+            /><a href="https://wegic.ai" target="_blank">Wegic</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=framer.com&sz=32"
+            /><a href="https://www.framer.com" target="_blank">Framer</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=10web.io&sz=32"
+            /><a href="https://10web.io" target="_blank">10Web</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- ESCRITA -->
+      <div class="card" data-category>
+        <h2>
+          <ion-icon name="create-outline"></ion-icon> Escrita <span></span>
+        </h2>
+        <ul>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=jasper.ai&sz=32"
+            /><a href="https://www.jasper.ai" target="_blank">Jasper</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=rytr.me&sz=32"
+            /><a href="https://rytr.me" target="_blank">Rytr</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=blaze.today&sz=32"
+            /><a href="https://blaze.today" target="_blank">TextBlaze</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=sudowrite.com&sz=32"
+            /><a href="https://www.sudowrite.com" target="_blank">Sudowrite</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=writesonic.com&sz=32"
+            /><a href="https://writesonic.com" target="_blank">Writesonic</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- REUNIÕES -->
+      <div class="card" data-category>
+        <h2>
+          <ion-icon name="people-outline"></ion-icon> Reuniões <span></span>
+        </h2>
+        <ul>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=tldv.io&sz=32"
+            /><a href="https://tldv.io" target="_blank">TL;DV</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=krisp.ai&sz=32"
+            /><a href="https://krisp.ai" target="_blank">Krisp</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=otter.ai&sz=32"
+            /><a href="https://otter.ai" target="_blank">Otter</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=avoma.com&sz=32"
+            /><a href="https://www.avoma.com" target="_blank">Avoma</a>
+          </li>
+
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=fireflies.ai&sz=32"
+            /><a href="https://fireflies.ai" target="_blank">Fireflies</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- MARKETING -->
+      <div class="card" data-category>
+        <h2>
+          <ion-icon name="trending-up-outline"></ion-icon> Marketing
+          <span></span>
+        </h2>
+        <ul>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=adcopy.ai&sz=32"
+            /><a href="https://www.adcopy.ai" target="_blank">AdCopy</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=predis.ai&sz=32"
+            /><a href="https://predis.ai" target="_blank">Predis</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=howler.ai&sz=32"
+            /><a href="https://howler.ai" target="_blank">Howler</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=bardeen.ai&sz=32"
+            /><a href="https://www.bardeen.ai" target="_blank">Bardeen</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=adcreative.ai&sz=32"
+            /><a href="https://www.adcreative.ai" target="_blank">AdCreative</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- VOZ PARA TEXTO -->
+      <div class="card" data-category>
+        <h2>
+          <ion-icon name="mic-outline"></ion-icon> Voz → Texto <span></span>
+        </h2>
+        <ul>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=fluently.ai&sz=32"
+            /><a href="https://fluently.ai" target="_blank">Fluently</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=descript.com&sz=32"
+            /><a href="https://www.descript.com" target="_blank">Descript</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=rev.ai&sz=32"
+            /><a href="https://www.rev.ai" target="_blank">Rev</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=clipto.ai&sz=32"
+            /><a href="https://clipto.ai" target="_blank">Clipto</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=textcortex.com&sz=32"
+            /><a href="https://textcortex.com">TextCortex</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- TEXTO PARA VOZ -->
+      <div class="card" data-category>
+        <h2>
+          <ion-icon name="megaphone-outline"></ion-icon> Texto → Voz
+          <span></span>
+        </h2>
+        <ul>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=udio.com&sz=32"
+            /><a href="https://www.udio.com" target="_blank">Udio</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=suno.ai&sz=32"
+            /><a href="https://www.suno.ai" target="_blank">Suno</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=deepgram.com&sz=32"
+            /><a href="https://deepgram.com" target="_blank">Deepgram</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=speechify.com&sz=32"
+            /><a href="https://speechify.com" target="_blank">Speechify</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=elevenlabs.io&sz=32"
+            /><a href="https://elevenlabs.io" target="_blank">ElevenLabs</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- UI UX -->
+      <div class="card" data-category>
+        <h2>
+          <ion-icon name="sparkles-outline"></ion-icon> UI / UX <span></span>
+        </h2>
+        <ul>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=usegalileo.ai&sz=32"
+            /><a href="https://www.usegalileo.ai" target="_blank">Galileo</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=khroma.co&sz=32"
+            /><a href="https://khroma.co" target="_blank">Khroma</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=uizard.io&sz=32"
+            /><a href="https://uizard.io" target="_blank">Uizard</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=visily.ai&sz=32"
+            /><a href="https://www.visily.ai" target="_blank">Visily</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=visualeyes.design&sz=32"
+            /><a href="https://visualeyes.design" target="_blank">VisualEyes</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- IMAGEM -->
+      <div class="card" data-category>
+        <h2><ion-icon name="image-outline"></ion-icon> Imagem <span></span></h2>
+        <ul>
+          <li data-new="2026-01-10">
+            <img
+              src="https://www.google.com/s2/favicons?domain=recraft.ai&sz=32"
+              alt="Recraft AI"
+            />
+            <a href="https://www.recraft.ai/" target="_blank"> Recraft AI </a>
+          </li>
+          <li data-new="2026-01-10">
+            <img
+              src="https://www.google.com/s2/favicons?domain=3dlogolab.io&sz=32"
+              alt="3D Logo Lab"
+            />
+            <a
+              href="https://www.3dlogolab.io/3d-logo-generator-free"
+              target="_blank"
+            >
+              3D Logo Lab
+            </a>
+          </li>
+
+          <li data-new="11/01/2026">
+            <img
+              src="https://leonardo.ai/favicon.ico"
+              alt="Leonardo AI"
+              class="ia-icon"
+            />
+            <a href="https://leonardo.ai" target="_blank" class="ia-link">
+              Leonardo AI
+            </a>
+          </li>
+
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=dzine.ai&sz=32"
+            /><a href="https://www.dzine.ai" target="_blank">Dzine</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=freepik.com&sz=32"
+            /><a href="https://www.freepik.com" target="_blank">Freepik</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=phygital.plus&sz=32"
+            /><a href="https://phygital.plus" target="_blank">Phygital+</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=openai.com&sz=32"
+            /><a href="https://openai.com/dall-e" target="_blank">DALL·E</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=bing.com&sz=32"
+            /><a href="https://www.bing.com/images/create" target="_blank"
+              >Bing Create</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- VÍDEO -->
+      <div class="card" data-category>
+        <h2>
+          <ion-icon name="videocam-outline"></ion-icon> Vídeo <span></span>
+        </h2>
+        <ul>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=pictory.ai&sz=32"
+            /><a href="https://pictory.ai" target="_blank">Pictory</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=heygen.com&sz=32"
+            /><a href="https://www.heygen.com" target="_blank">HeyGen</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=nullface.ai&sz=32"
+            /><a href="https://nullface.ai" target="_blank">Nullface</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=invideo.io&sz=32"
+            /><a href="https://invideo.io" target="_blank">InVideo</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=synthesia.io&sz=32"
+            /><a href="https://www.synthesia.io" target="_blank">Synthesia</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- DESIGN -->
+      <div class="card" data-category>
+        <h2><ion-icon name="brush-outline"></ion-icon> Design <span></span></h2>
+        <ul>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=looka.com&sz=32"
+            /><a href="https://looka.com" target="_blank">Looka</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=chipdrop.com&sz=32"
+            /><a href="https://chipdrop.com" target="_blank">Chipdrop</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=autodraw.com&sz=32"
+            /><a href="https://autodraw.com" target="_blank">Autodraw</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=vanceai.com&sz=32"
+            /><a href="https://vanceai.com" target="_blank">Vance AI</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=designs.ai&sz=32"
+            /><a href="https://designs.ai" target="_blank">Designs AI</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- APRESENTAÇÃO -->
+      <div class="card" data-category>
+        <h2>
+          <ion-icon name="bar-chart-outline"></ion-icon> Apresentação
+          <span></span>
+        </h2>
+        <ul>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=beautiful.ai&sz=32"
+            /><a href="https://www.beautiful.ai" target="_blank"
+              >Beautiful.ai</a
+            >
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=slidebean.com&sz=32"
+            /><a href="https://slidebean.com" target="_blank">Slidebean</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=pitch.com&sz=32"
+            /><a href="https://pitch.com" target="_blank">Pitch</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=gamma.app&sz=32"
+            /><a href="https://gamma.app" target="_blank">Gamma</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=tome.app&sz=32"
+            /><a href="https://tome.app" target="_blank">Tome</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- AUTOMAÇÃO -->
+      <div class="card" data-category>
+        <h2>
+          <ion-icon name="settings-outline"></ion-icon> Automação <span></span>
+        </h2>
+        <ul>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=phrasee.co&sz=32"
+            /><a href="https://phrasee.co" target="_blank">Phrasee</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=outreach.io&sz=32"
+            /><a href="https://www.outreach.io" target="_blank">Outreach</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=clickup.com&sz=32"
+            /><a href="https://clickup.com" target="_blank">ClickUp</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=drift.com&sz=32"
+            /><a href="https://www.drift.com" target="_blank">Drift</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=emplifi.io&sz=32"
+            /><a href="https://emplifi.io" target="_blank">Emplifi</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- BLOGGING -->
+      <div class="card" data-category>
+        <h2>
+          <ion-icon name="newspaper-outline"></ion-icon> Blogging <span></span>
+        </h2>
+        <ul>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=katteb.com&sz=32"
+            /><a href="https://katteb.com" target="_blank">Katteb</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=rewording.io&sz=32"
+            /><a href="https://rewording.io" target="_blank">Rewording</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=elephas.app&sz=32"
+            /><a href="https://elephas.app" target="_blank">Elephas</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=junia.ai&sz=32"
+            /><a href="https://www.junia.ai" target="_blank">Junia</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=journalist.ai&sz=32"
+            /><a href="https://journalist.ai" target="_blank">Journalist AI</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- AI DETECTOR -->
+      <div class="card" data-category>
+        <h2>
+          <ion-icon name="eye-outline"></ion-icon> AI Detector <span></span>
+        </h2>
+        <ul>
+          <li data-new="2026-01-10">
+            <img
+              src="https://www.google.com/s2/favicons?domain=cleverhumanizer.ai&sz=32"
+              alt="Clever Humanizer"
+            />
+            <a href="https://cleverhumanizer.ai/" target="_blank">
+              Clever Humanizer
+            </a>
+          </li>
+          <li data-new="2026-01-10">
+            <img
+              src="https://www.google.com/s2/favicons?domain=sidekicker.ai&sz=32"
+              alt="Sidekicker AI Detector"
+            />
+            <a href="https://sidekicker.ai/pt/ai-detector" target="_blank">
+              Sidekicker AI
+            </a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=gptzero.me&sz=32"
+            /><a href="https://gptzero.me" target="_blank">GPTZero</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=wordtune.com&sz=32"
+            /><a href="https://www.wordtune.com" target="_blank">Wordtune</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=copyleaks.com&sz=32"
+            /><a href="https://copyleaks.com" target="_blank">Copyleaks</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=bypassgpt.ai&sz=32"
+            /><a href="https://bypassgpt.ai" target="_blank">BypassGPT</a>
+          </li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=grammarly.com&sz=32"
+            /><a href="https://www.grammarly.com" target="_blank">Grammarly</a>
+          </li>
+        </ul>
+      </div>
+      <!-- MAPAS MENTAIS -->
+      <div class="card" data-category>
+        <h2>
+          <ion-icon name="git-network-outline"></ion-icon> Mapas Mentais
+          <span></span>
+        </h2>
+        <ul>
+          <li data-new="2026-01-10">
+            <img
+              src="https://www.google.com/s2/favicons?domain=napkin.ai&sz=32"
+              alt="Napkin AI"
+            />
+            <a href="https://www.napkin.ai/" target="_blank">Napkin AI</a>
+          </li>
+
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=whimsical.com&sz=32"
+            />
+            <a href="https://whimsical.com" target="_blank">Whimsical</a>
+          </li>
+
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=gitmind.com&sz=32"
+            />
+            <a href="https://gitmind.com" target="_blank">GitMind</a>
+          </li>
+
+          <li data-new="">
+            <img
+              src="https://www.google.com/s2/favicons?domain=miro.com&sz=32"
+            />
+            <a href="https://miro.com" target="_blank">Miro</a>
+          </li>
+
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=mindmeister.com&sz=32"
+            />
+            <a href="https://mindmeister.com" target="_blank">MindMeister</a>
+          </li>
+
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=xmind.com&sz=32"
+            />
+            <a href="https://www.xmind.com" target="_blank">XMind</a>
+          </li>
+
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=edrawmind.com&sz=32"
+            />
+            <a href="https://www.edrawmind.com" target="_blank">EdrawMind</a>
+          </li>
+
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=mapamental.app&sz=32"
+            />
+            <a href="https://mapamental.app" target="_blank">MapaMental.app</a>
+          </li>
+
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=mapify.ai&sz=32"
+            />
+            <a href="https://mapify.ai" target="_blank">Mapify</a>
+          </li>
+
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=mymap.ai&sz=32"
+            />
+            <a href="https://mymap.ai" target="_blank">MyMap.AI</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <!--img tela media -->
+    <div id="img-modal" class="modal-overlay">
+      <span class="close-modal">&times;</span>
+      <div class="modal-content">
+        <img
+          id="img-zoom"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+          alt="IA Logo"
+        />
+        <h3 id="img-label">Nome da IA</h3>
+      </div>
+    </div>
+    <!--fim img tela media -->
+
+    <footer>
+      <p class="icone-p">
+        <ion-icon name="pricetags-outline" class="ion-icon"></ion-icon> 17
+        categorias •
+        <ion-icon name="hammer-outline" class="ion-icon"></ion-icon> 92
+        ferramentas •
+        <ion-icon name="link-outline" class="ion-icon"></ion-icon> Links
+        oficiais
+      </p>
+      <div class="social">
+        <span>
+          © <span id="year"></span>2026 Desenvolvido por
+          <strong>teddy_machado</strong>
+        </span>
+      </div>
+    </footer>
+  </body>
+</html>
