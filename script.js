@@ -1074,13 +1074,10 @@ document.addEventListener("msfullscreenchange", updateButton);
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker
-      .register("/sw.js")
-      .then((reg) => {
-        console.log("Service Worker registrado:", reg.scope);
-      })
-      .catch((err) => {
-        console.error("Erro ao registrar SW:", err);
-      });
+      .register("/Classify_ia/sw.js")
+      .then(() => console.log("Service Worker registrado"))
+      .catch((err) => console.log("Erro no SW", err));
   });
 }
+
 //fim sistema de sw.js limpar cache
