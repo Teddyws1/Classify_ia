@@ -1,6 +1,6 @@
 # Classify_ia
 
-versão do site: v 5.10.9 beta
+versão do site: v6.11.10 Estável
 
 todas ia em um só lugar
-versão do controle: 0.0.8 v
+versão do controle: 0.0.9 v

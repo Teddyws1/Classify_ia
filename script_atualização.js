@@ -2,11 +2,31 @@
    CONFIGURAÇÃO DE DADOS (DATABASE)
    ========================================================================== */
 const updateLogs = [
- 
+ {
+    type: "FIX",
+    text: "Melhorias nos botões e na interface, tornando o sistema responsivo para todos os tipos de tela.",
+    color: "#ef4444", 
+  },
+  {
+    type: "FIX",
+    text: "Correção de erros",
+    color: "#ef4444", 
+  },
+   {
+    type: "NEW",
+    text: "Novo ícone que mostra nova mensagem",
+    color: "#22c55e", 
+  },
+    {
+    type: "NEW",
+    text: "nova aba de sites recomendados",
+    color: "#22c55e", 
+  },
+
   {
     type: "UI",
-    text: "melhorias nos botoes",
-    color: "#22c55e",
+    text: "Melhorias nos botões",
+    color: "#22c530",
   },
 ];
 
