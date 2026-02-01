@@ -4041,8 +4041,8 @@ body.no-scroll {
 
 
 .modal {
-  background: var(--bg-modal);
-  color: var(--text-main);
+  background: #111827;
+  color: #ffffff;
   padding: 24px 26px;
   border-radius: 20px;
   width: 90%;
@@ -4267,3 +4267,5 @@ body.no-scroll {
 }
 
 /*==========fim nenhuma mensagem do mensagem do sistema===============*/
+
+
