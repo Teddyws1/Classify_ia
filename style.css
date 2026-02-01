@@ -57,7 +57,6 @@ body.no-scroll {
   border: 1px solid var(--border);
 }
 
-
 /* Layout principal */
 .header-content {
   display: flex;
@@ -1019,7 +1018,6 @@ html.light .socials img {
 .versaobox {
   position: absolute;
   bottom: 2px;
-  /* 👈 altura fixa e consistente */
   left: 0;
   right: 0;
 
@@ -1036,7 +1034,11 @@ html.light .socials img {
   font-weight: 600;
 }
 
-
+@media (max-width: 7000px) {
+  .versaobox {
+    bottom: 0%;
+  }
+}
 
 #Sobre {
   color: #facc15;
@@ -1191,7 +1193,7 @@ html.light .socials img {
 }
 
 /* Mobile */
-@media (max-width: 600px) {
+@media (max-width: 7000px) {
   .divider-text {
     margin: 40px 0 20px;
   }
@@ -2641,26 +2643,29 @@ h2 {
   justify-content: center;
   gap: 8px;
   padding: 10px 15px;
-
   /* Cores e Fundo */
   background: linear-gradient(135deg, #facc15, #f59e0b);
   color: rgb(48, 48, 48);
-
   /* Bordas e Fonte */
   border: none;
   border-radius: 8px;
   font-size: 14px;
-
   /* Posicionamento */
   cursor: pointer;
   position: absolute;
-  bottom: 5%;
+  bottom: 4%;
   right: 4%;
-  /* Se ficar em cima do outro botão, mude este valor */
+
   z-index: 100;
 
   /* Animações */
   transition: filter 0.3s, transform 0.2s;
+}
+
+@media (max-width: 7000px) {
+  #themeToggle {
+    bottom: 4%;
+  }
 }
 
 /* Tamanho do ícone (sol) */
@@ -2772,40 +2777,42 @@ body.dark-theme #themeToggle:hover {
     transform: none;
   }
 }
+
 @media (max-width: 800px) {
   .btn-open-update-logs {
-width: 63%;
-        bottom: -63%;
-        left: 0;
-        margin-top: 11px;
-        position: relative;
-        padding: 10px;
-        transform: none;
-    }
+    width: 63%;
+    bottom: -63%;
+    left: 0;
+    margin-top: 11px;
+    position: relative;
+    padding: 10px;
+    transform: none;
+  }
 }
 
 @media (max-width: 1100px) {
   .btn-open-update-logs {
-width: 63%;
-        bottom: -66%;
-        left: 0;
-        margin-top: 11px;
-        position: relative;
-        padding: 10px;
-        transform: none;
-    }
+    width: 63%;
+    bottom: -66%;
+    left: 0;
+    margin-top: 11px;
+    position: relative;
+    padding: 10px;
+    transform: none;
+  }
 }
+
 @media (max-width: 1600px) {
   .btn-open-update-logs {
-width: 63%;
-        bottom: -61%;
-        left: 0;
-        color: #000000;
-        margin-top: 11px;
-        position: relative;
-        padding: 10px;
-        transform: none;
-    }
+    width: 63%;
+    bottom: -61%;
+    left: 0;
+    color: #000000;
+    margin-top: 11px;
+    position: relative;
+    padding: 10px;
+    transform: none;
+  }
 }
 
 
@@ -3974,7 +3981,23 @@ body.no-scroll {
 }
 
 /*=====telas adptação====*/
+@media (max-width: 568px) {
+  .Explorar {
+    bottom: 15%;
+  }
+}
 
+@media (max-width: 500px) {
+  .Explorar {
+    bottom: 9%;
+  }
+}
+
+@media (max-width: 1600px) {
+  .Explorar {
+    bottom: 9%;
+  }
+}
 
 
 
