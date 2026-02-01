@@ -1,0 +1,35 @@
+const distinctLogs = [
+  //novas funcionalidades
+  
+    {
+    type: "NEW",
+    text: "Nova funcionalidade",
+    color: "#22c55e", 
+  },
+    //correção de bugs
+  {
+    type: "FIX",
+    text: "Correção de erros",
+    color: "#ef4444", 
+  },
+    //melhorias
+  {
+    type: "IA",
+    text: "Recursos de Inteligência Artificial",
+    color: "#00ff4cff", 
+  },
+
+  //ui melhorias cores e desing
+  {
+    type: "UI",
+    text: "Melhorias de interface",
+    color: "#22c55e", 
+  },
+
+  //uggentes e importantes
+  {
+    type: "HOT",
+    text: "Destaques e tendências",
+    color: "#f97316", 
+  }
+];

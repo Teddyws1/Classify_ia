@@ -9,6 +9,7 @@
       type="module"
       src="https://cdn.jsdelivr.net/npm/ionicons@7.1.2/dist/ionicons/ionicons.esm.js"
     ></script>
+
     <script
       nomodule
       src="https://cdn.jsdelivr.net/npm/ionicons@7.1.2/dist/ionicons/ionicons.js"
@@ -57,7 +58,7 @@
       <hr class="divider" />
       <button class="btn-open-update-logs" onclick="handleUpdateModal(true)">
         <ion-icon name="newspaper-outline"></ion-icon>
-        Notas de Atualização
+        Atualizações
       </button>
       <!--sistema de tela cheia-->
 
@@ -201,18 +202,23 @@
       </div>
       <br />
       <!--fim card de tag-->
-      <!--aviso do sistema-->
+      <!--explorar Sites-->
+      <button
+        class="Explorar"
+        onclick="window.location.href = 'site_aleatorios/sitealeatio.html'"
+      >
+        <ion-icon name="compass-outline"></ion-icon>
+        explorar Site
+      </button>
+      <!--fim explorar Sites-->
 
+      <!--aviso do sistema-->
       <!-- BOTÃO / CARD -->
       <div class="system-card">
         <span class="status enviado" id="statusBadge">
           <ion-icon name="checkmark-outline"></ion-icon>
         </span>
-
-        <button id="openModal" class="system-button">
-          <ion-icon name="notifications-outline"></ion-icon>
-          mensagem
-        </button>
+        <button id="openModal" class="system-button">mensagem</button>
       </div>
 
       <!-- MODAL -->
@@ -223,8 +229,8 @@
             Sistema
           </h2>
           <p id="systemMessageText">
-            novo atualizações disponível! verifique as notas de atualização na
-            seção
+            <!-- Mensagem do sistema vai aqui -->
+            d
           </p>
 
           <button id="closeModal">Fechar</button>
@@ -1255,7 +1261,6 @@
       </div>
     </div>
     <!--fim img tela media -->
-
 
     <footer>
       <p class="icone-p">

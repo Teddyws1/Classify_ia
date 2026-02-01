@@ -708,6 +708,18 @@ function toggleTheme() {
   }
 }
 
+// Inicializa tema salvo
+window.addEventListener("DOMContentLoaded", () => {
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "light") {
+    document.documentElement.classList.add("light");
+    themeIcon.textContent = "☀️";
+  } else {
+    document.documentElement.classList.remove("light");
+    themeIcon.textContent = "🌙";
+  }
+});
+
 // Animação do ícone
 function animateIcon(newIcon) {
   themeIcon.style.transition = "none"; // Reseta para nova animação
@@ -731,18 +743,6 @@ window.addEventListener("keydown", (event) => {
     // Impede o comportamento padrão (ex: scroll da página)
     event.preventDefault();
     toggleTheme();
-  }
-});
-
-// Inicializa tema salvo
-window.addEventListener("DOMContentLoaded", () => {
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "light") {
-    document.documentElement.classList.add("light");
-    themeIcon.textContent = "☀️";
-  } else {
-    document.documentElement.classList.remove("light");
-    themeIcon.textContent = "🌙";
   }
 });
 
@@ -789,7 +789,27 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     setStatus("novo"); // nova mensagem / enviada
   }
+  // função para atualizar status visual
+  function setStatus(status) {
+    statusBadge.className = "status " + status;
 
+    // --- MENSAGEM NOVA (Não lida) ---
+    if (status === "novo") {
+      // Sino preenchido e balançando para chamar atenção
+      statusBadge.innerHTML = `
+        <ion-icon name="notifications" class="sino-icon animado"></ion-icon>
+        <span class="alert-dot"></span>
+      `;
+    }
+
+    // --- MENSAGEM LIDA ---
+    if (status === "lido") {
+      // Sino vazado (outline) e parado
+      statusBadge.innerHTML = `
+        <ion-icon name="notifications-outline" class="sino-icon"></ion-icon>
+      `;
+    }
+  }
   // ===== ABRIR MODAL (marca como lido) =====
   openModalBtn.addEventListener("click", () => {
     modalOverlay.style.display = "flex";
@@ -1080,5 +1100,173 @@ if ("serviceWorker" in navigator) {
   });
 }
 
-//fim sistema de sw.js limpar cache
+/* ======================================================
+   SISTEMA DE ALINHAMENTO AUTOMÁTICO (JS + ROOT)
+   ====================================================== */
 
+const root = document.documentElement; // Acessa o :root do CSS
+const body = document.body;
+
+function autoAlignSystem() {
+  // 1. Detecta largura da tela
+  const width = window.innerWidth;
+
+  // --- LÓGICA DE COLUNAS DO GRID ---
+  // Calcula quantas colunas de 280px cabem na tela
+  let columns = Math.floor((width - 40) / 300);
+  if (columns < 1) columns = 1; // Mínimo 1 coluna
+  if (columns > 4) columns = 4; // Máximo 4 colunas
+
+  // Injeta no CSS
+  root.style.setProperty("--grid-cols", columns);
+
+  // --- LÓGICA DE MODO (Mobile vs Desktop) ---
+  if (width <= 640) {
+    // MODO MOBILE (Redmi Note 13, iPhone, etc)
+    body.setAttribute("data-mode", "mobile");
+
+    // Ajustes de Variáveis
+    root.style.setProperty("--layout-padding", "10px"); // Menos borda
+    root.style.setProperty("--sidebar-left", "-100%"); // Esconde menu
+    root.style.setProperty("--sidebar-width", "85%"); // Menu ocupa quase tudo
+    root.style.setProperty("--font-scale", "0.9"); // Fonte um pouco menor
+
+    // Botão de Logs (Esquerda)
+    root.style.setProperty("--btn-logs-pos-x", "3%");
+    root.style.setProperty("--btn-logs-pos-y", "5%");
+  } else {
+    // MODO DESKTOP
+    body.setAttribute("data-mode", "desktop");
+
+    // Ajustes de Variáveis
+    root.style.setProperty("--layout-padding", "20px");
+    root.style.setProperty("--sidebar-left", "-320px"); // Esconde (padrão desktop)
+    root.style.setProperty("--sidebar-width", "300px");
+    root.style.setProperty("--font-scale", "1");
+
+    // Botão de Logs (Direita/Centro)
+    root.style.setProperty("--btn-logs-pos-x", "55%");
+    root.style.setProperty("--btn-logs-pos-y", "5%");
+  }
+
+  console.log(
+    `Sistema AutoAlign: ${width}px | Colunas: ${columns} | Modo: ${body.getAttribute("data-mode")}`,
+  );
+}
+
+// --- GATILHOS ---
+
+// 1. Roda ao iniciar o site
+window.addEventListener("load", autoAlignSystem);
+
+// 2. Roda ao redimensionar a tela (girar celular ou ajustar janela)
+window.addEventListener("resize", autoAlignSystem);
+
+// 3. Função extra para abrir/fechar sidebar manualmente
+function toggleSidebar() {
+  const currentLeft = getComputedStyle(root)
+    .getPropertyValue("--sidebar-left")
+    .trim();
+
+  if (currentLeft === "0px") {
+    // Se está aberto, fecha baseado no modo
+    const mode = body.getAttribute("data-mode");
+    root.style.setProperty(
+      "--sidebar-left",
+      mode === "mobile" ? "-100%" : "-320px",
+    );
+  } else {
+    // Abre
+    root.style.setProperty("--sidebar-left", "0px");
+  }
+}
+///fim adapitação para botão atualização
+
+//icone do botão de .Explorar
+
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.querySelector(".Explorar");
+
+  if (btn) {
+    const icon = btn.querySelector("ion-icon");
+
+    btn.addEventListener("mouseenter", () => {
+      // Gira rápido e aleatório (como se fosse peteleco na bússola)
+      // cubic-bezier(0.2, 0.8, 0.2, 1) = Desaceleração suave
+      icon.style.transition = "transform 1s cubic-bezier(0.2, 0.8, 0.2, 1)";
+
+      // Gira entre 360 e 720 graus aleatoriamente
+      const randomRotate = 360 + Math.floor(Math.random() * 360);
+      icon.style.transform = `rotate(${randomRotate}deg)`;
+    });
+
+    btn.addEventListener("mouseleave", () => {
+      // Efeito de Mola/Balanço ao voltar para o Norte (0deg)
+      // cubic-bezier(0.5, -0.5, 0.5, 1.5) = Vai e volta (balança)
+      icon.style.transition =
+        "transform 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)";
+      icon.style.transform = "rotate(0deg)";
+    });
+  }
+});
+
+//fim icone do botão de .Explorar
+
+//sistema de bloqueio de zoom da pagina
+document.addEventListener("DOMContentLoaded", () => {
+  // 1. INJEÇÃO DA META TAG (Essencial para Celular)
+  // Isso força o navegador a não permitir escala manual
+  let meta = document.querySelector('meta[name="viewport"]');
+  if (!meta) {
+    meta = document.createElement("meta");
+    meta.name = "viewport";
+    document.head.appendChild(meta);
+  }
+  meta.content =
+    "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no";
+
+  // 2. BLOQUEIA ATALHOS DE TECLADO (Ctrl + / Ctrl -)
+  document.addEventListener("keydown", function (event) {
+    if (
+      (event.ctrlKey || event.metaKey) &&
+      (event.key === "+" ||
+        event.key === "-" ||
+        event.key === "=" ||
+        event.key === "0")
+    ) {
+      event.preventDefault();
+    }
+  });
+
+  // 3. BLOQUEIA O SCROLL DO MOUSE COM CTRL (Roda do mouse)
+  document.addEventListener(
+    "wheel",
+    function (event) {
+      if (event.ctrlKey) {
+        event.preventDefault();
+      }
+    },
+    { passive: false },
+  ); // 'passive: false' é obrigatório para bloquear o scroll
+
+  // 4. BLOQUEIA PINÇA E GESTOS NO TRACKPAD/MOBILE (Safari/iOS)
+  document.addEventListener("gesturestart", function (e) {
+    e.preventDefault();
+  });
+
+  // Bloqueia duplo toque para zoom em alguns Androids antigos
+  let lastTouchEnd = 0;
+  document.addEventListener(
+    "touchend",
+    function (event) {
+      const now = new Date().getTime();
+      if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+      }
+      lastTouchEnd = now;
+    },
+    false,
+  );
+});
+
+//fim sistema de bloqueio de zoom da pagina

@@ -1,0 +1,8 @@
+{
+    id: "chatgpt",
+    category: "recomendados",
+    name: "ChatGPT",
+    desc: "O modelo de linguagem mais popular do mundo para conversas e códigos.",
+    url: "https://chat.openai.com",
+    img: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg",
+  },

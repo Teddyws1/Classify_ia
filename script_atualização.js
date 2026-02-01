@@ -2,70 +2,10 @@
    CONFIGURAÇÃO DE DADOS (DATABASE)
    ========================================================================== */
 const updateLogs = [
+ 
   {
-    type: "NEW",
-    text: "sistema de atalho via teclado (tecla ao clica'ctrl + shift + seta cima' coloca tela cheia)",
-    color: "#22c55e",
-  },
-  {
-    type: "NEW",
-    text: "e site otimizado para dispositivos móveis",
-    color: "#22c55e",
-  },
-  {
-    type: "NEW",
-    text: "agora com sistema de tela cheia",
-    color: "#22c55e",
-  },
-  {
-    type: "NEW",
-    text: "melhorias na interface",
-    color: "#22c55e",
-  },
-  {
-    type: "NEW",
-    text: "nova ia no top dos melhores",
-    color: "#22c55e",
-  },
-  {
-    type: "NEW",
-    text: "novas 7 IA adicionadas",
-    color: "#00ff4cff",
-  },
-  {
-    type: "FIX",
-    text: "Corrigido erro de carregamento no menu mobile.",
-    color: "#ef4444",
-  },
-  //ia novas
-   {
-    type: "IA",
-    text: "nova ia no top dos melhores",
-    color: "#22c55e",
-  },
-  {
-    type: "IA",
-    text: "novas 7 IA adicionadas",
-    color: "#00ff4cff",
-  },
-
-  //algumas melhorias ou importantes
-
-    {
-    type: "HOT",
-    text: "Melhoria de 40% na velocidade de carregamento.",
-    color: "#f97316",
-  },
-  {
-    type: "HOT",
-    text: "e site otimizado para dispositivos móveis",
-    color: "#22c55e",
-  },
-
-  //ui interface
-    {
     type: "UI",
-    text: "melhoria na interface",
+    text: "melhorias nos botoes",
     color: "#22c55e",
   },
 ];

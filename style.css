@@ -100,17 +100,6 @@ body.no-scroll {
   border-radius: 12px;
 }
 
-/* Botão */
-.controls button {
-  min-width: 48px;
-  min-height: 48px;
-  font-size: 1.2rem;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 /* li/mark da barra de pesquisa */
 li {
   display: flex;
@@ -159,11 +148,8 @@ button {
   color: var(--text);
 }
 
-button {
-  cursor: pointer;
-  background: #1d5c64;
-  color: #000;
-  font-weight: bold;
+input::placeholder {
+  color: var(--muted);
 }
 
 /* icone de lupa */
@@ -2649,30 +2635,49 @@ h2 {
 
 
 /* ==================== BOTÃO DE ALTERNAR TEMA (VERSÃO MINIMALISTA) ==================== */
-
 #themeToggle {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
+  padding: 10px 15px;
 
-  /* Posicionamento para ficar no local azul */
-  position: absolute;
-  bottom: 25px;
-  right: 8px;
-  width: 45px;
-  height: 38px;
-  padding: 0;
-  top: 90%;
-  background-color: #ffce0a4d;
-  color: #000;
-  border-radius: 10px;
+  /* Cores e Fundo */
+  background: linear-gradient(135deg, #facc15, #f59e0b);
+  color: rgb(48, 48, 48);
+
+  /* Bordas e Fonte */
   border: none;
-  cursor: pointer;
+  border-radius: 8px;
+  font-size: 14px;
 
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  overflow: hidden;
-  z-index: 10;
+  /* Posicionamento */
+  cursor: pointer;
+  position: absolute;
+  bottom: 5%;
+  right: 4%;
+  /* Se ficar em cima do outro botão, mude este valor */
+  z-index: 100;
+
+  /* Animações */
+  transition: filter 0.3s, transform 0.2s;
+}
+
+/* Tamanho do ícone (sol) */
+#themeToggle .theme-icon {
+  font-size: 1.2em;
+  display: flex;
+  /* Garante alinhamento vertical */
+}
+
+/* Efeitos de Interação */
+#themeToggle:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+#themeToggle:active {
+  transform: scale(0.95);
 }
 
 /* Ícone do tema */
@@ -2715,21 +2720,41 @@ body.dark-theme #themeToggle:hover {
 
 /* ==================== fim to temas) ==================== */
 /* SISTEMA DE VERÇÃO */
-/* Botão de abrir específico */
+/* Botão de abrir notas de atualização */
+
 .btn-open-update-logs {
-  position: absolute;
-  top: 90%;
+
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 12px 20px;
+  padding: 11px 15px;
   background: linear-gradient(135deg, #facc15, #f59e0b);
-  color: #000000;
+  color: rgb(48, 48, 48);
   border: none;
-  border-radius: 12px;
+  border-radius: 8px;
+  font-size: 14px;
   font-weight: 700;
   cursor: pointer;
-  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
+  transition: filter 0.3s, transform 0.2s;
+  bottom: -60%;
+  width: 79%;
+  position: relative;
+  z-index: 100;
+}
+
+.btn-open-update-logs ion-icon {
+  font-size: 1.2em;
+}
+
+.btn-open-update-logs:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+.btn-open-update-logs:active {
+  transform: scale(0.95);
 }
 
 .btn-open-update-logs:hover {
@@ -2738,12 +2763,21 @@ body.dark-theme #themeToggle:hover {
   box-shadow: 0 5px 15px rgba(250, 204, 21, 0.3);
 }
 
+/* --- SISTEMA PARA TELAS GRANDES (1240px ou mais) --- */
+@media (min-width: 1240px) {
+  .btn-open-update-logs {
 
+    bottom: -60%;
+    left: 1%;
+
+    transform: none;
+  }
+}
 
 /* Container de Scroll */
 .update-items-wrapper {
   max-height: 215px;
-  /* Trava visual para 4 itens */
+
   overflow-y: auto;
   margin: 20px 0;
   padding-right: 5px;
@@ -3676,83 +3710,179 @@ body.no-scroll {
 }
 
 /*fim da GlossáriodeTags */
-/* sistema aviso */
 
-/* ===============================
-   BASE DO BADGE
-================================ */
-.status {
-  display: inline-flex;
+/*status Estilo base do Ícone */
+#statusBadge {
+  /* --- POSICIONAMENTO (O que você pediu) --- */
+  position: absolute;
+  bottom: 25%;
+  right: 51%;
+  z-index: 100;
+  display: flex;
   align-items: center;
-  justify-content: center;
-
-  width: 22px;
-  height: 22px;
-
-  user-select: none;
+  gap: 8px;
+  padding: 10px 15px;
+  color: rgb(48, 48, 48);
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.2s, filter 0.2s;
 }
 
-/* ===============================
-   NOVA / ENVIADA ✔
-================================ */
-.status.novo ion-icon {
-  font-size: 18px;
-  color: #9ca3af;
-  position: absolute;
-  bottom: 27%;
+/* Efeito ao passar o mouse */
+#statusBadge:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
 }
 
-/* ===============================
-   ENTREGUE ✔✔ (opcional)
-================================ */
-.status.entregue ion-icon {
-  font-size: 18px;
-  color: #215bbe;
+/* Animação do ícone quando for "novo" */
+.sino-animado {
+  animation: balanco 2s infinite ease-in-out;
 }
 
-/* ===============================
-   LIDA ✔✔ (WhatsApp)
-================================ */
-.status.lido ion-icon {
-  font-size: 18px;
-  color: #34b7f1;
-  position: absolute;
-  bottom: 27%;
-  /* azul WhatsApp */
-}
-
-/* ===============================
-   ANIMAÇÃO AO VIRAR LIDA
-================================ */
-.status.lido ion-icon {
-  animation: read-pop 0.25s ease-out;
-}
-
-@keyframes read-pop {
+@keyframes balanco {
   0% {
-    transform: scale(0.8);
-    opacity: 0.6;
+    transform: rotate(0);
+  }
+
+  10% {
+    transform: rotate(15deg);
+  }
+
+  20% {
+    transform: rotate(-15deg);
+  }
+
+  30% {
+    transform: rotate(10deg);
+  }
+
+  40% {
+    transform: rotate(-10deg);
+  }
+
+  50% {
+    transform: rotate(0);
   }
 
   100% {
-    transform: scale(1);
-    opacity: 1;
+    transform: rotate(0);
   }
 }
 
-/* ===============================
-   ACESSIBILIDADE / HOVER
-================================ */
-.status:hover ion-icon {
-  opacity: 0.85;
+.sino-icon {
+  font-size: 20px;
+  transition: all 0.3s ease;
+  vertical-align: middle;
 }
 
+/* --- ESTADO NOVO (Sino Dourado + Animação) --- */
+.status.novo .sino-icon {
 
-/* BOTÃO DO CARD */
+  color: #000000;
+  /* Amarelo */
+}
+
+/* Classe que faz o sino tremer (adicionada pelo JS no estado 'novo') */
+.sino-icon.animado {
+  animation: bellShake 2s infinite;
+  /* Toca a cada 2 segundos */
+  transform-origin: top center;
+}
+
+/* Bolinha vermelha de notificação (Opcional) */
+.alert-dot {
+  position: absolute;
+  top: -5px;
+  right: 4%;
+  width: 13px;
+  height: 13px;
+  width: 18px;
+  height: 18px;
+  background: linear-gradient(135deg, rgb(51, 255, 0), rgb(9, 255, 0));
+  border-radius: 50%;
+  border: 3px solid #111827;
+}
+
+/* --- ESTADO LIDO (Sino Cinza Parado) --- */
+.status.lido .sino-icon {
+  color: #94a3b8;
+  animation: none;
+}
+
+/* --- DEFINIÇÃO DA ANIMAÇÃO (Keyframes) --- */
+@keyframes bellShake {
+  0% {
+    transform: rotate(0);
+  }
+
+  5% {
+    transform: rotate(20deg);
+  }
+
+  10% {
+    transform: rotate(-20deg);
+  }
+
+  15% {
+    transform: rotate(15deg);
+  }
+
+  20% {
+    transform: rotate(-15deg);
+  }
+
+  25% {
+    transform: rotate(10deg);
+  }
+
+  30% {
+    transform: rotate(-10deg);
+  }
+
+  35% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(0);
+  }
+
+  /* Pausa longa até o 100% */
+}
+
+/*fim status Estilo base do Ícone */
+
 /* BOTÕES */
 .system-button {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 9px;
+  padding: 10px 15px;
+  background: linear-gradient(135deg, #facc15, #f59e0b);
+  color: rgb(48, 48, 48);
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  position: absolute;
+  bottom: 25%;
+  left: 17px;
+  width: calc(51% - 30px);
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================
+   button de tela cheia
+========================= */
+#toggleFullscreen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 8px;
   padding: 10px 15px;
   background: linear-gradient(135deg, #facc15, #f59e0b);
@@ -3763,27 +3893,52 @@ body.no-scroll {
   cursor: pointer;
   position: absolute;
   bottom: 25%;
-  right: 49%;
-  transition: background-color 0.3s, transform 0.2s;
+  right: 6%;
+  transition: filter 0.3s, transform 0.2s;
+  z-index: 100;
 }
 
-.system-button ion-icon {
-  font-size: 18px;
+#toggleFullscreen ion-icon {
+  font-size: 1.2em;
 }
 
-/* Hover */
-.system-button:hover {
-  background-color: #1558b0;
-  transform: translateY(-2px);
+
+#toggleFullscreen:active {
+  transform: scale(0.95);
 }
 
-/* Estado lido */
-.system-button.read {
-  background-color: #4caf50;
-  /* verde */
-  color: #fff;
+/*button explorar Sites*/
+
+.Explorar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 15px;
+  background: linear-gradient(135deg, #facc15, #f59e0b);
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  position: relative;
+  bottom: -22%;
+  left: 12px;
+  width: 100%;
+  z-index: 100;
+
+  /* Animação */
+  transition: filter 0.9s, transform 0.7s;
 }
 
+/* Mantendo os efeitos de interação */
+.Explorar ion-icon {
+  font-size: 1.9em;
+  color: #000000;
+}
+
+/*fim explorar Sites*/
 
 /* =========================
    MODAL OVERLAY
@@ -4029,38 +4184,3 @@ body.no-scroll {
 }
 
 /*==========fim nenhuma mensagem do mensagem do sistema===============*/
-
-
-/*==========sistema de tela cheia===============*/
-#toggleFullscreen {
-  padding: 14px 22px;
-  border-radius: 14px;
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  bottom: 25%;
-  left: 56%;
-  width: 103px;
-  height: 39px;
-  background: linear-gradient(135deg,
-      rgb(250, 204, 21),
-      rgb(245, 158, 11));
-
-  color: #1f2937;
-  font-size: 15px;
-  font-weight: 600;
-
-  display: flex;
-  /* centraliza conteúdo */
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-#toggleFullscreen ion-icon {
-  font-size: 2.9em;
-  /* 🔽 menor, proporcional ao botão */
-  pointer-events: none;
-}
-
-/*========== fim sistema de tela cheia===============*/
