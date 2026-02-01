@@ -1,7 +1,7 @@
 {
   "name": "Classify IA",
   "short_name": "ClassifyIA",
-  "start_url": "index.html",
+  "start_url": "https://teddyws1.github.io/Classify_ia/",
   "display": "standalone",
   "background_color": "#0f172a",
   "theme_color": "#facc15",
