@@ -2643,31 +2643,32 @@ h2 {
   justify-content: center;
   gap: 8px;
   padding: 10px 15px;
-  /* Cores e Fundo */
   background: linear-gradient(135deg, #facc15, #f59e0b);
   color: rgb(48, 48, 48);
-  /* Bordas e Fonte */
   border: none;
   border-radius: 8px;
   font-size: 14px;
-  /* Posicionamento */
   cursor: pointer;
   position: absolute;
   bottom: 4%;
   right: 4%;
-
   z-index: 100;
 
   /* Animações */
   transition: filter 0.3s, transform 0.2s;
 }
 
-@media (max-width: 7000px) {
+@media (max-width: 1200px) {
   #themeToggle {
     bottom: 4%;
   }
 }
 
+@media (max-width: 2300px) {
+  #themeToggle {
+    bottom: 4%;
+  }
+}
 /* Tamanho do ícone (sol) */
 #themeToggle .theme-icon {
   font-size: 1.2em;
@@ -3965,11 +3966,10 @@ body.no-scroll {
   font-weight: 700;
   cursor: pointer;
   position: relative;
-  bottom: -22%;
   left: 12px;
   width: 100%;
   z-index: 100;
-
+height: 48px;
   /* Animação */
   transition: filter 0.9s, transform 0.7s;
 }
@@ -3995,12 +3995,94 @@ body.no-scroll {
 
 @media (max-width: 1600px) {
   .Explorar {
-    bottom: 9%;
+    bottom: -24%;
   }
 }
 
 
+@media (max-width: 9000px) {
+  .Explorar {
+    bottom: -22%;
+  }
+}
 
+/*===bloqueio de botão de Explorar======*/
+
+
+.Explorar.bloqueado {
+  background: #374151 !important;       
+  background-image: none !important;     
+  color: #9ca3af !important;            
+  border: 1px solid #4b5563 !important;  
+  cursor: not-allowed !important;       
+  
+
+  transform: none !important;
+  filter: none !important;
+  box-shadow: none !important;
+}
+
+
+.toast-aviso {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  
+  transform: translateX(-50%) translateY(-250%); 
+
+  background: rgba(15, 23, 42, 0.95);   
+  backdrop-filter: blur(12px);           
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+  min-width: 300px;
+  max-width: 90%;
+  padding: 14px 20px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  z-index: 999999; 
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.toast-aviso.mostrar {
+  transform: translateX(-50%) translateY(0);
+}
+
+
+.toast-future {
+  border: 1px solid transparent;
+  background-image: linear-gradient(#172442, #0f172a), 
+                    linear-gradient(135deg, #facc15,#f59e0b );
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+.icon-box {
+  width: 44px;
+  height: 44px;
+  background: rgba(139, 92, 246, 0.15); /* Fundo roxo transparente */
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icon-box ion-icon {
+  font-size: 24px;
+  color: #facc15; /* Roxo Neon */
+  animation: fogueteFlutuando 3s ease-in-out infinite;
+}
+.text-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-content strong {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+/*===fim bloqueio de botão de Explorar======*/
 /*fim explorar Sites*/
 
 /* =========================
@@ -4017,9 +4099,7 @@ body.no-scroll {
   z-index: 9999;
 }
 
-/* =========================
-   MODAL
-========================= */
+
 .modal {
   background: var(--bg-modal);
   color: var(--text-main);

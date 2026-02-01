@@ -1,0 +1,20 @@
+{
+  "name": "Classify IA",
+  "short_name": "ClassifyIA",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#facc15",
+  "icons": [
+    {
+      "src": "https://i.postimg.cc/26151xdM/Gemini-Generated-Image-b2m7vwb2m7vwb2m7.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://i.postimg.cc/26151xdM/Gemini-Generated-Image-b2m7vwb2m7vwb2m7.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
