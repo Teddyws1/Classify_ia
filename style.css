@@ -7,6 +7,34 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+/* ===================root geral=================*/
+:root {
+  --bg-main: #0f172a;
+  --bg-item: #1e293b;
+  --accent-sun: #facc15;
+  --accent-amber: #f59e0b;
+  --text-bright: #f8fafc;
+  --text-dim: #94a3b8;
+}
+
+:root {
+  --bg: #2a0f26;
+  --card: #111827;
+  --bg-item: #3b1e2e;
+  --bg-input: linear-gradient(180deg, #0f172a, #020617);
+  --text: #ffffff;
+  --text-bright: #b8b8b8;
+  --about-text: #000000;
+  --text-dark: #000000;
+  --accent-hover: #f59e0b;
+  --link: #ffffff;
+  --border: #1f2937;
+  --shadow: rgba(0, 0, 0, 0.45);
+  --overlay: rgba(0, 0, 0, 0.55);
+}
+
+
+
 html, body {
   touch-action: manipulation;
 }
@@ -892,8 +920,8 @@ html.light .idea-header img {
 .segui {
   color: var(--accent);
   position: absolute;
-  top: 74%;
-  left: 35%;
+  top: 84%;
+  left: 40%;
 }
 
 /* REDES */
@@ -906,7 +934,7 @@ html.light .idea-header img {
   align-items: center;
   justify-content: center;
   gap: 14px;
-  top: 81%;
+  top:93%;
   padding: 0 18px;
   border-radius: 18px;
 }
@@ -1164,7 +1192,7 @@ html.light .socials img {
   margin: 48px 0 24px;
   left: 3px;
   position: absolute;
-  top: 81%;
+  top: 48%;
 }
 
 /* Linhas laterais */
@@ -2632,99 +2660,8 @@ h2 {
 }
 
 /* button recomendação */
-/* ==================== ESTILO DO BOTÃO DE RECOMENDAÇÃO ==================== */
 
 
-
-/* ==================== BOTÃO DE ALTERNAR TEMA (VERSÃO MINIMALISTA) ==================== */
-#themeToggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 10px 15px;
-  background: linear-gradient(135deg, #facc15, #f59e0b);
-  color: rgb(48, 48, 48);
-  border: none;
-  border-radius: 8px;
-  font-size: 14px;
-  cursor: pointer;
-  position: absolute;
-  bottom: 4%;
-  right: 4%;
-  z-index: 100;
-
-  /* Animações */
-  transition: filter 0.3s, transform 0.2s;
-}
-
-@media (max-width: 1200px) {
-  #themeToggle {
-    bottom: 4%;
-  }
-}
-
-@media (max-width: 2300px) {
-  #themeToggle {
-    bottom: 4%;
-  }
-}
-/* Tamanho do ícone (sol) */
-#themeToggle .theme-icon {
-  font-size: 1.2em;
-  display: flex;
-  /* Garante alinhamento vertical */
-}
-
-/* Efeitos de Interação */
-#themeToggle:hover {
-  transform: scale(1.05);
-  filter: brightness(1.1);
-}
-
-#themeToggle:active {
-  transform: scale(0.95);
-}
-
-/* Ícone do tema */
-.theme-icon {
-  display: inline-flex;
-  font-size: 1.2rem;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-/* Hover */
-#themeToggle:hover {
-  background-color: #ffb400;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
-
-#themeToggle:hover .theme-icon {
-  transform: rotate(15deg) scale(1.2);
-}
-
-/* Clique */
-#themeToggle:active {
-  transform: scale(0.98);
-}
-
-/* Tema escuro ativado */
-body.dark-theme {
-  background-color: #111827;
-  color: #fff;
-  transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-body.dark-theme #themeToggle {
-  background-color: #1f2937;
-  color: #facc15;
-}
-
-body.dark-theme #themeToggle:hover {
-  background-color: #374151;
-}
-
-/* ==================== fim to temas) ==================== */
 /* SISTEMA DE VERÇÃO */
 /* Botão de abrir notas de atualização */
 
@@ -2769,46 +2706,14 @@ body.dark-theme #themeToggle:hover {
 }
 
 /* --- SISTEMA PARA TELAS GRANDES (1240px ou mais) --- */
-@media (min-width: 1240px) {
-  .btn-open-update-logs {
 
-    bottom: -60%;
-    left: 1%;
-
-    transform: none;
-  }
-}
-
-@media (max-width: 800px) {
-  .btn-open-update-logs {
-    width: 63%;
-    bottom: -63%;
-    left: 0;
-    margin-top: 11px;
-    position: relative;
-    padding: 10px;
-    transform: none;
-  }
-}
-
-@media (max-width: 1100px) {
-  .btn-open-update-logs {
-    width: 63%;
-    bottom: -66%;
-    left: 0;
-    margin-top: 11px;
-    position: relative;
-    padding: 10px;
-    transform: none;
-  }
-}
 
 @media (max-width: 1600px) {
   .btn-open-update-logs {
-    width: 63%;
-    bottom: -61%;
-    left: 0;
-    color: #000000;
+    width: 100%;
+    bottom: -37%;
+    left: 13px;
+    color: #a31818;
     margin-top: 11px;
     position: relative;
     padding: 10px;
@@ -3773,6 +3678,16 @@ body.no-scroll {
   transition: transform 0.2s, filter 0.2s;
 }
 
+@media (max-width: 768px) {
+  #statusBadge  {
+    padding: 8px 20px;
+    font-size: 13px;
+    bottom: 23%;
+    right: 48%;  
+  }
+}
+
+
 /* Efeito ao passar o mouse */
 #statusBadge:hover {
   transform: scale(1.05);
@@ -3919,6 +3834,16 @@ body.no-scroll {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+@media (max-width: 768px) {
+  .system-button {
+    padding: 8px 20px;
+    font-size: 13px;
+    bottom: 23%;
+    right: 5%;  
+  }
+}
+
+
 /* =========================
    button de tela cheia
 ========================= */
@@ -3939,6 +3864,15 @@ body.no-scroll {
   right: 3%;
   transition: filter 0.3s, transform 0.2s;
   z-index: 100;
+}
+
+@media (max-width: 768px) {
+  #toggleFullscreen {
+    padding: 8px 20px;
+    font-size: 13px;
+    bottom: 23%;
+    right: 5%;  
+  }
 }
 
 #toggleFullscreen ion-icon {
@@ -3969,7 +3903,7 @@ body.no-scroll {
   left: 12px;
   width: 100%;
   z-index: 100;
-height: 48px;
+  height: 48px;
   /* Animação */
   transition: filter 0.9s, transform 0.7s;
 }
@@ -4010,12 +3944,12 @@ height: 48px;
 
 
 .Explorar.bloqueado {
-  background: #374151 !important;       
-  background-image: none !important;     
-  color: #9ca3af !important;            
-  border: 1px solid #4b5563 !important;  
-  cursor: not-allowed !important;       
-  
+  background: #374151 !important;
+  background-image: none !important;
+  color: #9ca3af !important;
+  border: 1px solid #4b5563 !important;
+  cursor: not-allowed !important;
+
 
   transform: none !important;
   filter: none !important;
@@ -4027,12 +3961,12 @@ height: 48px;
   position: fixed;
   top: 20px;
   left: 50%;
-  
-  transform: translateX(-50%) translateY(-250%); 
 
-  background: rgba(15, 23, 42, 0.95);   
-  backdrop-filter: blur(12px);           
-  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+  transform: translateX(-50%) translateY(-250%);
+
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
   min-width: 300px;
   max-width: 90%;
   padding: 14px 20px;
@@ -4040,9 +3974,10 @@ height: 48px;
   display: flex;
   align-items: center;
   gap: 15px;
-  z-index: 999999; 
+  z-index: 999999;
   transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
+
 .toast-aviso.mostrar {
   transform: translateX(-50%) translateY(0);
 }
@@ -4050,15 +3985,17 @@ height: 48px;
 
 .toast-future {
   border: 1px solid transparent;
-  background-image: linear-gradient(#172442, #0f172a), 
-                    linear-gradient(135deg, #facc15,#f59e0b );
+  background-image: linear-gradient(#172442, #0f172a),
+    linear-gradient(135deg, #facc15, #f59e0b);
   background-origin: border-box;
   background-clip: padding-box, border-box;
 }
+
 .icon-box {
   width: 44px;
   height: 44px;
-  background: rgba(139, 92, 246, 0.15); /* Fundo roxo transparente */
+  background: rgba(139, 92, 246, 0.15);
+  /* Fundo roxo transparente */
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -4068,9 +4005,11 @@ height: 48px;
 
 .icon-box ion-icon {
   font-size: 24px;
-  color: #facc15; /* Roxo Neon */
+  color: #facc15;
+  /* Roxo Neon */
   animation: fogueteFlutuando 3s ease-in-out infinite;
 }
+
 .text-content {
   display: flex;
   flex-direction: column;
@@ -4082,6 +4021,7 @@ height: 48px;
   font-weight: 700;
   margin-bottom: 2px;
 }
+
 /*===fim bloqueio de botão de Explorar======*/
 /*fim explorar Sites*/
 

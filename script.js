@@ -420,36 +420,7 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") unlockScroll();
 });
 
-//tema claro e escuro
-// Botão de alternar tema
-const themeToggle = document.getElementById("themeToggle");
 
-// Função alternar tema
-function toggleTheme() {
-  document.documentElement.classList.toggle("light");
-
-  // Salva escolha no localStorage
-  if (document.documentElement.classList.contains("light")) {
-    localStorage.setItem("theme", "light");
-  } else {
-    localStorage.setItem("theme", "dark");
-  }
-}
-
-// Carrega tema salvo no carregamento da página
-window.addEventListener("DOMContentLoaded", () => {
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "light") {
-    document.documentElement.classList.add("light");
-  } else {
-    document.documentElement.classList.remove("light");
-  }
-});
-
-// Evento do botão
-themeToggle.addEventListener("click", toggleTheme);
-
-//fim di tema claro e escuro
 
 // Adição de novos sites
 const DAYS_NEW = 6; // quantos dias o item fica como NOVO
@@ -702,67 +673,6 @@ slider.addEventListener("touchmove", (e) => {
 });
 
 //fim div  de categoria tags
-// animação tema claro/escuro
-// Seleciona o elemento do ícone
-const themeIcon = themeToggle.querySelector(".theme-icon");
-
-// Função principal de alternância
-function toggleTheme() {
-  document.documentElement.classList.toggle("light");
-
-  // Salva escolha e atualiza ícone
-  if (document.documentElement.classList.contains("light")) {
-    localStorage.setItem("theme", "light");
-    animateIcon("☀️");
-  } else {
-    localStorage.setItem("theme", "dark");
-    animateIcon("🌙");
-  }
-}
-
-// Inicializa tema salvo
-window.addEventListener("DOMContentLoaded", () => {
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "light") {
-    document.documentElement.classList.add("light");
-    themeIcon.textContent = "☀️";
-  } else {
-    document.documentElement.classList.remove("light");
-    themeIcon.textContent = "🌙";
-  }
-});
-
-// Animação do ícone
-function animateIcon(newIcon) {
-  themeIcon.style.transition = "none"; // Reseta para nova animação
-  themeIcon.style.transform = "translateY(-20px) rotate(-180deg) scale(0.5)";
-  themeIcon.style.opacity = "0";
-
-  setTimeout(() => {
-    themeIcon.textContent = newIcon;
-    themeIcon.style.transition = "transform 0.5s ease, opacity 0.5s ease";
-    themeIcon.style.transform = "translateY(0) rotate(0deg) scale(1)";
-    themeIcon.style.opacity = "1";
-  }, 200);
-}
-
-// =====================================================
-// NOVO: SISTEMA DE ATALHO (Ctrl + Shift + Seta Baixo)
-// =====================================================
-window.addEventListener("keydown", (event) => {
-  // Verifica se CTRL + SHIFT + ARROW DOWN foram pressionados
-  if (event.ctrlKey && event.shiftKey && event.key === "ArrowDown") {
-    // Impede o comportamento padrão (ex: scroll da página)
-    event.preventDefault();
-    toggleTheme();
-  }
-});
-
-// Evento do botão
-themeToggle.addEventListener("click", toggleTheme);
-
-//fim animação tema claro/escuro
-
 document.addEventListener("DOMContentLoaded", () => {
   const statusBadge = document.getElementById("statusBadge");
   const openModalBtn = document.getElementById("openModal");
