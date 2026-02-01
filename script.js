@@ -530,39 +530,7 @@ self.addEventListener('install', (e) => {
 self.addEventListener('fetch', (e) => {
   // Necessário para o PWA ser detectado
 });
-let instaladorPWA;
-const btnInstalar = document.getElementById('btnInstalar');
 
-// 1. Registra o Service Worker
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js');
-}
-
-// 2. Captura o evento de instalação do navegador
-window.addEventListener('beforeinstallprompt', (e) => {
-  // Impede o navegador de mostrar a barra padrão chata
-  e.preventDefault();
-  // Guarda o evento para usar depois
-  instaladorPWA = e;
-  // Mostra o seu botão customizado
-  btnInstalar.style.display = 'flex';
-});
-
-// 3. Quando o usuário clica no SEU botão
-btnInstalar.addEventListener('click', () => {
-  if (instaladorPWA) {
-    // Mostra o prompt oficial de instalação
-    instaladorPWA.prompt();
-    
-    // Verifica se o usuário aceitou ou recusou
-    instaladorPWA.userChoice.then((choice) => {
-      if (choice.outcome === 'accepted') {
-        console.log('Usuário instalou o App!');
-        btnInstalar.style.display = 'none';
-      }
-    });
-  }
-});
 //fim sistema de instalar web
 ///card altas
 // #1. Lógica de Troca de Abas
