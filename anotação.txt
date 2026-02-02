@@ -36,16 +36,3 @@ const distinctLogs = [
 
 
    //===================///
-
-//botão de exeplorar
-
-
- <button
-        class="Explorar"
-        onclick="window.location.href = 'site_aleatorios/sitealeatio.html'"
-      >
-        <ion-icon name="compass-outline"></ion-icon>
-        explorar Site
-      </button>
-
-      //===================///

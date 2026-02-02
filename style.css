@@ -2757,26 +2757,26 @@ h2 {
 /* Botão de abrir notas de atualização */
 
 .btn-open-update-logs {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 11px 15px;
-  background: linear-gradient(135deg, #facc15, #f59e0b);
-  color: rgb(48, 48, 48);
-  border: none;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  position: absolute;
-  transition: filter 0.3s, transform 0.2s;
-  bottom: -60%;
-  width: 79%;
-  position: relative;
-  z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 15px;
+    background: linear-gradient(135deg, #facc15, #f59e0b);
+    color: rgb(48, 48, 48);
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    position: absolute;
+    transition: filter 0.3s, transform 0.2s;
+    bottom: -36%;
+    width: 99%;
+    position: relative;
+    z-index: 100;
+    left: 5%;
 }
-
 .btn-open-update-logs ion-icon {
   font-size: 1.2em;
 }
@@ -2795,23 +2795,6 @@ h2 {
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(250, 204, 21, 0.3);
 }
-
-/* --- SISTEMA PARA TELAS GRANDES (1240px ou mais) --- */
-
-
-@media (max-width: 1600px) {
-  .btn-open-update-logs {
-    width: 100%;
-    bottom: -37%;
-    left: 13px;
-    color: #000000;
-    margin-top: 11px;
-    position: relative;
-    padding: 10px;
-    transform: none;
-  }
-}
-
 
 /* Container de Scroll */
 .update-items-wrapper {
@@ -3836,17 +3819,14 @@ body.no-scroll {
 /* Classe que faz o sino tremer (adicionada pelo JS no estado 'novo') */
 .sino-icon.animado {
   animation: bellShake 2s infinite;
-  /* Toca a cada 2 segundos */
   transform-origin: top center;
 }
 
 /* Bolinha vermelha de notificação (Opcional) */
 .alert-dot {
   position: absolute;
-  top: -5px;
-  right: 4%;
-  width: 13px;
-  height: 13px;
+  top: -1px;
+  right: 9px;
   width: 18px;
   height: 18px;
   background: linear-gradient(135deg, rgb(51, 255, 0), rgb(9, 255, 0));
@@ -3918,22 +3898,12 @@ body.no-scroll {
   font-weight: 700;
   cursor: pointer;
   position: absolute;
-  bottom: 25%;
+  bottom: 22%;
   left: 17px;
   width: calc(51% - 30px);
   transition: background-color 0.3s, transform 0.2s;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
-
-@media (max-width: 768px) {
-  .system-button {
-    padding: 8px 20px;
-    font-size: 13px;
-    bottom: 23%;
-    right: 5%;  
-  }
-}
-
 
 /* =========================
    button de tela cheia
@@ -3942,7 +3912,6 @@ body.no-scroll {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
   padding: 10px 26px;
   background: linear-gradient(135deg, #facc15, #f59e0b);
   color: rgb(48, 48, 48);
@@ -3951,19 +3920,10 @@ body.no-scroll {
   font-size: 14px;
   cursor: pointer;
   position: absolute;
-  bottom: 25%;
+  bottom: 22%;
   right: 3%;
   transition: filter 0.3s, transform 0.2s;
   z-index: 100;
-}
-
-@media (max-width: 768px) {
-  #toggleFullscreen {
-    padding: 8px 20px;
-    font-size: 13px;
-    bottom: 23%;
-    right: 5%;  
-  }
 }
 
 #toggleFullscreen ion-icon {
@@ -3982,6 +3942,7 @@ body.no-scroll {
   align-items: center;
   justify-content: center;
   gap: 8px;
+  bottom: -19%;
   padding: 11px 15px;
   background: linear-gradient(135deg, #facc15, #f59e0b);
   color: rgb(0, 0, 0);
@@ -3995,7 +3956,7 @@ body.no-scroll {
   width: 100%;
   z-index: 100;
   height: 48px;
-  /* Animação */
+
   transition: filter 0.9s, transform 0.7s;
 }
 
@@ -4005,116 +3966,6 @@ body.no-scroll {
   color: #000000;
 }
 
-/*=====telas adptação====*/
-@media (max-width: 568px) {
-  .Explorar {
-    bottom: 15%;
-  }
-}
-
-@media (max-width: 500px) {
-  .Explorar {
-    bottom: 9%;
-  }
-}
-
-@media (max-width: 1600px) {
-  .Explorar {
-    bottom: -24%;
-  }
-}
-
-
-@media (max-width: 9000px) {
-  .Explorar {
-    bottom: -22%;
-  }
-}
-
-/*===bloqueio de botão de Explorar======*/
-
-
-.Explorar.bloqueado {
-  background: #374151 !important;
-  background-image: none !important;
-  color: #9ca3af !important;
-  border: 1px solid #4b5563 !important;
-  cursor: not-allowed !important;
-
-
-  transform: none !important;
-  filter: none !important;
-  box-shadow: none !important;
-}
-
-
-.toast-aviso {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-
-  transform: translateX(-50%) translateY(-250%);
-
-  background: rgba(15, 23, 42, 0.95);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-  min-width: 300px;
-  max-width: 90%;
-  padding: 14px 20px;
-  border-radius: 18px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  z-index: 999999;
-  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.toast-aviso.mostrar {
-  transform: translateX(-50%) translateY(0);
-}
-
-
-.toast-future {
-  border: 1px solid transparent;
-  background-image: linear-gradient(#172442, #0f172a),
-    linear-gradient(135deg, #facc15, #f59e0b);
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
-}
-
-.icon-box {
-  width: 44px;
-  height: 44px;
-  background: rgba(139, 92, 246, 0.15);
-  /* Fundo roxo transparente */
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.icon-box ion-icon {
-  font-size: 24px;
-  color: #facc15;
-  /* Roxo Neon */
-  animation: fogueteFlutuando 3s ease-in-out infinite;
-}
-
-.text-content {
-  display: flex;
-  flex-direction: column;
-}
-
-.text-content strong {
-  color: #fff;
-  font-size: 14px;
-  font-weight: 700;
-  margin-bottom: 2px;
-}
-
-/*===fim bloqueio de botão de Explorar======*/
-/*fim explorar Sites*/
 
 /* =========================
    MODAL OVERLAY
