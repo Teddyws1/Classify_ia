@@ -233,97 +233,123 @@ window.addEventListener("load", validarEncaixeCards);
 window.addEventListener("resize", validarEncaixeCards);
 //=========================fim sistema de span de adpitação=========================//
 
-//bloqueia button de compartilha
+//button de compartilha
 
-/* =====================================================
-   SISTEMA DE COMPARTILHAMENTO AUTOMÁTICO
-===================================================== */
 (() => {
   let activeOverlayLi = null;
 
-  // Funções de ação
-  const actions = {
-    copy: (url) => {
-      navigator.clipboard.writeText(url);
-      // Opcional: toast de confirmação aqui
-    },
-    whats: (url) => {
-      window.open(
-        `https://api.whatsapp.com/send?text=${encodeURIComponent(url)}`,
-        "_blank",
-      );
-    },
-    x: (url) => {
-      window.open(
-        `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}`,
-        "_blank",
-      );
-    },
-    face: (url) => {
-      window.open(
-        `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
-        "_blank",
-      );
-    },
+  // Sistema de Toasts (Mensagens flutuantes)
+  const showToast = (msg) => {
+    let toast = document.querySelector(".toast-container");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.className = "toast-container";
+      document.body.appendChild(toast);
+    }
+    toast.innerHTML = `<ion-icon name="information-circle-outline"></ion-icon> ${msg}`;
+    toast.classList.add("show");
+    setTimeout(() => toast.classList.remove("show"), 2500);
   };
 
-  // Aplica a lógica em cada item da lista (li)
+  // Ações das Redes Sociais
+  const actions = {
+    copy: (url) => { navigator.clipboard.writeText(url); showToast("Link Copiado!"); },
+    whats: (url) => window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(url)}`, "_blank"),
+    insta: () => window.open(`https://www.instagram.com/`, "_blank"),
+    tiktok: () => window.open(`https://www.tiktok.com/`, "_blank"),
+    x: (url) => window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}`, "_blank"),
+    face: (url) => window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, "_blank")
+  };
+
   document.querySelectorAll(".card ul li").forEach((li) => {
     const linkElement = li.querySelector("a");
     if (!linkElement) return;
+    const url = linkElement.href;
 
-    const url = linkElement.href; // Captura a URL exata do link atual
-
-    // 1. Cria o botão de abrir (✚) fixo na direita
+    // Criar Botão Share
     const shareBtn = document.createElement("button");
     shareBtn.className = "share-btn";
     shareBtn.innerHTML = `<ion-icon name="share-social-outline"></ion-icon>`;
     li.appendChild(shareBtn);
 
-    // 2. Cria o overlay lateral (o painel amarelo)
+    // Criar Overlay
     const overlay = document.createElement("div");
     overlay.className = "side-overlay";
     overlay.innerHTML = `
-      <div class="social-links">
-        <button data-action="copy" title="Copiar Link"><ion-icon name="copy-outline"></ion-icon></button>
-        <button data-action="whats" title="WhatsApp"><ion-icon name="logo-whatsapp"></ion-icon></button>
-        <button data-action="x" title="X"><ion-icon name="logo-twitter"></ion-icon></button>
-        <button data-action="face" title="Facebook"><ion-icon name="logo-facebook"></ion-icon></button>
-        
+      <div class="social-scroll-wrapper">
+        <button data-action="copy" class="action-btn"><ion-icon name="copy-outline"></ion-icon></button>
+        <button data-action="whats" class="action-btn"><ion-icon name="logo-whatsapp"></ion-icon></button>
+        <button data-action="insta" class="action-btn"><ion-icon name="logo-instagram"></ion-icon></button>
+        <button data-action="tiktok" class="action-btn"><ion-icon name="logo-tiktok"></ion-icon></button>
+        <button data-action="x" class="action-btn"><ion-icon name="logo-twitter"></ion-icon></button>
+        <button data-action="face" class="action-btn"><ion-icon name="logo-facebook"></ion-icon></button>
       </div>
       <button class="btn-close-overlay"><ion-icon name="close-outline"></ion-icon></button>
     `;
     li.appendChild(overlay);
 
-    // --- EVENTOS ---
+    const slider = overlay.querySelector('.social-scroll-wrapper');
+    let isDown = false, startX, scrollLeft, isDragging = false;
 
-    // Abrir o painel
-    shareBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      if (activeOverlayLi && activeOverlayLi !== li) {
-        activeOverlayLi.classList.remove("overlay-open");
-      }
-      li.classList.toggle("overlay-open");
-      activeOverlayLi = li.classList.contains("overlay-open") ? li : null;
+    // Lógica de Arrastar (Drag to Scroll)
+    slider.addEventListener('mousedown', (e) => {
+      isDown = true;
+      isDragging = false;
+      slider.classList.add('active');
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
     });
 
-    //até aqui
-    // fecha ao clicar fora
-    document.addEventListener("click", () => {
-      if (activeMiniCard) {
-        activeMiniCard.remove();
-        activeMiniCard = null;
-      }
+    slider.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      isDragging = true;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 2;
+      slider.scrollLeft = scrollLeft - walk;
     });
 
-    // Delegar cliques nos botões sociais dentro do overlay
+    const stopDragging = () => {
+      isDown = false;
+      slider.classList.remove('active');
+    };
+    slider.addEventListener('mouseup', stopDragging);
+    slider.addEventListener('mouseleave', stopDragging);
+
+    // Scroll com a rodinha
+    slider.addEventListener('wheel', (e) => {
+      if (e.deltaY !== 0) {
+        e.preventDefault();
+        slider.scrollLeft += e.deltaY;
+      }
+    }, { passive: false });
+
+    // Evento de Clique e Confirmação
     overlay.addEventListener("click", (e) => {
       e.stopPropagation();
+      if (isDragging) return; // Não clica se estiver arrastando
 
-      const btn = e.target.closest("button[data-action]");
+      const btn = e.target.closest(".action-btn");
       if (btn) {
-        const action = btn.dataset.action;
-        actions[action](url); // Passa a URL capturada lá no início
+        if (btn.classList.contains("confirming")) {
+          actions[btn.dataset.action](url);
+          btn.classList.remove("confirming");
+          btn.innerHTML = btn.dataset.oldHtml;
+        } else {
+          overlay.querySelectorAll(".action-btn").forEach(b => {
+            if(b.dataset.oldHtml) b.innerHTML = b.dataset.oldHtml;
+            b.classList.remove("confirming");
+          });
+          btn.dataset.oldHtml = btn.innerHTML;
+          btn.classList.add("confirming");
+          btn.innerHTML = `<span>CERTO?</span>`;
+          setTimeout(() => {
+            if (btn.classList.contains("confirming")) {
+              btn.classList.remove("confirming");
+              btn.innerHTML = btn.dataset.oldHtml;
+            }
+          }, 3000);
+        }
       }
 
       if (e.target.closest(".btn-close-overlay")) {
@@ -331,9 +357,15 @@ window.addEventListener("resize", validarEncaixeCards);
         activeOverlayLi = null;
       }
     });
+
+    shareBtn.addEventListener("click", (e) => {
+      e.preventDefault(); e.stopPropagation();
+      if (activeOverlayLi && activeOverlayLi !== li) activeOverlayLi.classList.remove("overlay-open");
+      li.classList.toggle("overlay-open");
+      activeOverlayLi = li.classList.contains("overlay-open") ? li : null;
+    });
   });
 
-  // Fechar ao clicar fora
   document.addEventListener("click", () => {
     if (activeOverlayLi) {
       activeOverlayLi.classList.remove("overlay-open");
@@ -342,7 +374,7 @@ window.addEventListener("resize", validarEncaixeCards);
   });
 })();
 
-//fim bloqueia button de compartilha
+// button de compartilha
 
 // Fecha menus
 function removeMenus() {
@@ -420,8 +452,6 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") unlockScroll();
 });
 
-
-
 // Adição de novos sites
 const DAYS_NEW = 6; // quantos dias o item fica como NOVO
 
@@ -494,11 +524,11 @@ document.addEventListener("DOMContentLoaded", () => {
 //sistema de instalar web
 
 // sw.js - Service Worker Simples
-self.addEventListener('install', (e) => {
-  console.log('Service Worker Instalado');
+self.addEventListener("install", (e) => {
+  console.log("Service Worker Instalado");
 });
 
-self.addEventListener('fetch', (e) => {
+self.addEventListener("fetch", (e) => {
   // Necessário para o PWA ser detectado
 });
 
@@ -754,36 +784,45 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 //fim nova mensagem
-//img tops ia em 8k 4k
+const initImages = () => {
+  const images = document.querySelectorAll("img");
 
-document.addEventListener("DOMContentLoaded", () => {
-  const imagensIA = document.querySelectorAll(".lista-ia img");
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
 
-  imagensIA.forEach((img) => {
-    // Pegamos o domínio que você já tem no HTML
-    const urlAtual = img.src;
-    const match = urlAtual.match(/domain=([^&]+)/);
+          if (img.dataset.src) {
+            img.src = img.dataset.src;
+          }
 
-    if (match && match[1]) {
-      const dominio = match[1];
+          if (img.complete) {
+            img.classList.add("loaded");
+          } else {
+            img.onload = () => img.classList.add("loaded");
+          }
 
-      // Usamos uma API que fornece logos em alta resolução (256px ou mais)
-      // Isso garante que em 4K a imagem tenha informação de sobra
-      img.src = `https://img.logo.dev/${dominio}?token=pk_YOUR_TOKEN&size=256`;
+          obs.unobserve(img);
+        }
+      });
+    },
+    { rootMargin: "50px" },
+  );
 
-      // Se a API falhar, usamos o Google em tamanho máximo (128 é o limite deles)
-      img.onerror = function () {
-        this.src = `https://www.google.com/s2/favicons?domain=${dominio}&sz=128`;
-
-        // Se ainda assim der erro, criamos um ícone vetorial liso
-        this.onerror = function () {
-          this.src = `https://ui-avatars.com/api/?name=${dominio}&size=256&background=facc15&color=161618&bold=true&rounded=true`;
-        };
-      };
+  images.forEach((img) => {
+    if (!img.getAttribute("loading")) {
+      img.setAttribute("loading", "lazy");
     }
+    observer.observe(img);
   });
-});
+};
 
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initImages);
+} else {
+  initImages();
+}
 //fim img tops ia em 8k 4k
 //img lis
 
@@ -1195,111 +1234,119 @@ document.addEventListener("DOMContentLoaded", () => {
 ///*=== bloqueio de botão de Explorar======*/
 
 document.addEventListener("DOMContentLoaded", () => {
-    
-    // 1. PEGAR OS ELEMENTOS DO HTML
-    // Certifique-se que seu botão tem id="btn-explorar" 
-    // e a mensagem tem id="aviso-bloqueio"
-    const btnExplorar = document.getElementById('btn-explorar');
-    const avisoToast = document.getElementById('aviso-bloqueio');
+  // 1. PEGAR OS ELEMENTOS DO HTML
+  // Certifique-se que seu botão tem id="btn-explorar"
+  // e a mensagem tem id="aviso-bloqueio"
+  const btnExplorar = document.getElementById("btn-explorar");
+  const avisoToast = document.getElementById("aviso-bloqueio");
 
-    // Segurança: Se não achar os itens, não faz nada (evita erro)
-    if (!btnExplorar || !avisoToast) return;
+  // Segurança: Se não achar os itens, não faz nada (evita erro)
+  if (!btnExplorar || !avisoToast) return;
 
-    // 2. O EVENTO DE CLIQUE
-    btnExplorar.addEventListener('click', (event) => {
-        
-        // A. Impede de ir para o site (Bloqueia o link)
-        event.preventDefault();
+  // 2. O EVENTO DE CLIQUE
+  btnExplorar.addEventListener("click", (event) => {
+    // A. Impede de ir para o site (Bloqueia o link)
+    event.preventDefault();
 
-        // B. Adiciona a classe que faz a mensagem aparecer (do CSS)
-        avisoToast.classList.add('mostrar');
+    // B. Adiciona a classe que faz a mensagem aparecer (do CSS)
+    avisoToast.classList.add("mostrar");
 
-        // C. (Opcional) Faz o celular vibrar levemente
-        if (navigator.vibrate) navigator.vibrate(50);
+    // C. (Opcional) Faz o celular vibrar levemente
+    if (navigator.vibrate) navigator.vibrate(50);
 
-        // D. Remove a mensagem depois de 3 segundos
-        // Limpa qualquer timer anterior para não piscar
-        clearTimeout(window.timerToast);
-        window.timerToast = setTimeout(() => {
-            avisoToast.classList.remove('mostrar');
-        }, 3000);
-    });
-
+    // D. Remove a mensagem depois de 3 segundos
+    // Limpa qualquer timer anterior para não piscar
+    clearTimeout(window.timerToast);
+    window.timerToast = setTimeout(() => {
+      avisoToast.classList.remove("mostrar");
+    }, 3000);
+  });
 });
 //fouqente
 
-
 document.addEventListener("DOMContentLoaded", () => {
-    const btn = document.getElementById('btn-explorar');
-    const aviso = document.getElementById('aviso-bloqueio');
+  const btn = document.getElementById("btn-explorar");
+  const aviso = document.getElementById("aviso-bloqueio");
 
-    if (!btn || !aviso) {
-        console.error("❌ ERRO: Botão ou Aviso não encontrados no HTML!");
-        return;
+  if (!btn || !aviso) {
+    console.error("❌ ERRO: Botão ou Aviso não encontrados no HTML!");
+    return;
+  }
+
+  btn.addEventListener("click", (e) => {
+    console.log("🖱️ Clique detectado!");
+
+    if (btn.classList.contains("bloqueado")) {
+      e.preventDefault();
+      console.log("🔒 Botão bloqueado. Iniciando decolagem...");
+
+      // 1. Mostrar a mensagem
+      aviso.classList.add("mostrar");
+
+      // 2. Executar a decolagem
+      decolarFogueteRealista();
+
+      // Esconder aviso após 3s
+      setTimeout(() => {
+        aviso.classList.remove("mostrar");
+      }, 3000);
+    }
+  });
+
+  function decolarFogueteRealista() {
+    // Pega o ícone dentro do aviso
+    const iconeOriginal = aviso.querySelector("ion-icon");
+    if (!iconeOriginal) {
+      console.error("❌ Ícone não encontrado dentro do aviso!");
+      return;
     }
 
-    btn.addEventListener('click', (e) => {
-        console.log("🖱️ Clique detectado!");
+    const rect = iconeOriginal.getBoundingClientRect();
 
-        if (btn.classList.contains('bloqueado')) {
-            e.preventDefault();
-            console.log("🔒 Botão bloqueado. Iniciando decolagem...");
+    // Criar o clone
+    const foguete = iconeOriginal.cloneNode(true);
 
-            // 1. Mostrar a mensagem
-            aviso.classList.add('mostrar');
-
-            // 2. Executar a decolagem
-            decolarFogueteRealista();
-
-            // Esconder aviso após 3s
-            setTimeout(() => { aviso.classList.remove('mostrar'); }, 3000);
-        }
+    // Estilo para garantir que saia de qualquer DIV e vá para o BODY
+    Object.assign(foguete.style, {
+      position: "fixed",
+      left: rect.left + "px",
+      top: rect.top + "px",
+      width: rect.width + "px",
+      height: rect.height + "px",
+      zIndex: "10000000", // Altíssimo para ficar na frente de tudo
+      color: "#c084fc",
+      pointerEvents: "none",
+      filter: "drop-shadow(0 0 15px #a855f7)",
     });
 
-    function decolarFogueteRealista() {
-        // Pega o ícone dentro do aviso
-        const iconeOriginal = aviso.querySelector('ion-icon');
-        if (!iconeOriginal) {
-            console.error("❌ Ícone não encontrado dentro do aviso!");
-            return;
-        }
+    document.body.appendChild(foguete);
+    console.log("🚀 Foguete lançado ao body!");
 
-        const rect = iconeOriginal.getBoundingClientRect();
+    // Animação de saída épica
+    const voo = foguete.animate(
+      [
+        { transform: "translate(0, 0) rotate(0deg) scale(1)", opacity: 1 },
+        {
+          transform: "translate(150px, -200px) rotate(20deg) scale(1.5)",
+          opacity: 1,
+          offset: 0.4,
+        },
+        {
+          transform: "translate(600px, -1200px) rotate(45deg) scale(0.5)",
+          opacity: 0,
+        },
+      ],
+      {
+        duration: 2000,
+        easing: "ease-in",
+      },
+    );
 
-        // Criar o clone
-        const foguete = iconeOriginal.cloneNode(true);
-        
-        // Estilo para garantir que saia de qualquer DIV e vá para o BODY
-        Object.assign(foguete.style, {
-            position: 'fixed',
-            left: rect.left + 'px',
-            top: rect.top + 'px',
-            width: rect.width + 'px',
-            height: rect.height + 'px',
-            zIndex: '10000000', // Altíssimo para ficar na frente de tudo
-            color: '#c084fc',
-            pointerEvents: 'none',
-            filter: 'drop-shadow(0 0 15px #a855f7)'
-        });
-
-        document.body.appendChild(foguete);
-        console.log("🚀 Foguete lançado ao body!");
-
-        // Animação de saída épica
-        const voo = foguete.animate([
-            { transform: 'translate(0, 0) rotate(0deg) scale(1)', opacity: 1 },
-            { transform: 'translate(150px, -200px) rotate(20deg) scale(1.5)', opacity: 1, offset: 0.4 },
-            { transform: 'translate(600px, -1200px) rotate(45deg) scale(0.5)', opacity: 0 }
-        ], {
-            duration: 2000,
-            easing: 'ease-in'
-        });
-
-        voo.onfinish = () => {
-            console.log("✨ Voo concluído, removendo clone.");
-            foguete.remove();
-        };
-    }
+    voo.onfinish = () => {
+      console.log("✨ Voo concluído, removendo clone.");
+      foguete.remove();
+    };
+  }
 });
 
 /*===fim bloqueio de botão de Explorar======*/

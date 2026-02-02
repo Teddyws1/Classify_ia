@@ -2,11 +2,6 @@
    CONFIGURAÇÃO DE DADOS (DATABASE)
    ========================================================================== */
 const updateLogs = [
- {
-    type: "FIX",
-    text: "Melhorias nos botões e na interface, tornando o sistema responsivo para todos os tipos de tela.",
-    color: "#ef4444", 
-  },
   {
     type: "FIX",
     text: "Correção de erros",
@@ -14,7 +9,12 @@ const updateLogs = [
   },
    {
     type: "NEW",
-    text: "Novo ícone que mostra nova mensagem",
+    text: "agora sistema que abre imagem rapidas e com animação",
+    color: "#22c55e", 
+  },
+  {
+    type: "NEW",
+    text: "mais dois novo icones de compartilha instagram,tiktok",
     color: "#22c55e", 
   },
     {
@@ -23,11 +23,6 @@ const updateLogs = [
     color: "#22c55e", 
   },
 
-  {
-    type: "UI",
-    text: "Melhorias nos botões",
-    color: "#22c530",
-  },
 ];
 
 /* ==========================================================================
