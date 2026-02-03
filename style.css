@@ -3761,7 +3761,15 @@ body.no-scroll {
   }
 }
 
-
+@media (max-width: 2600px) {
+  #statusBadge  {
+    position: absolute;
+    padding: 8px 20px;
+    font-size: 13px;
+    bottom: 23%;
+    right: 48%;  
+  }
+}
 /* Efeito ao passar o mouse */
 #statusBadge:hover {
   transform: scale(1.05);
