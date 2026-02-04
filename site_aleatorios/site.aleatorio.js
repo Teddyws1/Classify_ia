@@ -1,62 +1,3 @@
-/* =========================================
-   1. BANCO DE DADOS (CONFIGURAÇÃO)
-   ========================================= */
-
-// Cards Principais (Separados por Aba)
-const mainCardsData = [
-  //site aqui a baixo
-    {
-    id: "chatgpt",
-    category: "melhores",
-    name: "ChatGPT",
-    desc: "O modelo de linguagem mais popular do mundo para conversas e códigos.",
-    url: "https://chat.openai.com",
-    img: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg",
-  },
-  {
-    id: "chatgpt",
-    category: "editar",
-    name: "ChatGPT",
-    desc: "O modelo de linguagem mais popular do mundo para conversas e códigos.",
-    url: "https://chat.openai.com",
-    img: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg",
-  },
-];
-
-// Dados dos Sites Aleatórios (Modal Explorar)
-const randomSitesData = [
-  {
-    name: "Neal.fun",
-    desc: "Experiências web interativas.",
-    url: "https://neal.fun",
-    img: "https://neal.fun/share-cards/deep-sea.png",
-  },
-  {
-    name: "Radio Garden",
-    desc: "Rádios do mundo todo.",
-    url: "http://radio.garden",
-    img: "https://cdn.prod.website-files.com/5f1a9d0097de60285a732292/624c90539f99763750050e04_Radio-Garden.jpg",
-  },
-  {
-    name: "A Soft Murmur",
-    desc: "Sons ambientes.",
-    url: "https://asoftmurmur.com",
-    img: "https://asoftmurmur.com/assets/img/social_share.png",
-  },
-  {
-    name: "Quick Draw",
-    desc: "IA adivinha desenhos.",
-    url: "https://quickdraw.withgoogle.com",
-    img: "https://www.google.com/favicon.ico",
-  },
-  {
-    name: "Drive & Listen",
-    desc: "Dirija por cidades.",
-    url: "https://driveandlisten.herokuapp.com/",
-    img: "https://cdn.lucidpic.com/cdn-cgi/image/w=600,format=auto,metadata=none/609a5658e3906.png",
-  },
-];
-
 // Dados das Atualizações
 const updatesData = [
   {
@@ -281,60 +222,84 @@ function showToast(msg) {
   setTimeout(() => toast.classList.remove("show"), 3000);
 }
 
-//button de volta 
+//button de volta
 function goBack() {
   // Tenta voltar no histórico do navegador
   window.history.back();
-  
-  // Opcional: Se não houver histórico (ex: abriu em nova aba), redireciona para a home
-   setTimeout(() => { window.location.href = "index.html"; }, 500);
-}
 
+  // Opcional: Se não houver histórico (ex: abriu em nova aba), redireciona para a home
+  setTimeout(() => {
+    window.location.href = "index.html";
+  }, 500);
+}
 
 //sisteam de bloqueio de zoom
 document.addEventListener("DOMContentLoaded", () => {
-  
   // 1. INJEÇÃO DA META TAG (Essencial para Celular)
   // Isso força o navegador a não permitir escala manual
   let meta = document.querySelector('meta[name="viewport"]');
   if (!meta) {
-    meta = document.createElement('meta');
-    meta.name = 'viewport';
+    meta = document.createElement("meta");
+    meta.name = "viewport";
     document.head.appendChild(meta);
   }
-  meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+  meta.content =
+    "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no";
 
   // 2. BLOQUEIA ATALHOS DE TECLADO (Ctrl + / Ctrl -)
-  document.addEventListener('keydown', function(event) {
-    if ((event.ctrlKey || event.metaKey) && 
-       (event.key === '+' || event.key === '-' || event.key === '=' || event.key === '0')) {
+  document.addEventListener("keydown", function (event) {
+    if (
+      (event.ctrlKey || event.metaKey) &&
+      (event.key === "+" ||
+        event.key === "-" ||
+        event.key === "=" ||
+        event.key === "0")
+    ) {
       event.preventDefault();
     }
   });
 
   // 3. BLOQUEIA O SCROLL DO MOUSE COM CTRL (Roda do mouse)
-  document.addEventListener('wheel', function(event) {
-    if (event.ctrlKey) {
-      event.preventDefault();
-    }
-  }, { passive: false }); // 'passive: false' é obrigatório para bloquear o scroll
+  document.addEventListener(
+    "wheel",
+    function (event) {
+      if (event.ctrlKey) {
+        event.preventDefault();
+      }
+    },
+    { passive: false },
+  ); // 'passive: false' é obrigatório para bloquear o scroll
 
   // 4. BLOQUEIA PINÇA E GESTOS NO TRACKPAD/MOBILE (Safari/iOS)
-  document.addEventListener('gesturestart', function(e) {
+  document.addEventListener("gesturestart", function (e) {
     e.preventDefault();
   });
-  
+
   // Bloqueia duplo toque para zoom em alguns Androids antigos
   let lastTouchEnd = 0;
-  document.addEventListener('touchend', function (event) {
-    const now = (new Date()).getTime();
-    if (now - lastTouchEnd <= 300) {
-      event.preventDefault();
-    }
-    lastTouchEnd = now;
-  }, false);
-
+  document.addEventListener(
+    "touchend",
+    function (event) {
+      const now = new Date().getTime();
+      if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+      }
+      lastTouchEnd = now;
+    },
+    false,
+  );
 });
 
-//scroll categoria
+document.addEventListener("keydown", function (e) {
+    if (e.ctrlKey && e.shiftKey && e.key === "ArrowUp") {
+      e.preventDefault();
 
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {
+          console.error("Erro ao entrar em tela cheia:", err);
+        });
+      } else {
+        document.exitFullscreen();
+      }
+    }
+  });

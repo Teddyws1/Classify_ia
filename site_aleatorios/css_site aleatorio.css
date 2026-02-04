@@ -157,7 +157,76 @@ body.light-mode .search-box input {
   background: #fff;
   padding: 2px;
 }
+/* Sua imagem original */
+.card-header img {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: #fff;
+  padding: 2px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
 
+.card-header img:hover {
+  transform: scale(1.1); /* Efeito de zoom leve ao passar o mouse */
+}
+
+/* Estilo do Modal (Fundo) */
+.modal {
+  display: none; /* Escondido por padrão */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Fundo escuro semi-transparente */
+  backdrop-filter: blur(5px); /* Desfoca o fundo da página */
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Conteúdo do Modal */
+.modal-content {
+  position: relative;
+  background: #fff;
+  padding: 8px;
+  border-radius: 20px;
+  max-width: 300px; /* Tamanho "Mini" do modal */
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  transform: scale(0.7);
+  animation: zoomIn 0.3s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  display: block;
+}
+
+/* Botão de Fechar */
+.close-btn {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  background: #f59e0b;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Animações */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes zoomIn { from { transform: scale(0.7); } to { transform: scale(1); } }
 .card-header h3 {
   margin: 0;
   font-size: 1.1rem;
@@ -175,6 +244,7 @@ body.light-mode .search-box input {
   gap: 10px;
   margin-top: auto;
 }
+
 
 .btn-visit {
   flex: 1;
@@ -373,8 +443,9 @@ body.light-mode .search-box input {
   border-color: var(--accent);
   color: #334155;
 }
-
-
+.hydrated{
+  color: #facc15;
+}
 .modal-box {
   position: fixed;
   top: 50%;
