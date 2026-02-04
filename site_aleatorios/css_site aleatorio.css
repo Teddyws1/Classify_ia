@@ -310,34 +310,7 @@ body.light-mode .search-box input {
 }
 
 /*fim button de de voltar */
-.Explorar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 12px;
-  background: var(--btn-grad);
-  color: rgb(48, 48, 48);
-  border: none;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  position: absolute;
-  bottom: 13%;
-  right: 50%;
-  transform: translateX(50%);
-  width: 90%;
-  z-index: 100;
-  transition: filter 0.3s, transform 0.2s;
-}
 
-.Explorar:hover {
-  filter: brightness(1.1);
-  transform: translateX(50%) scale(1.05);
-}
-
-/* BOTÕES INFERIORES */
 
 /* MODAIS */
 .overlay {
@@ -492,71 +465,6 @@ body.light-mode .search-box input {
 .copy {
   background: #334155;
   grid-column: 1 / -1;
-}
-
-.random-sites-box {
-  max-width: 800px;
-  max-height: 85vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.modal-input {
-  width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: rgba(0, 0, 0, 0.2);
-  color: var(--text);
-  margin-bottom: 15px;
-}
-
-.random-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 15px;
-  overflow-y: auto;
-  padding-right: 5px;
-}
-
-.site-card-item {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-}
-
-.site-card-item img {
-  width: 100%;
-  height: 100px;
-  object-fit: cover;
-  border-bottom: 1px solid var(--border);
-}
-
-.site-info {
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  flex: 1;
-}
-
-.site-info h4 {
-  margin: 0;
-  color: var(--accent);
-}
-
-.site-info a {
-  margin-top: auto;
-  text-align: center;
-  background: var(--btn-grad);
-  color: #1f2937;
-  padding: 6px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
 }
 
 /* Updates List */
