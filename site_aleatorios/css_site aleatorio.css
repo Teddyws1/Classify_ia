@@ -15,7 +15,7 @@ body.light-mode {
   --bg-main: #f1f5f9;
   --card-bg: #ffffff;
   --border: #e2e8f0;
-  --text: #0f172a;
+  --text: #2a0f20;
   --muted: #64748b;
 }
 
@@ -277,7 +277,8 @@ body.light-mode .search-box input {
   color: #1f2937;
   border-color: transparent;
 }
-  /* button de de voltar */
+
+/* button de de voltar */
 
 #Voltar {
   display: flex;
@@ -285,7 +286,7 @@ body.light-mode .search-box input {
   justify-content: center;
   gap: 8px;
   padding: 10px 15px;
-  background: linear-gradient(135deg, #facc15, #f59e0b); /* Seu gradiente padrão */
+  background: linear-gradient(135deg, #facc15, #f59e0b);
   color: rgb(48, 48, 48);
   border: none;
   border-radius: 8px;
@@ -293,11 +294,9 @@ body.light-mode .search-box input {
   font-weight: 700;
   cursor: pointer;
   transition: transform 0.2s, filter 0.2s;
-  
-  /* Posicionamento (ajuste conforme necessário) */
   position: absolute;
-  top: 20px; 
-  left: 20px;
+     top: 1%;
+    left: 67%;
   z-index: 100;
 }
 
@@ -310,7 +309,7 @@ body.light-mode .search-box input {
   transform: scale(0.95);
 }
 
-    /*fim button de de voltar */
+/*fim button de de voltar */
 .Explorar {
   display: flex;
   align-items: center;
@@ -325,10 +324,10 @@ body.light-mode .search-box input {
   font-weight: 700;
   cursor: pointer;
   position: absolute;
-  bottom: 35%;
+  bottom: 13%;
   right: 50%;
   transform: translateX(50%);
-  width: 80%;
+  width: 90%;
   z-index: 100;
   transition: filter 0.3s, transform 0.2s;
 }
@@ -339,45 +338,12 @@ body.light-mode .search-box input {
 }
 
 /* BOTÕES INFERIORES */
-.floating-action {
-  position: fixed;
-  right: 20px;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  z-index: 100;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  background: var(--card-bg);
-  color: var(--accent);
-  border: 1px solid var(--accent);
-  transition: 0.3s;
-}
-
-.floating-action:hover {
-  transform: scale(1.1);
-  background: var(--accent);
-  color: #000;
-}
-
-#themeToggle {
-  bottom: 20px;
-}
-
-#fsToggle {
-  bottom: 80px;
-}
 
 /* MODAIS */
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: #0f172a71;
   backdrop-filter: blur(4px);
   z-index: 999;
   opacity: 0;
@@ -389,6 +355,52 @@ body.light-mode .search-box input {
   opacity: 1;
   pointer-events: all;
 }
+/* botão de tema */
+
+.themeToggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-weight: 600;
+    position: absolute;
+    bottom: 5%;
+    left: 53%;
+    width: 126px;
+    height: 43px;
+    z-index: 10;
+}
+
+.themeToggle:hover {
+  background: var(--btn-grad);
+  color: #1f2937;
+  border-color: transparent;
+}
+
+.themeToggle span {
+  font-size: 0.9rem;
+}
+
+.themeToggle ion-icon {
+  font-size: 1.2rem;
+}
+.themeToggle ion-icon {
+  font-size: 1.4rem;
+}
+
+.themeToggle:hover {
+ background: linear-gradient(135deg, #facc15, #f59e0b);
+  border-color: var(--accent);
+  color: #334155;
+}
+
 
 .modal-box {
   position: fixed;
@@ -405,7 +417,7 @@ body.light-mode .search-box input {
   opacity: 0;
   pointer-events: none;
   transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 25px 60px #1f30577a;
 }
 
 .modal-box.active {
@@ -609,6 +621,7 @@ body.light-mode .search-box input {
   background: var(--border);
   border-radius: 10px;
 }
+
 /* versão box */
 .app-version {
   position: absolute;

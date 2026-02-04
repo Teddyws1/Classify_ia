@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Classify IA - Central de Ferramentas</title>
 
+    <script src="site.aleatorio.js"></script>
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
@@ -23,32 +24,29 @@
       <ion-icon name="menu-outline"></ion-icon>
     </button>
 
-    <aside class="sidebar" id="mainSidebar">
-      <h2 style="color: var(--accent); margin-bottom: 20px; font-style: italic">
-        Classify IA
-      </h2>
+<aside class="sidebar" id="mainSidebar">
+  <h2 style="color: var(--accent); margin-bottom: 20px; font-style: italic">
+    Classify IA
+  </h2>
 
-    <!--button de de voltar-->
-
-<button id="Voltar" onclick="goBack()"><ion-icon name="arrow-back-outline"></ion-icon> Voltar</button>
-
- <!--fim do button de de voltar-->
-
-      <!--button de Atualizações-->
-      <button class="sidebar-btn" onclick="openModal('updatesModal')">
-        <ion-icon name="newspaper-outline"></ion-icon> Atualizações
-      </button>
-      <!--fim button de Atualizações-->
-      <button class="Explorar" onclick="openModal('randomSitesModal')">
-        <ion-icon name="shuffle-outline"></ion-icon> Explorar Sites
-      </button>
-
-      <!-- conteúdo -->
-      <div class="versaobox">
-        <span>Versão</span>
-        <strong>v 5.10.9 beta</strong>
-      </div>
-    </aside>
+  <button id="Voltar" onclick="goBack()">
+    <ion-icon name="arrow-back-outline"></ion-icon> Voltar
+  </button>
+  <button class="sidebar-btn" onclick="openModal('updatesModal')">
+    <ion-icon name="newspaper-outline"></ion-icon> Atualizações
+  </button>
+  <button class="Explorar" onclick="openModal('randomSitesModal')">
+    <ion-icon name="shuffle-outline"></ion-icon> Explorar Sites
+  </button>
+<button id="themeToggle" class="themeToggle" onclick="toggleTheme()">
+  <ion-icon name="sunny-outline" id="theme-icon"></ion-icon>
+  <span>Tema</span>
+</button>
+  <div class="versaobox">
+    <span>Versão</span>
+    <strong>v 5.10.9 beta</strong>
+  </div>
+</aside>
 
     <header class="main-header">
       <div class="title">
@@ -71,24 +69,14 @@
         Recomendados
       </button>
       <button class="tab-btn" onclick="switchTab('melhores')">Melhores</button>
-      <button class="tab-btn" onclick="switchTab('design')">Design</button>
+      <button class="tab-btn" onclick="switchTab('editar')">editar</button>
+       <button class="tab-btn" onclick="switchTab('ferramentas PDF')">ferramentas PDF</button>
+        <button class="tab-btn" onclick="switchTab('livros pdfs')">livros pdfs</button>
     </div>
-
     <div class="grid-container">
       <div class="grid" id="cardsContainer"></div>
     </div>
 
-    <button id="themeToggle" class="floating-action" onclick="toggleTheme()">
-      <ion-icon name="sunny-outline"></ion-icon>
-    </button>
-
-    <button
-      id="btn-open-update-logs"
-      class="floating-action"
-      onclick="openModal('updatesModal')"
-    >
-      <ion-icon name="notifications-outline"></ion-icon>
-    </button>
 
     <div id="shareModal" class="modal-box">
       <div class="modal-header">
@@ -159,7 +147,5 @@
       <ion-icon name="checkmark-circle"></ion-icon>
       <span id="toastMsg">Sucesso!</span>
     </div>
-
-    <script src="site.aleatorio.js"></script>
   </body>
 </html>

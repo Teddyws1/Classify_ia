@@ -5,6 +5,22 @@
 // Cards Principais (Separados por Aba)
 const mainCardsData = [
   //site aqui a baixo
+    {
+    id: "chatgpt",
+    category: "melhores",
+    name: "ChatGPT",
+    desc: "O modelo de linguagem mais popular do mundo para conversas e códigos.",
+    url: "https://chat.openai.com",
+    img: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg",
+  },
+  {
+    id: "chatgpt",
+    category: "editar",
+    name: "ChatGPT",
+    desc: "O modelo de linguagem mais popular do mundo para conversas e códigos.",
+    url: "https://chat.openai.com",
+    img: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg",
+  },
 ];
 
 // Dados dos Sites Aleatórios (Modal Explorar)
@@ -319,3 +335,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }, false);
 
 });
+
+//scroll categoria
+
