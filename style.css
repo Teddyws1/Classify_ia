@@ -4327,3 +4327,11 @@ height: 48px;
 }
 
 /*==========fim nenhuma mensagem do mensagem do sistema===============*/
+
+/* atualização */
+.atualização {
+  color: #facc15;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+}
