@@ -1229,3 +1229,4 @@ document.addEventListener("DOMContentLoaded", () => {
     false,
   );
 });
+
