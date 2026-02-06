@@ -7,7 +7,7 @@
       name="description"
       content="Lista de ferramentas de inteligência artificial para explorar, pesquisar e usar no seu dia a dia."
     />
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <script
@@ -19,7 +19,7 @@
       nomodule
       src="https://cdn.jsdelivr.net/npm/ionicons@7.1.2/dist/ionicons/ionicons.js"
     ></script>
-
+    <script type="module" src="barra_de_pesquisa.js"></script>
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="css_temas.css" />
@@ -236,7 +236,7 @@
           </h2>
           <p id="systemMessageText">
             <!-- Mensagem do sistema vai aqui -->
-            ainda não tem prazo de atualização para o site.
+            Bem-vindos à nova atualização do site 😊 Aproveite!
           </p>
 
           <button id="closeModal">Fechar</button>
@@ -319,6 +319,10 @@
         </div>
       </div>
     </header>
+    <div class="search-float" id="searchFloat">
+      <ion-icon name="search-outline" class="icon-search"></ion-icon>
+      <input type="text" id="searchFloatInput" placeholder="Pesquisar..." />
+    </div>
 
     <div class="tabs-container">
       <div class="tabs-header">

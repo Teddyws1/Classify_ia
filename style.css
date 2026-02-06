@@ -262,8 +262,20 @@ input::placeholder {
 
 /* placeholder */
 .search-box input::placeholder {
-  color: #8b949e;
+  color: #8b949eb9;
 }
+
+.search-float {
+  position: fixed;
+  display: none;
+  z-index: 9999;
+}
+
+.search-float.active {
+  display: block;
+}
+
+
 
 /* botão limpar */
 .clear-btn {
@@ -412,16 +424,11 @@ input::placeholder {
    ========================================================================== */
 
 .card.overlay-open ul {
-  /* Habilita o scroll com resposta tátil suave no iOS/Android */
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  /* Fluidez extra em iPhones/iPads */
-
-  /* Espaço de segurança para a barra não encostar no conteúdo */
   padding-right: 10px;
 
-  /* Suporte Firefox */
   scrollbar-width: thin;
   scrollbar-color: #facc15 rgba(255, 255, 255, 0.05);
 }
@@ -556,7 +563,6 @@ input::placeholder {
 .ver-mais-btn {
   margin-top: clamp(10px, 2vw, 14px);
   padding: clamp(8px, 2vw, 10px) clamp(14px, 3vw, 18px);
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -654,27 +660,29 @@ li:hover img {
   transform: scale(1.2);
   box-shadow: 0 4px 12px rgba(0, 0, 0, .35);
 }
+
 img {
-    overflow-clip-margin: content-box;
-    overflow: clip;
-    display: block;
-    max-width: 100%;
-    height: auto;
-    opacity: 0;
-    transition: opacity 0.4s ease-in-out;
-    content-visibility: auto;
-    image-rendering: -webkit-optimize-contrast;
-    will-change: opacity;
+  overflow-clip-margin: content-box;
+  overflow: clip;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+  content-visibility: auto;
+  image-rendering: -webkit-optimize-contrast;
+  will-change: opacity;
 }
 
 img.loaded {
-    opacity: 1;
+  opacity: 1;
 }
 
 /* Evita saltos de layout reservando o espaço */
 img:not([src]) {
-    visibility: hidden;
+  visibility: hidden;
 }
+
 :root {
   --link: #facc15;
   /* Seu Amarelo Ouro */
@@ -947,7 +955,7 @@ html.light .idea-header img {
   align-items: center;
   justify-content: center;
   gap: 14px;
-  top:93%;
+  top: 93%;
   padding: 0 18px;
   border-radius: 18px;
 }
@@ -1371,14 +1379,19 @@ html.light .socials img {
   display: flex;
   align-items: center;
   gap: 10px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   pointer-events: none;
 }
-.toast-container.show { transform: translateX(-50%) translateY(0); }
+
+.toast-container.show {
+  transform: translateX(-50%) translateY(0);
+}
 
 /* Overlay e Painel */
-.card ul li { position: relative; }
+.card ul li {
+  position: relative;
+}
 
 .side-overlay {
   position: absolute;
@@ -1390,8 +1403,9 @@ html.light .socials img {
   transform: translateX(101%);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   padding: 0 10px;
+
 }
-.overlay-open .side-overlay { transform: translateX(0); }
+
 
 /* Scroll Wrapper */
 .social-scroll-wrapper {
@@ -1405,8 +1419,15 @@ html.light .socials img {
   scrollbar-width: none;
   scroll-snap-type: x mandatory;
 }
-.social-scroll-wrapper::-webkit-scrollbar { display: none; }
-.social-scroll-wrapper.active { cursor: grabbing; scroll-snap-type: none; }
+
+.social-scroll-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.social-scroll-wrapper.active {
+  cursor: grabbing;
+  scroll-snap-type: none;
+}
 
 /* Botões de Ação */
 .action-btn {
@@ -1613,7 +1634,7 @@ html.light .socials img {
 .btn-close-overlay ion-icon {
   font-size: 1.4rem;
   --ionicon-stroke-width: 45px;
- 
+
 }
 
 /* Painel Amarelo que abre ao clicar */
@@ -2757,26 +2778,27 @@ h2 {
 /* Botão de abrir notas de atualização */
 
 .btn-open-update-logs {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 11px 15px;
-    background: linear-gradient(135deg, #facc15, #f59e0b);
-    color: rgb(48, 48, 48);
-    border: none;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    position: absolute;
-    transition: filter 0.3s, transform 0.2s;
-    bottom: -36%;
-    width: 99%;
-    position: relative;
-    z-index: 100;
-    left: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 15px;
+  background: linear-gradient(135deg, #facc15, #f59e0b);
+  color: rgb(48, 48, 48);
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  position: absolute;
+  transition: filter 0.3s, transform 0.2s;
+  bottom: -36%;
+  width: 99%;
+  position: relative;
+  z-index: 100;
+  left: 5%;
 }
+
 .btn-open-update-logs ion-icon {
   font-size: 1.2em;
 }
@@ -3753,23 +3775,24 @@ body.no-scroll {
 }
 
 @media (max-width: 768px) {
-  #statusBadge  {
+  #statusBadge {
     padding: 8px 20px;
     font-size: 13px;
     bottom: 23%;
-    right: 48%;  
+    right: 48%;
   }
 }
 
 @media (max-width: 2600px) {
-  #statusBadge  {
+  #statusBadge {
     position: absolute;
     padding: 8px 20px;
     font-size: 13px;
     bottom: 23%;
-    right: 48%;  
+    right: 48%;
   }
 }
+
 /* Efeito ao passar o mouse */
 #statusBadge:hover {
   transform: scale(1.05);
@@ -4217,5 +4240,3 @@ body.no-scroll {
 }
 
 /*==========fim nenhuma mensagem do mensagem do sistema===============*/
-
-

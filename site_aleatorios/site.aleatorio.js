@@ -36,8 +36,12 @@ function renderMainCards(filterText = "") {
   });
 
   if (filteredData.length === 0) {
-    container.innerHTML =
-      '<p style="color:var(--muted); grid-column:1/-1; text-align:center;">Nenhum resultado encontrado.</p>';
+    container.innerHTML = `
+    <div class="no-results">
+      <ion-icon name="search-outline" class="no-results-icon"></ion-icon>
+     <p>Nenhum resultado encontrado. Clique em alguma categoria.</p>
+    </div>
+  `;
     return;
   }
 
@@ -291,15 +295,15 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("keydown", function (e) {
-    if (e.ctrlKey && e.shiftKey && e.key === "ArrowUp") {
-      e.preventDefault();
+  if (e.ctrlKey && e.shiftKey && e.key === "ArrowUp") {
+    e.preventDefault();
 
-      if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen().catch(err => {
-          console.error("Erro ao entrar em tela cheia:", err);
-        });
-      } else {
-        document.exitFullscreen();
-      }
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch((err) => {
+        console.error("Erro ao entrar em tela cheia:", err);
+      });
+    } else {
+      document.exitFullscreen();
     }
-  });
+  }
+});

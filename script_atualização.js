@@ -2,6 +2,11 @@
    CONFIGURAÇÃO DE DADOS (DATABASE)
    ========================================================================== */
 const updateLogs = [
+   {
+    type: "NEW",
+    text: "O sistema conta com um atalho para a barra de pesquisa em computadores. Ao pressionar Ctrl + B, a barra é aberta e o cursor fica automaticamente nela.",
+    color: "#22c55e", 
+  },
   {
     type: "FIX",
     text: "Correção de erros",
