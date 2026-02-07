@@ -159,6 +159,7 @@ if (searchInput) {
           li.style.display = "none";
         }
       });
+
       // O card aparece se houver match na categoria, na IA ou se a busca estiver vazia
       card.style.display =
         cardHasMatch || categoryMatches || value === "" ? "block" : "none";
