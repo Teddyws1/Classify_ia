@@ -395,7 +395,7 @@ window.addEventListener("resize", validarEncaixeCards);
           });
           btn.dataset.oldHtml = btn.innerHTML;
           btn.classList.add("confirming");
-          btn.innerHTML = `<span>CERTO?</span>`;
+          btn.innerHTML = `<span>Confirma?</span>`;
           setTimeout(() => {
             if (btn.classList.contains("confirming")) {
               btn.classList.remove("confirming");
