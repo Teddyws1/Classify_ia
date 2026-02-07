@@ -55,6 +55,7 @@ body {
   user-select: none;
   -webkit-user-select: none;
   overflow-x: hidden;
+  
 }
 
 
@@ -2741,7 +2742,7 @@ h2 {
   cursor: pointer;
   position: absolute;
   transition: filter 0.3s, transform 0.2s;
-  bottom: -36%;
+  bottom: -35%;
   width: 99%;
   position: relative;
   z-index: 100;
@@ -3922,7 +3923,7 @@ body.no-scroll {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  bottom: -19%;
+  bottom: -18%;
   padding: 11px 15px;
   background: linear-gradient(135deg, #facc15, #f59e0b);
   color: rgb(0, 0, 0);

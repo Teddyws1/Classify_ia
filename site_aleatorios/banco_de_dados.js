@@ -1,10 +1,9 @@
 /* =========================================
    1. BANCO DE DADOS (CONFIGURAÇÃO)
    ========================================= */
-
 // Cards Principais (Separados por Aba)
 const mainCardsData = [
-  //melhores sites
+  
   {
     id: "pt.welib.st",
     category: "livros em pdf",
@@ -637,6 +636,16 @@ const mainCardsData = [
     url: "https://dev.to/",
     img: "https://dev.to/favicon.ico",
   },
+
+  {
+    id: "cssgridgenerator.io",
+    category: "programação",
+    name: "CSS Grid Generator",
+    desc: "Ferramenta interativa para gerar layouts complexos de CSS Grid visualmente.",
+    url: "https://cssgridgenerator.io/",
+    img: "https://cssgridgenerator.io/favicon.ico",
+  },
+
   {
     id: "gitlab.com",
     category: "programação",
@@ -887,7 +896,6 @@ const mainCardsData = [
     desc: "Animação de menu hambúrguer profissional que se transforma em 'X'. Ideal para navegação mobile com transição suave.",
     url: "https://finsweet.com/lottieflow/download/menu-nav-11-1",
     img: "https://cdn.prod.website-files.com/5d829bf092d4644f5c42e0ea/5e0df3c7574de27fd9eb5319_Menu1-MenuNavPack-smooth.json",
-    
   },
 
   {
