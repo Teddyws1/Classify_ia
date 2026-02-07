@@ -791,14 +791,13 @@ document.addEventListener("DOMContentLoaded", () => {
 //sistema de instalar web
 
 // sw.js - Service Worker Simples
-self.addEventListener("install", (e) => {
-  console.log("Service Worker Instalado");
+self.addEventListener('fetch', (event) => {
+  event.respondWith(fetch(event.request));
 });
 
-self.addEventListener("fetch", (e) => {
-  // Necessário para o PWA ser detectado
-});
-
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
+}
 //fim sistema de instalar web
 ///card altas
 // #1. Lógica de Troca de Abas
