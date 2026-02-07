@@ -105,9 +105,6 @@ overlayBg.addEventListener("click", () => {
 /* =========================
    SEARCH
 ========================= */
-/* ==========================================================================
-   SISTEMA DE BUSCA: IA + CATEGORIAS (Ideias, Chatbot, Marketing, etc.)
-   ========================================================================== */
 
 // 1. Definição Global (Evita erro de redeclaração)
 
@@ -205,8 +202,42 @@ if (clearBtn && searchInput) {
     console.log("Pesquisa limpa e layout resetado.");
   });
 }
+//=====sisteam de ctrl+x a paga total  da barra
+document.addEventListener("keydown", (e) => {
+  if (e.ctrlKey && e.key.toLowerCase() === "x") {
+    // evita conflito com recortar texto
+    e.preventDefault();
 
-//=========================sistemas deadpitação=========================//
+    if (!searchInput) return;
+
+    // 1. Limpa o valor do input
+    searchInput.value = "";
+
+    // 2. Remove a classe visual
+    searchBox.classList.remove("has-text");
+
+    // 3. Reseta cards, listas e destaques
+    cards.forEach((card) => {
+      card.style.display = "block";
+
+      const lis = card.querySelectorAll("li");
+      const links = card.querySelectorAll("a");
+
+      lis.forEach((li) => {
+        li.style.display = "flex";
+      });
+
+      links.forEach((link) => {
+        link.innerHTML = link.innerText;
+      });
+    });
+
+    // 4. Foco de volta no input
+    searchInput.focus();
+
+    console.log("Pesquisa limpa via Ctrl + X");
+  }
+});
 
 //=========================sistemas de span de adpitação=========================//
 function validarEncaixeCards() {
@@ -253,12 +284,27 @@ window.addEventListener("resize", validarEncaixeCards);
 
   // Ações das Redes Sociais
   const actions = {
-    copy: (url) => { navigator.clipboard.writeText(url); showToast("Link Copiado!"); },
-    whats: (url) => window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(url)}`, "_blank"),
+    copy: (url) => {
+      navigator.clipboard.writeText(url);
+      showToast("Link Copiado!");
+    },
+    whats: (url) =>
+      window.open(
+        `https://api.whatsapp.com/send?text=${encodeURIComponent(url)}`,
+        "_blank",
+      ),
     insta: () => window.open(`https://www.instagram.com/`, "_blank"),
     tiktok: () => window.open(`https://www.tiktok.com/`, "_blank"),
-    x: (url) => window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}`, "_blank"),
-    face: (url) => window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, "_blank")
+    x: (url) =>
+      window.open(
+        `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}`,
+        "_blank",
+      ),
+    face: (url) =>
+      window.open(
+        `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+        "_blank",
+      ),
   };
 
   document.querySelectorAll(".card ul li").forEach((li) => {
@@ -288,19 +334,22 @@ window.addEventListener("resize", validarEncaixeCards);
     `;
     li.appendChild(overlay);
 
-    const slider = overlay.querySelector('.social-scroll-wrapper');
-    let isDown = false, startX, scrollLeft, isDragging = false;
+    const slider = overlay.querySelector(".social-scroll-wrapper");
+    let isDown = false,
+      startX,
+      scrollLeft,
+      isDragging = false;
 
     // Lógica de Arrastar (Drag to Scroll)
-    slider.addEventListener('mousedown', (e) => {
+    slider.addEventListener("mousedown", (e) => {
       isDown = true;
       isDragging = false;
-      slider.classList.add('active');
+      slider.classList.add("active");
       startX = e.pageX - slider.offsetLeft;
       scrollLeft = slider.scrollLeft;
     });
 
-    slider.addEventListener('mousemove', (e) => {
+    slider.addEventListener("mousemove", (e) => {
       if (!isDown) return;
       isDragging = true;
       e.preventDefault();
@@ -311,18 +360,22 @@ window.addEventListener("resize", validarEncaixeCards);
 
     const stopDragging = () => {
       isDown = false;
-      slider.classList.remove('active');
+      slider.classList.remove("active");
     };
-    slider.addEventListener('mouseup', stopDragging);
-    slider.addEventListener('mouseleave', stopDragging);
+    slider.addEventListener("mouseup", stopDragging);
+    slider.addEventListener("mouseleave", stopDragging);
 
     // Scroll com a rodinha
-    slider.addEventListener('wheel', (e) => {
-      if (e.deltaY !== 0) {
-        e.preventDefault();
-        slider.scrollLeft += e.deltaY;
-      }
-    }, { passive: false });
+    slider.addEventListener(
+      "wheel",
+      (e) => {
+        if (e.deltaY !== 0) {
+          e.preventDefault();
+          slider.scrollLeft += e.deltaY;
+        }
+      },
+      { passive: false },
+    );
 
     // Evento de Clique e Confirmação
     overlay.addEventListener("click", (e) => {
@@ -336,8 +389,8 @@ window.addEventListener("resize", validarEncaixeCards);
           btn.classList.remove("confirming");
           btn.innerHTML = btn.dataset.oldHtml;
         } else {
-          overlay.querySelectorAll(".action-btn").forEach(b => {
-            if(b.dataset.oldHtml) b.innerHTML = b.dataset.oldHtml;
+          overlay.querySelectorAll(".action-btn").forEach((b) => {
+            if (b.dataset.oldHtml) b.innerHTML = b.dataset.oldHtml;
             b.classList.remove("confirming");
           });
           btn.dataset.oldHtml = btn.innerHTML;
@@ -359,8 +412,10 @@ window.addEventListener("resize", validarEncaixeCards);
     });
 
     shareBtn.addEventListener("click", (e) => {
-      e.preventDefault(); e.stopPropagation();
-      if (activeOverlayLi && activeOverlayLi !== li) activeOverlayLi.classList.remove("overlay-open");
+      e.preventDefault();
+      e.stopPropagation();
+      if (activeOverlayLi && activeOverlayLi !== li)
+        activeOverlayLi.classList.remove("overlay-open");
       li.classList.toggle("overlay-open");
       activeOverlayLi = li.classList.contains("overlay-open") ? li : null;
     });
@@ -1229,4 +1284,4 @@ document.addEventListener("DOMContentLoaded", () => {
     false,
   );
 });
-
+//testes

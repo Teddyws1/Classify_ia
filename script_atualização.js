@@ -2,6 +2,11 @@
    CONFIGURAÇÃO DE DADOS (DATABASE)
    ========================================================================== */
 const updateLogs = [
+     {
+    type: "NEW",
+    text: "Agora com um sistema de modal que abre para mostrar a descrição de cada IA, explicando o que elas fazem e fornecendo um exemplo de uso para cada uma.",
+    color: "#22c55e", 
+  },
    {
     type: "NEW",
     text: "O sistema conta com um atalho para a barra de pesquisa em computadores. Ao pressionar Ctrl + B, a barra é aberta e o cursor fica automaticamente nela.",

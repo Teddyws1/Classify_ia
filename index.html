@@ -7,7 +7,7 @@
       name="description"
       content="Lista de ferramentas de inteligência artificial para explorar, pesquisar e usar no seu dia a dia."
     />
-
+<script src="banco_de_dado_descrição.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <script
@@ -290,8 +290,7 @@
       <div class="app-container">
         <!-- conteúdo -->
         <div class="versaobox">
-          <span id="Versão">Versão</span>
-          <strong>v5.11.10 Estável</strong>
+          <strong>v 6.12.11 Estável</strong>
         </div>
       </div>
     </aside>
@@ -319,6 +318,19 @@
         </div>
       </div>
     </header>
+
+    <!--barra flutuante-->
+
+    <!-- SEARCH FLUTUANTE (Ctrl + B) -->
+    <div class="search-float" id="searchFloat">
+      <input
+        type="text"
+        id="searchFloatInput"
+        placeholder="Pesquisar..."
+        autocomplete="off"
+      />
+    </div>
+    <!-- fim barra flutuante-->
 
     <div class="tabs-container">
       <div class="tabs-header">
@@ -680,6 +692,7 @@
         <h2>
           <ion-icon name="create-outline"></ion-icon> Escrita <span></span>
         </h2>
+        
         <ul>
           <li>
             <img
@@ -1249,6 +1262,30 @@
         </ul>
       </div>
     </section>
+
+    <!--modal e descrição dos lis-->
+<div id="custom-modal" class="modal-overlay">
+  <div class="modal-content">
+    <div class="modal-header">
+      <img id="modal-img" src="#" alt="Ícone">
+      <div class="header-text">
+        <h2 id="modal-title">Título</h2>
+        <p id="modal-domain">site.com</p>
+      </div>
+    </div>
+    
+    <div class="modal-body">
+      <p id="modal-desc">Descrição da IA...</p>
+    </div>
+
+    <div class="modal-footer">
+
+      <a id="modal-link" href="#" target="_blank" class="btn-visit">VISITAR SITE</a>
+    </div>
+  </div>
+</div>
+    <!--fim modal e descrição dos lis-->
+
     <!--img tela media -->
     <div id="img-modal" class="modal-overlay">
       <span class="close-modal">&times;</span>
