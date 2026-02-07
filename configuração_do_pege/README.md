@@ -4,3 +4,26 @@ versão do site: v6.12.11 Estável
 
 todas ia em um só lugar
 versão do controle: 0.0.11 v
+
+Classify IA 🚀
+O Classify IA é um ecossistema projetado para catalogar e organizar as melhores ferramentas de Inteligência Artificial disponíveis no mercado. O objetivo é otimizar o fluxo de trabalho dos usuários, oferecendo acesso rápido, categorizado e eficiente a tecnologias de ponta.
+
+✨ Funcionalidades
+Busca em Tempo Real: Sistema de filtragem inteligente com destaque dinâmico (animação de marcação) nos termos pesquisados.
+
+Categorização Inteligente: Organização de sites por nichos como Programação, Livros em PDF, Ferramentas de Edição, entre outros.
+
+Teclado Virtual Integrado: Teclado customizado estilo Gboard para facilitar a navegação em dispositivos mobile e tablets.
+
+Painel de Compartilhamento: Sistema de rolagem horizontal para compartilhar ferramentas via WhatsApp, Facebook e outras redes.
+
+Interface Responsiva: Design adaptável com suporte a modo tela cheia e bloqueio de zoom para uma experiência de aplicativo (PWA).
+
+🛠️ Tecnologias Utilizadas
+HTML5: Estruturação semântica do projeto.
+
+CSS3: Estilização avançada, incluindo efeitos 3D nos cards, desfoque (blur) em modais e animações de destaque.
+
+JavaScript (ES6+): Lógica de filtragem, manipulação do DOM e sistemas dinâmicos de interface.
+
+IonIcons: Biblioteca de ícones modernos para navegação.
