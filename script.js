@@ -739,7 +739,7 @@ document.querySelectorAll(".ia-list li").forEach((li) => {
 
 //sistema de novas ia com (li)
 document.addEventListener("DOMContentLoaded", () => {
-  const DAYS_AS_NEW = 30; // quantos dias o item fica como NOVO
+  const DAYS_AS_NEW = 3; // quantos dias o item fica como NOVO
 
   const today = new Date();
 
