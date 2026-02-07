@@ -43,7 +43,11 @@ const updateLogs = [
     text: "nova aba de sites recomendados",
     color: "#22c55e", 
   },
-
+  {
+    type: "UI",
+    text: "Melhorias nos botões",
+    color: "#22c530",
+  },
 ];
 
 /* ==========================================================================

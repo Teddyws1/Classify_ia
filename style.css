@@ -55,7 +55,7 @@ body {
   user-select: none;
   -webkit-user-select: none;
   overflow-x: hidden;
-
+  
 }
 
 
@@ -1791,13 +1791,8 @@ mark {
 }
 
 @keyframes mark-glow {
-  0%, 100% {
-    box-shadow: 0 0 5px rgba(250, 204, 21, 0.2);
-  }
-
-  50% {
-    box-shadow: 0 0 15px rgba(250, 204, 21, 0.6);
-  }
+  0%, 100% { box-shadow: 0 0 5px rgba(250, 204, 21, 0.2); }
+  50% { box-shadow: 0 0 15px rgba(250, 204, 21, 0.6); }
 }
 
 /* Container do item (li) ajustado para o botão de compartilhar */
@@ -2921,7 +2916,7 @@ h2 {
 
 .update-card-main {
   background: var(--card);
-
+ 
   border: 1px solid #facc15;
   padding: 25px;
   border-radius: 20px;
