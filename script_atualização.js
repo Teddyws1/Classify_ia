@@ -32,6 +32,12 @@ const updateLogs = [
     text: "mais dois novo icones de compartilha instagram,tiktok",
     color: "#22c55e", 
   },
+   {
+    type: "NEW",
+    text: "Animação na marcação de texto durante a pesquisa",
+    color: "#22c55e", 
+  },
+
     {
     type: "NEW",
     text: "nova aba de sites recomendados",

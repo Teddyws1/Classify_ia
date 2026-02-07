@@ -55,7 +55,7 @@ body {
   user-select: none;
   -webkit-user-select: none;
   overflow-x: hidden;
-  
+
 }
 
 
@@ -77,13 +77,10 @@ body.no-scroll {
 .main-header {
   max-width: calc(1300px - var(--sidebar-space));
   margin: 16px auto 30px;
-  /* centraliza corretamente */
   padding: 20px 24px;
-
   text-align: center;
   border-radius: 18px;
-  background: var(--card);
-  border: 1px solid var(--border);
+
 }
 
 /* Layout principal */
@@ -1740,13 +1737,9 @@ li.overlay-open .side-overlay {
 
 /* Badge (NOVO / IA Novas) */
 .ia-badge {
-  /* Mudamos de absolute para flexível */
   flex-shrink: 0;
   margin-left: auto;
-  /* Empurra o badge para a direita, mas respeitando o texto */
   margin-right: 40px;
-  /* Reserva espaço para o botão de compartilhar */
-
   font-weight: 800;
   font-size: 0.65rem;
   padding: 2px 6px;
@@ -1779,11 +1772,32 @@ li:not(:has(.ia-badge)) {
 
 /* Destaque da busca */
 mark {
-  background-color: #ffcf33;
-  color: #000000;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  background: linear-gradient(to right, #facc15 50%, transparent 50%);
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  color: #fff;
+  padding: 2px 4px;
   border-radius: 4px;
-  padding: 0 2px;
+  font-weight: bold;
+  text-decoration: none;
+  animation: highlight-swipe 0.5s forwards ease-out, mark-glow 2s infinite;
+}
+
+@keyframes highlight-swipe {
+  to {
+    background-position: 0 0;
+    color: #000;
+  }
+}
+
+@keyframes mark-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(250, 204, 21, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 15px rgba(250, 204, 21, 0.6);
+  }
 }
 
 /* Container do item (li) ajustado para o botão de compartilhar */
@@ -2907,7 +2921,7 @@ h2 {
 
 .update-card-main {
   background: var(--card);
- 
+
   border: 1px solid #facc15;
   padding: 25px;
   border-radius: 20px;
