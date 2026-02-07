@@ -58,23 +58,6 @@ body {
 }
 
 
-/* === Imagem de fundo fixa e embaçada === */
-body::before {
-  content: '';
-  position: fixed;               /* Fica fixa enquanto rola */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('https://i.postimg.cc/8z8pn9NS/wallowe.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  filter: blur(12px);             /* Embaça a imagem */
-  z-index: -1;                   /* Fica atrás do conteúdo */
-  opacity: 0.7;                  /* Pode ajustar a transparência */
-}
-
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -1112,6 +1095,7 @@ html.light .socials img {
   margin: 24px 0;
   letter-spacing: 1px;
 }
+
 
 
 /* HOVER */
@@ -4027,6 +4011,11 @@ body.no-scroll {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
+.v6 {
+  color: #facc15;
+  font-weight: 600;
+
+}
 
 /* BOTÃO MODAL */
 .modal button {
@@ -4296,7 +4285,7 @@ body.no-scroll {
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
   animation: modalScale 0.3s ease-out;
-  box-sizing: border-box; 
+  box-sizing: border-box;
   position: relative;
 }
 
@@ -4331,9 +4320,17 @@ body.no-scroll {
 }
 
 @keyframes modalScale {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
+
 @keyframes modalScale {
   from {
     opacity: 0;
