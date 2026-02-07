@@ -9,7 +9,7 @@ const updateLogs = [
   },
    {
     type: "NEW",
-    text: "O sistema conta com um atalho para a barra de pesquisa em computadores. Ao pressionar Ctrl + B, a barra é aberta e o cursor fica automaticamente nela.",
+    text: "O sistema conta com um atalho para a barra de pesquisa em computadores. Ao pressionar Ctrl + B, a barra é aberta ao lado do curso do mouse",
     color: "#22c55e", 
   },
   {
@@ -20,6 +20,11 @@ const updateLogs = [
    {
     type: "NEW",
     text: "agora sistema que abre imagem rapidas e com animação",
+    color: "#22c55e", 
+  },
+   {
+    type: "NEW",
+    text: "Novo sistema de rolagem para o painel de compartilhamento",
     color: "#22c55e", 
   },
   {
