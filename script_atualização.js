@@ -3,51 +3,11 @@
    ========================================================================== */
 const updateLogs = [
      {
-    type: "NEW",
-    text: "Agora com um sistema de modal que abre para mostrar a descrição de cada IA, explicando o que elas fazem e fornecendo um exemplo de uso para cada uma.",
-    color: "#22c55e", 
-  },
-   {
-    type: "NEW",
-    text: "O sistema conta com um atalho para a barra de pesquisa em computadores. Ao pressionar Ctrl + B, a barra é aberta ao lado do curso do mouse",
-    color: "#22c55e", 
-  },
-  {
     type: "FIX",
-    text: "Correção de erros",
+    text: "Correção de erros das imagens",
     color: "#ef4444", 
   },
-   {
-    type: "NEW",
-    text: "agora sistema que abre imagem rapidas e com animação",
-    color: "#22c55e", 
-  },
-   {
-    type: "NEW",
-    text: "Novo sistema de rolagem para o painel de compartilhamento",
-    color: "#22c55e", 
-  },
-  {
-    type: "NEW",
-    text: "mais dois novo icones de compartilha instagram,tiktok",
-    color: "#22c55e", 
-  },
-   {
-    type: "NEW",
-    text: "Animação na marcação de texto durante a pesquisa",
-    color: "#22c55e", 
-  },
-
-    {
-    type: "NEW",
-    text: "nova aba de sites recomendados",
-    color: "#22c55e", 
-  },
-  {
-    type: "UI",
-    text: "Melhorias nos botões",
-    color: "#22c530",
-  },
+ 
 ];
 
 /* ==========================================================================
