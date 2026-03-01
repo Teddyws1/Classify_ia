@@ -7,6 +7,11 @@ const updateLogs = [
     text: "Correção de erros das imagens",
     color: "#ef4444", 
   },
+     {
+    type: "NEW",
+    text: "nova  função de painel de compartilha com QR",
+    color: "#22c55e", 
+  },
  
 ];
 

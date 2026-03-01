@@ -4404,3 +4404,70 @@ body.no-scroll {
 }
 
 /*fim modal e descrição dos lis*/
+
+/* sistema de site fora do ar*/
+
+/* Container principal do item da lista */
+.ia-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #1a1d23; /* Fundo escuro conforme a imagem */
+    padding: 12px 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    list-style: none;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Alinhamento da info (ícone, link e badge) */
+.ia-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Ícone da IA */
+.ia-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+}
+
+/* Link estilizado (Estilo Tome) */
+.ia-link {
+    color: #FFD700; /* Amarelo/Dourado das imagens */
+    text-decoration: none;
+    font-weight: bold;
+    font-style: italic; /* Itálico conforme o padrão do seu projeto */
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+/* Badge "Fora do Ar" */
+.status-badge {
+    background-color: #ff4444; /* Vermelho alerta */
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 0 10px rgba(255, 68, 68, 0.3);
+    animation: blink 1.5s infinite; /* Efeito opcional de piscar */
+}
+
+/* Animação suave para o badge */
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+/* Hover para o item */
+.ia-item:hover {
+    background: #242930;
+    transition: 0.3s;
+}
+/*fim do sistema de site fora do ar*/
