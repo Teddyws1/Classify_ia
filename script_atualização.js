@@ -12,12 +12,11 @@ const updateLogs = [
     text: "nova  função de painel de compartilha com QR",
     color: "#22c55e", 
   },
-      {
-    type: "NEW",
-    text: "novo sistema que mostra o status dos site ",
-    color: "#22c55e", 
-  },
- 
+  {
+  type: "NEW",
+  text: "Nova função que mostra as últimas datas de atualização do site",
+  color: "#22c55e", 
+}
 ];
 
 /* ==========================================================================

@@ -1544,7 +1544,7 @@ const CONFIGS = [
    
 ];
 
-const SENHA_MESTRE = "123"; 
+const SENHA_MESTRE = "2312"; 
 let autenticado = false;
 
 function toggleQRModal() {
@@ -1638,9 +1638,3 @@ function renderizarPainel() {
     });
 }
 //FIM DOS QRS
-
-//prévia
-
-
-
-//fim da prévia

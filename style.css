@@ -3973,7 +3973,7 @@ body.no-scroll {
 
 
 .modal {
-  background: #111827;
+  /* Configurações originais mantidas */
   color: #ffffff;
   padding: 24px 26px;
   border-radius: 20px;
@@ -3982,6 +3982,13 @@ body.no-scroll {
   border: 1px solid var(--primary);
   box-shadow: 0 20px 40px var(--shadow-modal);
   animation: modalFade 0.25s ease;
+  background-image: 
+    linear-gradient(rgba(17, 24, 39, 0.8), rgba(17, 24, 39, 0.8)), /* Camada de escurecimento */
+    url("https://i.postimg.cc/4ypXCQ3X/Picsart-26-03-01-13-43-00-022-1.png");
+  background-color: #111827; /* Cor base */
+  background-repeat: no-repeat;
+  background-size: 250px; 
+  background-position: bottom 15px right 15px;
 }
 
 @keyframes modalFade {
@@ -3996,16 +4003,55 @@ body.no-scroll {
   }
 }
 
+/* ultima atualização  */
+ 
+.ultima {
+    color: #999;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.datadeatuali {
+    display: inline;
+    margin-left: 8px;
+    padding-left: 8px;
+    border-left: 2px solid #facc15; /* Linha azul de destaque */
+    color: #444;
+    font-weight: 500;
+}
+
+/*fim ultima atualização  */
 /* TÍTULO */
-.modal h2 {
-  margin-bottom: 12px;
-  font-size: 20px;
+#Mensagemms {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #facc15;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  letter-spacing: -0.02em;
+}
+
+#Mensagemms ion-icon {
+  color: #facc15;
+  font-size: 1.8rem;
+  filter: drop-shadow(0 0 8px rgba(250, 204, 21, 0.4));
+  animation: bell-ring 4s ease-in-out infinite;
+}
+
+@keyframes bell-ring {
+  0%, 100% { transform: rotate(0); }
+  5%, 15%, 25% { transform: rotate(10deg); }
+  10%, 20%, 30% { transform: rotate(-10deg); }
+  35% { transform: rotate(0); }
 }
 
 /* divisorias modal da mensagem */
 
 .divisoirasnoe {
-  background-image: linear-gradient(123deg, #ffffff, #ffffff80 50%);
+  background-image: linear-gradient(123deg, #facc15, #f59e0b 50%);
   padding: 1px 12px;
   border-radius: 32px;
 }
@@ -4020,13 +4066,86 @@ body.no-scroll {
   font-weight: 500;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
+/* v6 do modal */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap');
 
 .v6 {
+  /* Tipografia Robusta para suportar o efeito 3D */
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 900;
+  font-size: 1.5rem;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  display: inline-block;
+  
+  /* Cor Base */
   color: #facc15;
-  font-weight: 600;
-
+  
+  /* Ativando a Perspectiva 3D no container pai */
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  
+  /* Animação Contínua 3D e de Brilho */
+  animation: 
+    float3D 6s ease-in-out infinite,
+    glowPulse 3s ease-in-out infinite alternate;
+  
+  /* Prevenção de flickering em alguns navegadores */
+  -webkit-font-smoothing: antialiased;
 }
 
+/* Animação 1: Movimento e Rotação no Espaço 3D */
+@keyframes float3D {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) translateY(0px) translateZ(0px);
+    text-shadow: 
+      0 1px 0 #f59e0b,
+      0 2px 0 #f59e0b,
+      0 10px 20px rgba(245, 158, 11, 0.5);
+  }
+  25% {
+    transform: rotateX(10deg) rotateY(15deg) translateY(-5px) translateZ(10px);
+    text-shadow: 
+      -1px 1px 0 #f59e0b,
+      -2px 2px 0 #f59e0b,
+      -15px 15px 30px rgba(245, 158, 11, 0.7);
+  }
+  50% {
+    transform: rotateX(0deg) rotateY(0deg) translateY(-8px) translateZ(20px);
+    text-shadow: 
+      0 1px 0 #f59e0b,
+      0 2px 0 #f59e0b,
+      0 20px 40px rgba(245, 158, 11, 0.6);
+  }
+  75% {
+    transform: rotateX(-10deg) rotateY(-15deg) translateY(-5px) translateZ(10px);
+    text-shadow: 
+      1px 1px 0 #f59e0b,
+      2px 2px 0 #f59e0b,
+      15px 15px 30px rgba(245, 158, 11, 0.7);
+  }
+  100% {
+    transform: rotateX(0deg) rotateY(0deg) translateY(0px) translateZ(0px);
+    text-shadow: 
+      0 1px 0 #f59e0b,
+      0 2px 0 #f59e0b,
+      0 10px 20px rgba(245, 158, 11, 0.5);
+  }
+}
+
+/* Animação 2: Pulsação de Brilho Neon (usando #e5ff00 e #facc15) */
+@keyframes glowPulse {
+  0% {
+    filter: drop-shadow(0 0 5px rgba(250, 204, 21, 0.4));
+  }
+  100% {
+    filter: drop-shadow(0 0 15px rgba(229, 255, 0, 0.8))
+            drop-shadow(0 0 5px rgba(250, 204, 21, 0.6));
+  }
+}
+
+/*fim do v6 do modal */
 /* BOTÃO MODAL */
 .modal button {
   margin-top: 18px;
@@ -4407,6 +4526,33 @@ body.no-scroll {
 
 /*sistema de QR*/
 
+/* status do site */
+
+.status-badge {
+    background-color: #ff0000; /* Amarelo clarinho */
+    color: #4300d4;           /* Marrom/Dourado escuro */
+    border: 1px solid #ffffff;
+    padding: 4px 12px;
+    border-radius: 50px;       /* Formato pílula */
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Adicionando um pontinho de status antes do texto */
+.status-badge::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background-color: #eab308;
+    border-radius: 50%;
+}
+
+/*fim do  status do site */
 /* Bloqueio de scroll do fundo */
 body.no-scroll { overflow: hidden; }
 
@@ -4611,8 +4757,3 @@ input[type="password"] {
 .qr-scroll-area { max-height: 400px; overflow-y: auto; }
 
 /*fim de QR*/
-
-/*prévia*/
-
-
-/*fim da prévia*/

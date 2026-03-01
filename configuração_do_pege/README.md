@@ -1,9 +1,9 @@
 # Classify_ia
 
-versão do site: v6.13.0 Estável
+versão do site: v6.13.1 Estável
 
 todas ia em um só lugar
-versão do controle: 0.0.11 v
+versão do controle: 2.1.12 v
 
 Classify IA 🚀
 O Classify IA é um ecossistema projetado para catalogar e organizar as melhores ferramentas de Inteligência Artificial disponíveis no mercado. O objetivo é otimizar o fluxo de trabalho dos usuários, oferecendo acesso rápido, categorizado e eficiente a tecnologias de ponta.
