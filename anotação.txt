@@ -36,3 +36,335 @@ const distinctLogs = [
 
 
    //===================///
+
+
+//============sistema de QRS=========//////
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<button class="qr-float-btn" onclick="toggleQRModal()">QR</button>
+
+<div id="qr-overlay" class="qr-overlay" onclick="fecharAoClicarFora(event)">
+    <div class="qr-panel">
+        <button class="close-x" onclick="toggleQRModal()">&times;</button>
+        
+        <div id="login-section" class="login-box">
+            <h3 class="panel-title">Acesso Restrito</h3>
+            <input type="password" id="pass-input" placeholder="Senha ADM" maxlength="4">
+            <button class="unlock-btn" onclick="verificarSenha()">DESBLOQUEAR</button>
+        </div>
+
+        <div id="qr-display" class="qr-scroll-area"></div>
+    </div>
+</div>
+
+
+///=================css do QRS==============///
+
+
+/* Bloqueio de scroll do fundo */
+body.no-scroll { overflow: hidden; }
+
+/* Botão Flutuante Verde */
+.qr-float-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 65px;
+    height: 65px;
+    background: #2ecc71;
+    color: white;
+    border-radius: 50%;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    z-index: 999;
+}
+
+/* Modal Overlay */
+.qr-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 15, 25, 0.98);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+}
+
+.qr-panel {
+    background: #1a1c24;
+    width: 90%;
+    max-width: 380px;
+    border-radius: 20px;
+    padding: 20px;
+    position: relative;
+    border: 1px solid #333;
+    font-family: sans-serif;
+    color: white;
+}
+
+.close-x {
+    position: absolute;
+    top: 15px; right: 15px;
+    background: none; border: none;
+    color: #666; font-size: 24px; cursor: pointer;
+}
+
+/* Login */
+.login-box {
+    background: #252833;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background: #1a1c24;
+    color: white;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.unlock-btn {
+    width: 100%;
+    padding: 12px;
+    background: #f1c40f;
+    color: #000;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Card e QR Code */
+.qr-card {
+    background: #252833;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.qr-name {
+    color: #f1c40f;
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+/* Container Mestre do QR */
+.qr-wrapper {
+    background: white;
+    padding: 10px;
+    border-radius: 15px;
+    width: 150px;
+    height: 150px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Interrogação */
+.qr-placeholder {
+    position: absolute;
+    font-size: 80px;
+    font-weight: bold;
+    color: #1a1c24;
+    z-index: 5;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+/* Mensagem de Aviso */
+.adm-only-msg {
+    position: absolute;
+    inset: 0;
+    background: #f1c40f;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 15px;
+    z-index: 10;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 0.4s ease;
+    pointer-events: none;
+}
+
+/* Estados de Bloqueio */
+.blur-active canvas, .blur-active img {
+    filter: blur(25px);
+    opacity: 0.1;
+}
+
+/* Animação da Mensagem */
+.show-msg .adm-only-msg {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.show-msg .qr-placeholder { opacity: 0; }
+
+.qr-scroll-area { max-height: 400px; overflow-y: auto; }
+
+
+
+
+
+///================js do QRS==============///
+// CONFIGURAÇÃO DOS LINKS
+const CONFIGS = [
+   { 
+        nome: "APP PÚBLICO", 
+        url: "https://teddyws1.github.io/Classify_ia/", 
+        privado: false 
+    },
+    
+    { 
+        nome: "SISTEMA PRINCIPAL ADM", 
+        url: "https://ddp433w0-5500.brs.devtunnels.ms/", 
+        privado: true 
+    },
+      { 
+        nome: "SISTEMA PRINCIPAL ADM", 
+        url: "https://6n7hkflq-5500.brs.devtunnels.ms/", 
+        privado: true 
+    },
+   
+];
+
+const SENHA_MESTRE = "123"; 
+let autenticado = false;
+
+function toggleQRModal() {
+    const modal = document.getElementById('qr-overlay');
+    const isOpening = modal.style.display !== 'flex';
+
+    if (isOpening) {
+        modal.style.display = 'flex';
+        document.body.classList.add('no-scroll');
+        renderizarPainel();
+    } else {
+        modal.style.display = 'none';
+        document.body.classList.remove('no-scroll');
+    }
+}
+
+function fecharAoClicarFora(e) {
+    if (e.target.id === 'qr-overlay') toggleQRModal();
+}
+
+function verificarSenha() {
+    const input = document.getElementById('pass-input');
+    if (input.value === SENHA_MESTRE) {
+        autenticado = true;
+        document.getElementById('login-section').style.display = 'none';
+        renderizarPainel();
+    } else {
+        alert("Senha Incorreta!");
+        input.value = '';
+    }
+}
+
+function renderizarPainel() {
+    const display = document.getElementById('qr-display');
+    display.innerHTML = ''; 
+
+    // Ordenar Público Primeiro
+    const ordenado = [
+        ...CONFIGS.filter(i => !i.privado),
+        ...CONFIGS.filter(i => i.privado)
+    ];
+
+    ordenado.forEach((item, idx) => {
+        const card = document.createElement('div');
+        card.className = 'qr-card';
+        
+        const name = document.createElement('p');
+        name.className = 'qr-name';
+        name.innerText = item.nome;
+
+        const wrap = document.createElement('div');
+        wrap.className = 'qr-wrapper';
+        
+        if (item.privado && !autenticado) {
+            wrap.classList.add('blur-active');
+            
+            // Interrogação
+            const qMark = document.createElement('span');
+            qMark.className = 'qr-placeholder';
+            qMark.innerText = '?';
+            
+            // Mensagem ADM
+            const msg = document.createElement('div');
+            msg.className = 'adm-only-msg';
+            msg.innerText = "SOMENTE ADM TEM ACESSO";
+            
+            wrap.appendChild(qMark);
+            wrap.appendChild(msg);
+
+            // Clique para mostrar aviso
+            wrap.onclick = function() {
+                this.classList.add('show-msg');
+                setTimeout(() => this.classList.remove('show-msg'), 2000);
+            };
+        }
+
+        const qrDiv = document.createElement('div');
+        qrDiv.id = `qrc-box-${idx}`;
+
+        wrap.appendChild(qrDiv);
+        card.appendChild(name);
+        card.appendChild(wrap); 
+        display.appendChild(card);
+
+        // Gera o QR Code com 120px para caber no wrapper de 150px
+        new QRCode(qrDiv, {
+            text: item.url,
+            width: 120,
+            height: 120
+        });
+    });
+}
+
+//=================fim do sisteam de QRS=================//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

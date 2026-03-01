@@ -206,12 +206,47 @@
       </div>
       <br />
       <!--fim card de tag-->
-<!--prévia--->
+      <!--QR -->
 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
+      <button class="qr-float-btn" onclick="toggleQRModal()">
+    <ion-icon name="share-social-outline"></ion-icon>
+</button>
 
-<!--fim prévia-->
-      
+      <div
+        id="qr-overlay"
+        class="qr-overlay"
+        onclick="fecharAoClicarFora(event)"
+      >
+        <div class="qr-panel">
+          <button class="close-x" onclick="toggleQRModal()">&times;</button>
+
+          <div id="login-section" class="login-box">
+            <h3 class="panel-title">Acesso Restrito</h3>
+            <span class="ACESSO">ACESSO SOMENTE ADM</span>
+            <input
+              type="password"
+              id="pass-input"
+              placeholder="0000"
+              maxlength="4"
+              inputmode="numeric"
+              pattern="[0-9]*"
+              oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+            />
+            <button class="unlock-btn" onclick="verificarSenha()">
+              DESBLOQUEAR
+            </button>
+          </div>
+
+          <div id="qr-display" class="qr-scroll-area"></div>
+        </div>
+      </div>
+      <!--FIM DA QR-->
+      <!--prévia--->
+
+      <!--fim prévia-->
+
       <!--explorar Sites-->
       <button
         class="Explorar"
@@ -863,11 +898,11 @@
               src="https://www.google.com/s2/favicons?domain=speechify.com&sz=32"
             /><a href="https://speechify.com" target="_blank">Speechify</a>
           </li>
-        <li>
-  <img
-    src="https://www.google.com/s2/favicons?domain=neuronsinc.com&sz=32"
-  /><a href="https://visualeyes.design" target="_blank">VisualEyes</a>
-</li>
+          <li>
+            <img
+              src="https://www.google.com/s2/favicons?domain=neuronsinc.com&sz=32"
+            /><a href="https://visualeyes.design" target="_blank">VisualEyes</a>
+          </li>
         </ul>
       </div>
 
@@ -1127,7 +1162,6 @@
           <ion-icon name="newspaper-outline"></ion-icon> Blogging <span></span>
         </h2>
         <ul>
-       
           <li>
             <img
               src="https://www.google.com/s2/favicons?domain=rewording.io&sz=32"
@@ -1144,8 +1178,12 @@
             /><a href="https://www.junia.ai" target="_blank">Junia</a>
           </li>
           <li>
-            <img src="Https://i.postimg.cc/65fhv5C3/Picsart-26-02-28-23-59-04-979.png" width="24" height="24" /><a href="#" target="_blank">Journalist AI</a>
-             <span class="status-badge">site lento</span>
+            <img
+              src="Https://i.postimg.cc/65fhv5C3/Picsart-26-02-28-23-59-04-979.png"
+              width="24"
+              height="24"
+            /><a href="#" target="_blank">Journalist AI</a>
+            <span class="status-badge">site lento</span>
           </li>
         </ul>
       </div>

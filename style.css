@@ -4405,72 +4405,213 @@ body.no-scroll {
 
 /*fim modal e descrição dos lis*/
 
-/* sistema de site fora do ar*/
+/*sistema de QR*/
 
-/* Container principal do item da lista */
-.ia-item {
+/* Bloqueio de scroll do fundo */
+body.no-scroll { overflow: hidden; }
+
+/* Botão Flutuante Verde */
+:root {
+    /* Mude aqui para a cor principal do seu sistema */
+    --cor-sistema: var(--tag-ia); 
+    --cor-sistema-dark:var(--accent);
+}
+
+.qr-float-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 65px;
+    height: 65px;
+    
+    /* Cores do Sistema */
+    background: linear-gradient(135deg, var(--cor-sistema), var(--cor-sistema-dark));
+    color: rgb(0, 0, 0);
+    border-radius: 20px; 
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    background: #1a1d23; /* Fundo escuro conforme a imagem */
-    padding: 12px 15px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    list-style: none;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    justify-content: center;
+    
+    /* Sombra e Efeito Visual */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Alinhamento da info (ícone, link e badge) */
-.ia-info {
-    display: flex;
+/* Tamanho do Ícone */
+.qr-float-btn ion-icon {
+    font-size: 30px; /* Ajuste o tamanho conforme desejar */
+}
+
+/* Interação ao passar o mouse */
+.qr-float-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    filter: brightness(1.1);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Efeito ao clicar */
+.qr-float-btn:active {
+    transform: scale(0.9);
+}
+/* Modal Overlay */
+.qr-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 15, 25, 0.656);
+    z-index: 1000;
     align-items: center;
-    gap: 12px;
+    justify-content: center;
+    backdrop-filter: blur(10px);
 }
 
-/* Ícone da IA */
-.ia-icon {
-    width: 24px;
-    height: 24px;
-    border-radius: 4px;
-}
-
-/* Link estilizado (Estilo Tome) */
-.ia-link {
-    color: #FFD700; /* Amarelo/Dourado das imagens */
-    text-decoration: none;
-    font-weight: bold;
-    font-style: italic; /* Itálico conforme o padrão do seu projeto */
+.qr-panel {
+    background: #1a1c24;
+    width: 90%;
+    max-width: 380px;
+    border-radius: 20px;
+    padding: 20px;
+    position: relative;
+    border: 1px solid #333;
     font-family: sans-serif;
-    font-size: 16px;
-}
-
-/* Badge "Fora do Ar" */
-.status-badge {
-    background-color: #ff4444; /* Vermelho alerta */
     color: white;
-    font-size: 10px;
-    font-weight: bold;
+}
+
+.close-x {
+    position: absolute;
+    top: 15px; right: 15px;
+    background: none; border: none;
+    color: #666; font-size: 24px; cursor: pointer;
+}
+
+/* Login */
+.login-box {
+    background: #252833;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+}.ACESSO {
+    background-color: #facc15; /* Amarelo Vibrante */
+    color: #000000;            /* Texto Preto */
+    font-size: 11px;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 6px;
     text-transform: uppercase;
-    padding: 2px 8px;
-    border-radius: 4px;
-    letter-spacing: 0.5px;
-    box-shadow: 0 0 10px rgba(255, 68, 68, 0.3);
-    animation: blink 1.5s infinite; /* Efeito opcional de piscar */
+    letter-spacing: 1px;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(250, 204, 21, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background: #1a1c24;
+    color: white;
+    text-align: center;
+    margin: 10px 0;
 }
 
-/* Animação suave para o badge */
-@keyframes blink {
-    0% { opacity: 1; }
-    50% { opacity: 0.7; }
-    100% { opacity: 1; }
+.unlock-btn {
+    width: 100%;
+    padding: 12px;
+    background: #f1c40f;
+    color: #000;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
-/* Hover para o item */
-.ia-item:hover {
-    background: #242930;
-    transition: 0.3s;
+/* Card e QR Code */
+.qr-card {
+    background: #252833;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-/*fim do sistema de site fora do ar*/
+
+.qr-name {
+    color: #f1c40f;
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+/* Container Mestre do QR */
+.qr-wrapper {
+    background: white;
+    padding: 10px;
+    border-radius: 15px;
+    width: 150px;
+    height: 150px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Interrogação */
+.qr-placeholder {
+    position: absolute;
+    font-size: 80px;
+    font-weight: bold;
+    color: #1a1c24;
+    z-index: 5;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+/* Mensagem de Aviso */
+.adm-only-msg {
+    position: absolute;
+    inset: 0;
+    background: #f1c40f;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 15px;
+    z-index: 10;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 0.4s ease;
+    pointer-events: none;
+}
+
+/* Estados de Bloqueio */
+.blur-active canvas, .blur-active img {
+    filter: blur(25px);
+    opacity: 0.1;
+}
+
+/* Animação da Mensagem */
+.show-msg .adm-only-msg {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.show-msg .qr-placeholder { opacity: 0; }
+
+.qr-scroll-area { max-height: 400px; overflow-y: auto; }
+
+/*fim de QR*/
+
 /*prévia*/
 
 

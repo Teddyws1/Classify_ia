@@ -1521,7 +1521,124 @@ window.addEventListener('load', checarStatusTome);
 
 //QRS
 
+
+///================js do QRS==============///
+// CONFIGURAÇÃO DOS LINKS
+const CONFIGS = [
+   { 
+        nome: "APP PÚBLICO", 
+        url: "https://teddyws1.github.io/Classify_ia/", 
+        privado: false 
+    },
+    
+    { 
+        nome: "SISTEMA PRINCIPAL ADM", 
+        url: "https://ddp433w0-5500.brs.devtunnels.ms/", 
+        privado: true 
+    },
+      { 
+        nome: "SISTEMA PRINCIPAL ADM", 
+        url: "https://6n7hkflq-5500.brs.devtunnels.ms/", 
+        privado: true 
+    },
+   
+];
+
+const SENHA_MESTRE = "123"; 
+let autenticado = false;
+
+function toggleQRModal() {
+    const modal = document.getElementById('qr-overlay');
+    const isOpening = modal.style.display !== 'flex';
+
+    if (isOpening) {
+        modal.style.display = 'flex';
+        document.body.classList.add('no-scroll');
+        renderizarPainel();
+    } else {
+        modal.style.display = 'none';
+        document.body.classList.remove('no-scroll');
+    }
+}
+
+function fecharAoClicarFora(e) {
+    if (e.target.id === 'qr-overlay') toggleQRModal();
+}
+
+function verificarSenha() {
+    const input = document.getElementById('pass-input');
+    if (input.value === SENHA_MESTRE) {
+        autenticado = true;
+        document.getElementById('login-section').style.display = 'none';
+        renderizarPainel();
+    } else {
+        alert("Senha Incorreta!");
+        input.value = '';
+    }
+}
+
+function renderizarPainel() {
+    const display = document.getElementById('qr-display');
+    display.innerHTML = ''; 
+
+    // Ordenar Público Primeiro
+    const ordenado = [
+        ...CONFIGS.filter(i => !i.privado),
+        ...CONFIGS.filter(i => i.privado)
+    ];
+
+    ordenado.forEach((item, idx) => {
+        const card = document.createElement('div');
+        card.className = 'qr-card';
+        
+        const name = document.createElement('p');
+        name.className = 'qr-name';
+        name.innerText = item.nome;
+
+        const wrap = document.createElement('div');
+        wrap.className = 'qr-wrapper';
+        
+        if (item.privado && !autenticado) {
+            wrap.classList.add('blur-active');
+            
+            // Interrogação
+            const qMark = document.createElement('span');
+            qMark.className = 'qr-placeholder';
+            qMark.innerText = '?';
+            
+            // Mensagem ADM
+            const msg = document.createElement('div');
+            msg.className = 'adm-only-msg';
+            msg.innerText = "SOMENTE ADM TEM ACESSO";
+            
+            wrap.appendChild(qMark);
+            wrap.appendChild(msg);
+
+            // Clique para mostrar aviso
+            wrap.onclick = function() {
+                this.classList.add('show-msg');
+                setTimeout(() => this.classList.remove('show-msg'), 2000);
+            };
+        }
+
+        const qrDiv = document.createElement('div');
+        qrDiv.id = `qrc-box-${idx}`;
+
+        wrap.appendChild(qrDiv);
+        card.appendChild(name);
+        card.appendChild(wrap); 
+        display.appendChild(card);
+
+        // Gera o QR Code com 120px para caber no wrapper de 150px
+        new QRCode(qrDiv, {
+            text: item.url,
+            width: 120,
+            height: 120
+        });
+    });
+}
 //FIM DOS QRS
+
 //prévia
 
 
