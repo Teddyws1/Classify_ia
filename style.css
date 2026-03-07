@@ -33,12 +33,10 @@
   --overlay: rgba(0, 0, 0, 0.55);
 }
 
-
-
-html, body {
+html,
+body {
   touch-action: manipulation;
 }
-
 
 body {
   margin: 20px;
@@ -55,16 +53,18 @@ body {
   user-select: none;
   -webkit-user-select: none;
   overflow-x: hidden;
-  
 }
 
-
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 /* Aplicação universal do box-sizing para todos os elementos */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
@@ -80,7 +80,6 @@ body.no-scroll {
   padding: 20px 24px;
   text-align: center;
   border-radius: 18px;
-
 }
 
 /* Layout principal */
@@ -92,7 +91,6 @@ body.no-scroll {
   flex-wrap: nowrap;
 }
 
-
 /* Título */
 .title h1 {
   margin: 0;
@@ -102,10 +100,9 @@ body.no-scroll {
 
 .title p {
   margin: 6px 0 0;
-  font-size: .9rem;
+  font-size: 0.9rem;
   color: var(--muted);
 }
-
 
 /* ================== CONTROLS ================== */
 .controls {
@@ -131,8 +128,6 @@ li {
   align-items: center;
   gap: 8px;
 }
-
-
 
 /* =====================fim da li/mark========== */
 
@@ -162,7 +157,6 @@ li {
     font-size: 1rem;
   }
 }
-
 
 input,
 button {
@@ -201,7 +195,6 @@ input::placeholder {
   color: #facc15;
 }
 
-
 .search-box input {
   width: 100%;
   padding: 12px 44px 12px 44px;
@@ -238,7 +231,6 @@ input::placeholder {
   box-shadow: 0 2px 10px rgba(255, 255, 255, 0.08);
 }
 
-
 /* placeholder */
 .search-box input::placeholder {
   color: #94a3b8;
@@ -252,8 +244,8 @@ input::placeholder {
 }
 
 /* animação do ícone no foco */
-.search-box input:focus+.clear-btn~.icon-search,
-.search-box input:focus~.icon-search {
+.search-box input:focus + .clear-btn ~ .icon-search,
+.search-box input:focus ~ .icon-search {
   color: #e5ff00;
   transform: translateY(-50%) scale(1.15);
 }
@@ -273,8 +265,6 @@ input::placeholder {
   display: block;
 }
 
-
-
 /* botão limpar */
 .clear-btn {
   position: absolute;
@@ -288,7 +278,10 @@ input::placeholder {
   cursor: pointer;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    color 0.2s ease;
 }
 
 .clear-btn:hover {
@@ -316,7 +309,6 @@ input::placeholder {
   border: none;
 }
 
-
 .grid {
   max-width: 1300px;
   margin: auto;
@@ -338,7 +330,6 @@ input::placeholder {
   gap: clamp(10px, 2vw, 16px);
 }
 
-
 .badge-new {
   position: absolute;
   top: 0;
@@ -351,15 +342,12 @@ input::placeholder {
   font-weight: 700;
 }
 
-
 .card li {
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 8px;
 }
-
-
 
 .card h2 {
   margin-top: 0;
@@ -375,7 +363,6 @@ input::placeholder {
   font-size: clamp(1rem, 2.5vw, 1.4rem);
   flex-wrap: wrap;
 }
-
 
 .card span {
   font-size: 0.8rem;
@@ -402,12 +389,12 @@ input::placeholder {
 .overlay-bg {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, .55);
+  background: rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(3px);
   z-index: 900;
   opacity: 0;
   pointer-events: none;
-  transition: .25s;
+  transition: 0.25s;
 }
 
 .overlay-bg.active {
@@ -526,7 +513,7 @@ input::placeholder {
   border: none;
   background: #ffffff0f;
   backdrop-filter: blur(6px);
-  color: #ffffff;
+  color: #e20606;
   font-size: 1.3rem;
   font-weight: bold;
   font-weight: 500;
@@ -534,11 +521,10 @@ input::placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, .45);
-  transition: .25s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+  transition: 0.25s ease;
   z-index: 10001;
 }
-
 
 /* =========================
    GARANTIA ANTI SCROLL HORIZONTAL
@@ -555,7 +541,6 @@ input::placeholder {
   color: #111;
   transform: scale(1.08) rotate(90deg);
 }
-
 
 /* button de ver mais/menos */
 .ver-mais-btn {
@@ -595,10 +580,8 @@ input::placeholder {
   font-size: 1.2rem;
   transform: translateY(2px);
   /* sempre abaixo */
-  transition: transform .25s ease;
+  transition: transform 0.25s ease;
 }
-
-
 
 .ver-mais-btn:hover {
   transform: translateY(-2px);
@@ -616,15 +599,12 @@ input::placeholder {
   outline-offset: 3px;
 }
 
-
 /* fim button de ver mais/menos */
 ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-
-
 
 li {
   display: flex;
@@ -656,7 +636,7 @@ li {
 /* efeito no hover do item */
 li:hover img {
   transform: scale(1.2);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, .35);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
 }
 
 img {
@@ -700,7 +680,7 @@ a {
 
 /* Criamos a linha personalizada (em vez do underline padrão) */
 a::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -757,8 +737,8 @@ footer .social {
 }
 
 footer .social span {
-  font-size: .85rem;
-  opacity: .85;
+  font-size: 0.85rem;
+  opacity: 0.85;
 }
 
 footer .social a {
@@ -770,7 +750,7 @@ footer .social img {
   width: 18px;
   height: 18px;
   filter: invert(80%);
-  transition: .2s ease;
+  transition: 0.2s ease;
 }
 
 .light footer .social img {
@@ -791,13 +771,13 @@ footer .social a::after {
   background: var(--card);
   color: var(--text);
   padding: 4px 8px;
-  font-size: .7rem;
+  font-size: 0.7rem;
   border-radius: 6px;
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
   border: 1px solid var(--border);
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .ion-icon {
@@ -825,25 +805,25 @@ footer .social a::after {
   cursor: pointer;
   border-radius: 14px;
   z-index: 999;
-  transition: color 0.25s ease, transform 0.2s ease;
+  transition:
+    color 0.25s ease,
+    transform 0.2s ease;
 }
-
 
 .open-sidebar.hide {
   opacity: 0;
   pointer-events: none;
-  transform: scale(.8);
+  transform: scale(0.8);
 }
-
 
 /* OVERLAY */
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, .5);
+  background: rgba(0, 0, 0, 0.5);
   opacity: 0;
   pointer-events: none;
-  transition: .35s;
+  transition: 0.35s;
   z-index: 1000;
 }
 
@@ -862,7 +842,7 @@ footer .social a::after {
   background: var(--card);
   color: var(--text);
   padding: 22px 22px 22px 5px;
-  transition: .4s cubic-bezier(.4, 0, .2, 1);
+  transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1001;
 }
 
@@ -874,7 +854,7 @@ footer .social a::after {
 .close-sidebar {
   background: none;
   border: none;
-  color: var(--text);
+  color: #facc15;
   font-size: 1.2rem;
   cursor: pointer;
   float: right;
@@ -883,19 +863,17 @@ footer .social a::after {
 /* TEXTO */
 .about-text {
   color: #fff;
-  font-size: .92rem;
+  font-size: 0.92rem;
   line-height: 1.6;
   margin-bottom: 20px;
   padding-left: 12px;
   border-left: 3px solid var(--accent);
-  opacity: .9;
+  opacity: 0.9;
 }
-
 
 .section {
   margin-bottom: 18px;
 }
-
 
 html.light .idea-card {
   background: rgba(0, 0, 0, 0.05);
@@ -918,7 +896,6 @@ html.light .idea-card {
 html.light .idea-header img {
   filter: invert(0);
 }
-
 
 /* CRIADOR */
 .creator span {
@@ -958,7 +935,6 @@ html.light .idea-header img {
   border-radius: 18px;
 }
 
-
 .socials a:hover {
   transform: translateY(-3px);
   background: var(--accent);
@@ -972,8 +948,6 @@ html.light .idea-header img {
 html.light .socials img {
   filter: invert(0);
 }
-
-
 
 /*botão de ou/sepreferir */
 #ou {
@@ -1049,14 +1023,14 @@ html.light .socials img {
   right: 0;
 
   text-align: center;
-  font-size: .7rem;
+  font-size: 0.7rem;
   color: var(--muted);
-  opacity: .85;
+  opacity: 0.85;
 }
 
 .app-version strong {
   display: block;
-  font-size: .8rem;
+  font-size: 0.8rem;
   color: var(--accent);
   font-weight: 600;
 }
@@ -1068,13 +1042,13 @@ html.light .socials img {
   left: 0;
   right: 0;
   text-align: center;
-  font-size: .7rem;
-  opacity: .85;
+  font-size: 0.7rem;
+  opacity: 0.85;
 }
 
 .versaobox strong {
   display: block;
-  font-size: .8rem;
+  font-size: 0.8rem;
   color: var(--accent);
   font-weight: 600;
 }
@@ -1094,8 +1068,6 @@ html.light .socials img {
   letter-spacing: 1px;
 }
 
-
-
 /* HOVER */
 .update-info-btn:hover {
   transform: translateY(-1px);
@@ -1107,16 +1079,15 @@ html.light .socials img {
   transform: scale(0.96);
 }
 
-
 /* MODAL */
 .update-info-modal {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, .55);
+  background: rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(4px);
   opacity: 0;
   pointer-events: none;
-  transition: .3s;
+  transition: 0.3s;
   z-index: 9999;
 }
 
@@ -1169,7 +1140,7 @@ html.light .socials img {
 .update-list li {
   position: relative;
   padding: 10px 12px 10px 34px;
-  font-size: .8rem;
+  font-size: 0.8rem;
   color: var(--text);
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -1198,8 +1169,6 @@ html.light .socials img {
   background: #ffcf33;
   margin: 24px 0;
 }
-
-
 
 /* ===============================
    🧩 Badge responsivo e seguro
@@ -1268,10 +1237,9 @@ html.light .socials img {
   padding: 18px;
 }
 
-
 /* hover */
 .card h2 span:hover {
-  background: rgba(79, 140, 255, .2);
+  background: rgba(79, 140, 255, 0.2);
   transform: translateY(-1px);
 }
 
@@ -1288,7 +1256,6 @@ html.light .socials img {
   flex: 0 0 auto;
   /* ❌ não deixa esticar */
 }
-
 
 /* icon de compartilhar */
 .share-btn {
@@ -1342,9 +1309,12 @@ html.light .socials img {
   position: relative;
 }
 
+
+
 .side-overlay {
   position: absolute;
   inset: 0;
+  opacity: 0.90;
   background: #facc15;
   display: flex;
   align-items: center;
@@ -1352,9 +1322,7 @@ html.light .socials img {
   transform: translateX(101%);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   padding: 0 10px;
-
 }
-
 
 /* Scroll Wrapper */
 .social-scroll-wrapper {
@@ -1471,14 +1439,14 @@ html.light .socials img {
 .share-lock-card {
   position: fixed;
   /* 🔥 acima de tudo */
-  background: linear-gradient(180deg, #123B40, #296573);
+  background: linear-gradient(180deg, #123b40, #296573);
   color: #e5e7eb;
 
   width: 170px;
   padding: 10px 12px;
   border-radius: 12px;
 
-  border: 1px solid rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 12px 30px #ffffff3d;
 
   font-size: 11px;
@@ -1489,7 +1457,7 @@ html.light .socials img {
   pointer-events: none;
   /* não bloqueia clique da página */
 
-  animation: miniGlobalIn .22s ease forwards;
+  animation: miniGlobalIn 0.22s ease forwards;
 }
 
 .share-lock-card img {
@@ -1510,7 +1478,7 @@ html.light .socials img {
 @keyframes miniGlobalIn {
   from {
     opacity: 0;
-    transform: translateY(-6px) scale(.92);
+    transform: translateY(-6px) scale(0.92);
   }
 
   to {
@@ -1518,8 +1486,6 @@ html.light .socials img {
     transform: translateY(0) scale(1);
   }
 }
-
-
 
 /*fim bloqueia compartilha */
 /* painel de compartilhar */
@@ -1583,7 +1549,6 @@ html.light .socials img {
 .btn-close-overlay ion-icon {
   font-size: 1.4rem;
   --ionicon-stroke-width: 45px;
-
 }
 
 /* Painel Amarelo que abre ao clicar */
@@ -1684,7 +1649,6 @@ li.overlay-open .side-overlay {
   transition: 0.2s;
 }
 
-
 /*fim card de aviso */
 /* H4 */
 .contact-title {
@@ -1759,9 +1723,6 @@ li:not(:has(.ia-badge)) {
   color: var(--ia-badge-icon-color);
 }
 
-
-
-
 /* ÍCONE */
 .ia-list img {
   width: 18px;
@@ -1780,7 +1741,9 @@ mark {
   border-radius: 4px;
   font-weight: bold;
   text-decoration: none;
-  animation: highlight-swipe 0.5s forwards ease-out, mark-glow 2s infinite;
+  animation:
+    highlight-swipe 0.5s forwards ease-out,
+    mark-glow 2s infinite;
 }
 
 @keyframes highlight-swipe {
@@ -1791,8 +1754,13 @@ mark {
 }
 
 @keyframes mark-glow {
-  0%, 100% { box-shadow: 0 0 5px rgba(250, 204, 21, 0.2); }
-  50% { box-shadow: 0 0 15px rgba(250, 204, 21, 0.6); }
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(250, 204, 21, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(250, 204, 21, 0.6);
+  }
 }
 
 /* Container do item (li) ajustado para o botão de compartilhar */
@@ -1874,7 +1842,7 @@ mark {
 .modal-news {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, .6);
+  background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(6px);
   display: none;
   align-items: center;
@@ -1885,7 +1853,7 @@ mark {
 
 .modal-news.active {
   display: flex;
-  animation: fadeIn .3s ease;
+  animation: fadeIn 0.3s ease;
 }
 
 /* ================= MODAL BOX ================= */
@@ -1896,9 +1864,9 @@ mark {
   width: 100%;
   max-width: 420px;
   position: relative;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, .6);
-  border: 1px solid rgba(250, 204, 21, .25);
-  animation: slideUp .35s ease;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(250, 204, 21, 0.25);
+  animation: slideUp 0.35s ease;
 }
 
 /* ================= TÍTULO ================= */
@@ -1970,32 +1938,25 @@ mark {
   animation: swing 0.6s ease-in-out;
 }
 
-
 /* fim do iocne  */
 /* ================= BOTÃO FECHAR ================= */
 .close-modal {
   position: absolute;
   top: 14px;
   right: 14px;
-
-  background: rgba(255, 255, 255, .06);
   border: none;
   color: #c52323;
   font-size: 1.1rem;
-
   width: 32px;
   height: 32px;
   border-radius: 50%;
   cursor: pointer;
-  transition: .25s;
-
-  /* 👇 centraliza o X perfeitamente */
+  transition: 0.25s;
   display: flex;
   align-items: center;
   justify-content: center;
   line-height: 1;
 }
-
 
 .close-modal:hover {
   background: #facc15;
@@ -2016,14 +1977,13 @@ mark {
 }
 
 .scroll-area::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, .05);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .scroll-area::-webkit-scrollbar-thumb {
   background: #facc15;
   border-radius: 10px;
 }
-
 
 /*NOTIFICAÇÃO*/
 /* Botão Fechar do Toast */
@@ -2180,20 +2140,18 @@ mark {
   user-select: none;
 
   transition:
-    color .35s ease,
-    border-color .35s ease,
-    background .35s ease,
-    transform .25s ease,
-    box-shadow .25s ease;
+    color 0.35s ease,
+    border-color 0.35s ease,
+    background 0.35s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .tab-btn.active {
   color: var(--accent);
   border-color: var(--accent);
 
-  background: color-mix(in srgb,
-      var(--accent) 12%,
-      var(--glass));
+  background: color-mix(in srgb, var(--accent) 12%, var(--glass));
 
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
   transform: translateY(-3px);
@@ -2202,7 +2160,6 @@ mark {
 .tab-btn.active::after {
   width: 75%;
 }
-
 
 @media (max-width: 600px) {
   .tabs-header {
@@ -2230,7 +2187,7 @@ mark {
 }
 
 .tab-btn:hover::before {
-  opacity: .18;
+  opacity: 0.18;
   transform: translateX(140%);
 }
 
@@ -2249,7 +2206,7 @@ mark {
 }
 
 .tab-btn.active::after {
-  opacity: .6;
+  opacity: 0.6;
 }
 
 /* ================= UNDERLINE FLUÍDO ================= */
@@ -2272,9 +2229,8 @@ mark {
 
 /* ================= CLICK ================= */
 .tab-btn:active {
-  transform: scale(.95);
+  transform: scale(0.95);
 }
-
 
 /* --- Conteúdo e Carrossel --- */
 .tab-content {
@@ -2282,10 +2238,7 @@ mark {
 
   animation: focusIn 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: filter, transform, opacity;
-
 }
-
-
 
 /* icone com animação */
 
@@ -2302,7 +2255,6 @@ mark {
     transform: scale(1);
   }
 }
-
 
 /*fim icone com animação */
 .tab-content.active {
@@ -2342,7 +2294,9 @@ mark {
   border-radius: 20px;
   background: linear-gradient(145deg, #0f172a, #172442);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   transform-style: preserve-3d;
   cursor: pointer;
 }
@@ -2402,11 +2356,7 @@ mark {
   /* Garante que o width 100% funcione */
 
   /* 👇 EFEITO COBRA (GRADIENTE ANIMADO) */
-  background: linear-gradient(90deg,
-      #facc15,
-      #172442,
-      #facc15,
-      #ffffff);
+  background: linear-gradient(90deg, #facc15, #172442, #facc15, #ffffff);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -2469,7 +2419,7 @@ mark {
   padding: 4px 10px;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
 
   color: #1f2937;
@@ -2477,8 +2427,8 @@ mark {
   user-select: none;
 
   box-shadow:
-    0 4px 12px rgba(0, 0, 0, .25),
-    inset 0 -1px 2px rgba(0, 0, 0, .2);
+    0 4px 12px rgba(0, 0, 0, 0.25),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.2);
 }
 
 /* 🥇 OURO */
@@ -2492,7 +2442,7 @@ mark {
   position: absolute;
   inset: -6px;
   border-radius: 999px;
-  background: radial-gradient(circle, rgba(250, 204, 21, .6), transparent 70%);
+  background: radial-gradient(circle, rgba(250, 204, 21, 0.6), transparent 70%);
   filter: blur(10px);
   z-index: -1;
 }
@@ -2508,7 +2458,11 @@ mark {
   position: absolute;
   inset: -6px;
   border-radius: 999px;
-  background: radial-gradient(circle, rgba(226, 232, 240, .6), transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(226, 232, 240, 0.6),
+    transparent 70%
+  );
   filter: blur(8px);
   z-index: -1;
 }
@@ -2524,7 +2478,7 @@ mark {
   position: absolute;
   inset: -6px;
   border-radius: 999px;
-  background: radial-gradient(circle, rgba(251, 146, 60, .6), transparent 70%);
+  background: radial-gradient(circle, rgba(251, 146, 60, 0.6), transparent 70%);
   filter: blur(8px);
   z-index: -1;
 }
@@ -2535,8 +2489,8 @@ mark {
 
 @keyframes goldPulse {
   0% {
-    transform: scale(.95);
-    opacity: .85;
+    transform: scale(0.95);
+    opacity: 0.85;
   }
 
   50% {
@@ -2545,8 +2499,8 @@ mark {
   }
 
   100% {
-    transform: scale(.95);
-    opacity: .85;
+    transform: scale(0.95);
+    opacity: 0.85;
   }
 }
 
@@ -2575,7 +2529,7 @@ mark {
 @keyframes slideArrow {
   0% {
     transform: translateX(0);
-    opacity: .5;
+    opacity: 0.5;
   }
 
   50% {
@@ -2585,7 +2539,7 @@ mark {
 
   100% {
     transform: translateX(0);
-    opacity: .5;
+    opacity: 0.5;
   }
 }
 
@@ -2646,7 +2600,6 @@ mark {
   font-size: 14px;
 }
 
-
 /*fim sisteam de ia nova para divs */
 /* Botão */
 .btn-open {
@@ -2666,7 +2619,7 @@ mark {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, .65);
+  background: rgba(0, 0, 0, 0.65);
   display: none;
   align-items: center;
   justify-content: center;
@@ -2689,7 +2642,7 @@ mark {
   position: absolute;
   top: -4px;
   right: -6px;
-  background: transparent;
+  background: #111827;
   border: 0;
   outline: none;
   box-shadow: none;
@@ -2699,7 +2652,6 @@ mark {
   padding: 0;
 }
 
-
 /* Conteúdo */
 h2 {
   display: flex;
@@ -2707,7 +2659,6 @@ h2 {
   gap: 8px;
   font-size: 22px;
 }
-
 
 .news-list {
   list-style: none;
@@ -2720,7 +2671,7 @@ h2 {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: rgba(255, 255, 255, .04);
+  background: rgba(255, 255, 255, 0.04);
   padding: 10px 12px;
   border-radius: 8px;
 }
@@ -2731,7 +2682,6 @@ h2 {
 }
 
 /* button recomendação */
-
 
 /* SISTEMA DE VERÇÃO */
 /* Botão de abrir notas de atualização */
@@ -2750,7 +2700,9 @@ h2 {
   font-weight: 700;
   cursor: pointer;
   position: absolute;
-  transition: filter 0.3s, transform 0.2s;
+  transition:
+    filter 0.3s,
+    transform 0.2s;
   bottom: -35%;
   width: 99%;
   position: relative;
@@ -2854,11 +2806,10 @@ h2 {
   font-style: normal;
 }
 
-
 .btn-close-update-card {
   position: absolute;
   top: 15px;
-  color: #ffffff;
+  color: #facc15;
   right: 15px;
   background: transparent !important;
   border: none;
@@ -2895,13 +2846,12 @@ h2 {
   border-radius: 10px;
 }
 
-
 /* sisteam de logs do js card */
 /* --- Overlay e Modal (Usando sua base) --- */
 .modal-news {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, .7);
+  background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(8px);
   display: none;
   align-items: center;
@@ -2916,7 +2866,7 @@ h2 {
 
 .update-card-main {
   background: var(--card);
- 
+
   border: 1px solid #facc15;
   padding: 25px;
   border-radius: 20px;
@@ -2946,7 +2896,6 @@ h2 {
   cursor: pointer;
   color: var(--muted);
   transition: 0.3s;
-
 }
 
 /* Esconde a barra de scroll no Chrome, Safari e Opera */
@@ -2965,7 +2914,9 @@ h2 {
 .tab-trigger ion-icon {
   font-size: 1.2rem;
   color: #ffffff;
-  transition: transform 0.2s ease, color 0.3s ease;
+  transition:
+    transform 0.2s ease,
+    color 0.3s ease;
 }
 
 .tab-trigger:hover ion-icon {
@@ -2985,7 +2936,6 @@ h2 {
   overflow-y: auto;
   padding-right: 8px;
   margin-bottom: 20px;
-
 }
 
 .update-items-list {
@@ -2995,7 +2945,6 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 10px;
-
 }
 
 .update-items-list li {
@@ -3080,7 +3029,8 @@ body.no-scroll {
 /* ==========================================================================
    2. ESTRUTURA DOS MODAIS (OVERLAYS)
    ========================================================================== */
-.modal-news, .modal-tags-overlay {
+.modal-news,
+.modal-tags-overlay {
   position: fixed;
   inset: 0;
   z-index: 10000;
@@ -3094,7 +3044,8 @@ body.no-scroll {
   padding: 20px;
 }
 
-.modal-news.active, .modal-tags-overlay.active {
+.modal-news.active,
+.modal-tags-overlay.active {
   display: flex;
   background-color: #0000003d;
   animation: fadeIn 0.3s ease-out;
@@ -3103,7 +3054,6 @@ body.no-scroll {
 /* ==========================================================================
    3. O CARD PRINCIPAL (DESIGN PREMIUM)
    ========================================================================== */
-
 
 /* ==========================================================================
    4. SISTEMA DE ABAS (TABS)
@@ -3229,7 +3179,6 @@ body.no-scroll {
   line-height: 1.5;
 }
 
-
 /* ==========================================================================
    2. ESTRUTURA DOS MODAIS (NOTAS E TAGS)
    ========================================================================== */
@@ -3286,8 +3235,7 @@ body.no-scroll {
   letter-spacing: 1px;
   margin-bottom: 20px;
   display: block;
-  font-family: 'Inter', sans-serif;
-
+  font-family: "Inter", sans-serif;
 }
 
 .update-items-wrapper,
@@ -3336,7 +3284,6 @@ body.no-scroll {
 .tags-scroll-area::-webkit-scrollbar-thumb:hover {
   background-color: rgba(200, 200, 200, 0.8);
 }
-
 
 /* ==========================================================================
    4. NAVEGAÇÃO POR ABAS (TABS)
@@ -3476,10 +3423,15 @@ body.no-scroll {
   border-radius: 14px;
   font-weight: 800;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
 
   /* Sombra inicial 3D */
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25), 0 12px 20px rgba(0, 0, 0, 0.15);
+  box-shadow:
+    0 6px 10px rgba(0, 0, 0, 0.25),
+    0 12px 20px rgba(0, 0, 0, 0.15);
   margin-bottom: 10px;
 }
 
@@ -3488,13 +3440,17 @@ body.no-scroll {
   transform: translateY(-4px);
 
   /* Sombra mais intensa */
-  box-shadow: 0 10px 14px rgba(0, 0, 0, 0.35), 0 18px 24px rgba(0, 0, 0, 0.25);
+  box-shadow:
+    0 10px 14px rgba(0, 0, 0, 0.35),
+    0 18px 24px rgba(0, 0, 0, 0.25);
 }
 
 .btn-confirm-update:active {
   /* Botão "pressionado" */
   transform: translateY(2px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 8px 12px rgba(0, 0, 0, 0.15);
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.2),
+    0 8px 12px rgba(0, 0, 0, 0.15);
 }
 
 .btn-info-tags {
@@ -3533,9 +3489,10 @@ body.no-scroll {
 .btn-info-tags:active {
   /* Botão "pressionado" */
   transform: translateY(2px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 8px 12px rgba(0, 0, 0, 0.15);
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.2),
+    0 8px 12px rgba(0, 0, 0, 0.15);
 }
-
 
 .btn-registry-close {
   /* Posicionamento */
@@ -3654,7 +3611,6 @@ body.no-scroll {
   /* cor mais escura ao clicar */
 }
 
-
 .btn-tags-entendido {
   cursor: pointer;
   background: linear-gradient(135deg, #facc15, #f59e0b);
@@ -3687,7 +3643,7 @@ body.no-scroll {
 
 /*letra da GlossáriodeTags */
 #GlossáriodeTags {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #ffffff;
   font-size: 1.5rem;
   padding-bottom: 10px;
@@ -3703,7 +3659,9 @@ body.no-scroll {
   /* tamanho do ícone */
   color: rgb(255, 255, 255);
   /* cor do ícone */
-  transition: transform 0.3s ease, color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
 }
 
 /* Hover para efeito interativo */
@@ -3730,7 +3688,9 @@ body.no-scroll {
   border-radius: 8px;
   font-size: 14px;
   cursor: pointer;
-  transition: transform 0.2s, filter 0.2s;
+  transition:
+    transform 0.2s,
+    filter 0.2s;
 }
 
 @media (max-width: 768px) {
@@ -3801,7 +3761,6 @@ body.no-scroll {
 
 /* --- ESTADO NOVO (Sino Dourado + Animação) --- */
 .status.novo .sino-icon {
-
   color: #000000;
   /* Amarelo */
 }
@@ -3891,7 +3850,9 @@ body.no-scroll {
   bottom: 22%;
   left: 17px;
   width: calc(51% - 30px);
-  transition: background-color 0.3s, transform 0.2s;
+  transition:
+    background-color 0.3s,
+    transform 0.2s;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -3912,14 +3873,15 @@ body.no-scroll {
   position: absolute;
   bottom: 22%;
   right: 3%;
-  transition: filter 0.3s, transform 0.2s;
+  transition:
+    filter 0.3s,
+    transform 0.2s;
   z-index: 100;
 }
 
 #toggleFullscreen ion-icon {
   font-size: 1.2em;
 }
-
 
 #toggleFullscreen:active {
   transform: scale(0.95);
@@ -3947,7 +3909,9 @@ body.no-scroll {
   z-index: 100;
   height: 48px;
 
-  transition: filter 0.9s, transform 0.7s;
+  transition:
+    filter 0.9s,
+    transform 0.7s;
 }
 
 /* Mantendo os efeitos de interação */
@@ -3955,7 +3919,6 @@ body.no-scroll {
   font-size: 1.9em;
   color: #000000;
 }
-
 
 /* =========================
    MODAL OVERLAY
@@ -3971,7 +3934,6 @@ body.no-scroll {
   z-index: 9999;
 }
 
-
 .modal {
   /* Configurações originais mantidas */
   color: #ffffff;
@@ -3982,12 +3944,13 @@ body.no-scroll {
   border: 1px solid var(--primary);
   box-shadow: 0 20px 40px var(--shadow-modal);
   animation: modalFade 0.25s ease;
-  background-image: 
-    linear-gradient(rgba(17, 24, 39, 0.8), rgba(17, 24, 39, 0.8)), /* Camada de escurecimento */
+  background-image:
+    linear-gradient(rgba(17, 24, 39, 0.8), rgba(17, 24, 39, 0.8)),
+    /* Camada de escurecimento */
     url("https://i.postimg.cc/4ypXCQ3X/Picsart-26-03-01-13-43-00-022-1.png");
   background-color: #111827; /* Cor base */
   background-repeat: no-repeat;
-  background-size: 250px; 
+  background-size: 250px;
   background-position: bottom 15px right 15px;
 }
 
@@ -4004,20 +3967,20 @@ body.no-scroll {
 }
 
 /* ultima atualização  */
- 
+
 .ultima {
-    color: #999;
-    font-style: italic;
-    font-size: 0.9rem;
+  color: #999;
+  font-style: italic;
+  font-size: 0.9rem;
 }
 
 .datadeatuali {
-    display: inline;
-    margin-left: 8px;
-    padding-left: 8px;
-    border-left: 2px solid #facc15; /* Linha azul de destaque */
-    color: #444;
-    font-weight: 500;
+  display: inline;
+  margin-left: 8px;
+  padding-left: 8px;
+  border-left: 2px solid #facc15; /* Linha azul de destaque */
+  color: #444;
+  font-weight: 500;
 }
 
 /*fim ultima atualização  */
@@ -4027,7 +3990,7 @@ body.no-scroll {
   align-items: center;
   gap: 12px;
   color: #facc15;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 1.4rem;
   font-weight: 700;
   margin-bottom: 15px;
@@ -4042,10 +4005,23 @@ body.no-scroll {
 }
 
 @keyframes bell-ring {
-  0%, 100% { transform: rotate(0); }
-  5%, 15%, 25% { transform: rotate(10deg); }
-  10%, 20%, 30% { transform: rotate(-10deg); }
-  35% { transform: rotate(0); }
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  5%,
+  15%,
+  25% {
+    transform: rotate(10deg);
+  }
+  10%,
+  20%,
+  30% {
+    transform: rotate(-10deg);
+  }
+  35% {
+    transform: rotate(0);
+  }
 }
 
 /* divisorias modal da mensagem */
@@ -4068,29 +4044,29 @@ body.no-scroll {
 }
 /* v6 do modal */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap");
 
 .v6 {
   /* Tipografia Robusta para suportar o efeito 3D */
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: "Inter", system-ui, sans-serif;
   font-weight: 900;
   font-size: 1.5rem;
   letter-spacing: -0.05em;
   text-transform: uppercase;
   display: inline-block;
-  
+
   /* Cor Base */
   color: #facc15;
-  
+
   /* Ativando a Perspectiva 3D no container pai */
   transform-style: preserve-3d;
   perspective: 1000px;
-  
+
   /* Animação Contínua 3D e de Brilho */
-  animation: 
+  animation:
     float3D 6s ease-in-out infinite,
     glowPulse 3s ease-in-out infinite alternate;
-  
+
   /* Prevenção de flickering em alguns navegadores */
   -webkit-font-smoothing: antialiased;
 }
@@ -4099,35 +4075,35 @@ body.no-scroll {
 @keyframes float3D {
   0% {
     transform: rotateX(0deg) rotateY(0deg) translateY(0px) translateZ(0px);
-    text-shadow: 
+    text-shadow:
       0 1px 0 #f59e0b,
       0 2px 0 #f59e0b,
       0 10px 20px rgba(245, 158, 11, 0.5);
   }
   25% {
     transform: rotateX(10deg) rotateY(15deg) translateY(-5px) translateZ(10px);
-    text-shadow: 
+    text-shadow:
       -1px 1px 0 #f59e0b,
       -2px 2px 0 #f59e0b,
       -15px 15px 30px rgba(245, 158, 11, 0.7);
   }
   50% {
     transform: rotateX(0deg) rotateY(0deg) translateY(-8px) translateZ(20px);
-    text-shadow: 
+    text-shadow:
       0 1px 0 #f59e0b,
       0 2px 0 #f59e0b,
       0 20px 40px rgba(245, 158, 11, 0.6);
   }
   75% {
     transform: rotateX(-10deg) rotateY(-15deg) translateY(-5px) translateZ(10px);
-    text-shadow: 
+    text-shadow:
       1px 1px 0 #f59e0b,
       2px 2px 0 #f59e0b,
       15px 15px 30px rgba(245, 158, 11, 0.7);
   }
   100% {
     transform: rotateX(0deg) rotateY(0deg) translateY(0px) translateZ(0px);
-    text-shadow: 
+    text-shadow:
       0 1px 0 #f59e0b,
       0 2px 0 #f59e0b,
       0 10px 20px rgba(245, 158, 11, 0.5);
@@ -4141,7 +4117,7 @@ body.no-scroll {
   }
   100% {
     filter: drop-shadow(0 0 15px rgba(229, 255, 0, 0.8))
-            drop-shadow(0 0 5px rgba(250, 204, 21, 0.6));
+      drop-shadow(0 0 5px rgba(250, 204, 21, 0.6));
   }
 }
 
@@ -4163,7 +4139,6 @@ body.no-scroll {
 .modal button:hover {
   background: #e7b500;
 }
-
 
 /*img tela media */
 
@@ -4208,7 +4183,7 @@ body.no-scroll {
 }
 
 .close-modal {
-  color: #aaa;
+  color: #facc15;
   font-size: 28px;
   font-weight: bold;
   cursor: pointer;
@@ -4426,7 +4401,9 @@ body.no-scroll {
   font-weight: 700;
   text-decoration: none;
   text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
   flex: 1;
 }
 
@@ -4510,7 +4487,6 @@ body.no-scroll {
   gap: 12px;
 }
 
-
 .btn-visit {
   flex: 1;
   background: #ffcc00;
@@ -4529,231 +4505,278 @@ body.no-scroll {
 /* status do site */
 
 .status-badge {
-    background-color: #ff0000; /* Amarelo clarinho */
-    color: #4300d4;           /* Marrom/Dourado escuro */
-    border: 1px solid #ffffff;
-    padding: 4px 12px;
-    border-radius: 50px;       /* Formato pílula */
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
+  background-color: #ff0000; /* Amarelo clarinho */
+  color: #4300d4; /* Marrom/Dourado escuro */
+  border: 1px solid #ffffff;
+  padding: 4px 12px;
+  border-radius: 50px; /* Formato pílula */
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 /* Adicionando um pontinho de status antes do texto */
 .status-badge::before {
-    content: '';
-    width: 8px;
-    height: 8px;
-    background-color: #eab308;
-    border-radius: 50%;
+  content: "";
+  width: 8px;
+  height: 8px;
+  background-color: #eab308;
+  border-radius: 50%;
 }
 
 /*fim do  status do site */
 /* Bloqueio de scroll do fundo */
-body.no-scroll { overflow: hidden; }
+body.no-scroll {
+  overflow: hidden;
+}
 
 /* Botão Flutuante Verde */
 :root {
-    /* Mude aqui para a cor principal do seu sistema */
-    --cor-sistema: var(--tag-ia); 
-    --cor-sistema-dark:var(--accent);
+  /* Mude aqui para a cor principal do seu sistema */
+  --cor-sistema: var(--tag-ia);
+  --cor-sistema-dark: var(--accent);
 }
 
 .qr-float-btn {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    width: 65px;
-    height: 65px;
-    
-    /* Cores do Sistema */
-    background: linear-gradient(135deg, var(--cor-sistema), var(--cor-sistema-dark));
-    color: rgb(0, 0, 0);
-    border-radius: 20px; 
-    border: none;
-    cursor: pointer;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    /* Sombra e Efeito Visual */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 65px;
+  height: 65px;
+
+  /* Cores do Sistema */
+  background: linear-gradient(
+    135deg,
+    var(--cor-sistema),
+    var(--cor-sistema-dark)
+  );
+  color: rgb(0, 0, 0);
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Sombra e Efeito Visual */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 /* Tamanho do Ícone */
 .qr-float-btn ion-icon {
-    font-size: 30px; /* Ajuste o tamanho conforme desejar */
+  font-size: 30px; /* Ajuste o tamanho conforme desejar */
 }
 
 /* Interação ao passar o mouse */
 .qr-float-btn:hover {
-    transform: translateY(-5px) scale(1.05);
-    filter: brightness(1.1);
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px) scale(1.05);
+  filter: brightness(1.1);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
 }
 
 /* Efeito ao clicar */
 .qr-float-btn:active {
-    transform: scale(0.9);
+  transform: scale(0.9);
 }
 /* Modal Overlay */
 .qr-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(10, 15, 25, 0.656);
-    z-index: 1000;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(10px);
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.123);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
 }
 
 .qr-panel {
-    background: #1a1c24;
-    width: 90%;
-    max-width: 380px;
-    border-radius: 20px;
-    padding: 20px;
-    position: relative;
-    border: 1px solid #333;
-    font-family: sans-serif;
-    color: white;
+  background: #1a1c24;
+  width: 90%;
+  max-width: 380px;
+  border-radius: 20px;
+  padding: 20px;
+  position: relative;
+  border: 1px solid #333;
+  font-family: sans-serif;
+  color: white;
 }
 
 .close-x {
-    position: absolute;
-    top: 15px; right: 15px;
-    background: none; border: none;
-    color: #666; font-size: 24px; cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 42px;
+  cursor: pointer;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  line-height: 1;
+  background: linear-gradient(135deg, #facc15 0%, #eab308 100%);
+  background-clip: unset;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition:
+    transform 0.2s ease-out,
+    opacity 0.2s ease;
+  outline: none;
+}
+
+.close-x:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+.close-x.active-click {
+  transform: rotate(90deg);
 }
 
 /* Login */
 .login-box {
-    background: #252833;
-    padding: 20px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-    text-align: center;
-}.ACESSO {
-    background-color: #facc15; /* Amarelo Vibrante */
-    color: #000000;            /* Texto Preto */
-    font-size: 11px;
-    font-weight: 800;
-    padding: 4px 12px;
-    border-radius: 6px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    display: inline-block;
-    box-shadow: 0 4px 10px rgba(250, 204, 21, 0.3);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #252833;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.ACESSO {
+  background-color: #facc15; /* Amarelo Vibrante */
+  color: #000000; /* Texto Preto */
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-block;
+  box-shadow: 0 4px 10px rgba(250, 204, 21, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 input[type="password"] {
-    width: 100%;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #444;
-    background: #1a1c24;
-    color: white;
-    text-align: center;
-    margin: 10px 0;
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background: #1a1c24;
+  color: white;
+  text-align: center;
+  margin: 10px 0;
 }
 
 .unlock-btn {
-    width: 100%;
-    padding: 12px;
-    background: #f1c40f;
-    color: #000;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+  width: 100%;
+  padding: 12px;
+  background: #f1c40f;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 /* Card e QR Code */
 .qr-card {
-    background: #252833;
-    border-radius: 15px;
-    padding: 20px;
-    margin-bottom: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  background: #252833;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .qr-name {
-    color: #f1c40f;
-    font-size: 11px;
-    font-weight: bold;
-    margin-bottom: 15px;
-    text-transform: uppercase;
+  color: #f1c40f;
+  font-size: 11px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-transform: uppercase;
 }
 
 /* Container Mestre do QR */
 .qr-wrapper {
-    background: white;
-    padding: 10px;
-    border-radius: 15px;
-    width: 150px;
-    height: 150px;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+  background: white;
+  padding: 10px;
+  border-radius: 15px;
+  width: 150px;
+  height: 150px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 /* Interrogação */
 .qr-placeholder {
-    position: absolute;
-    font-size: 80px;
-    font-weight: bold;
-    color: #1a1c24;
-    z-index: 5;
-    transition: opacity 0.3s;
-    pointer-events: none;
+  position: absolute;
+  font-size: 80px;
+  font-weight: bold;
+  color: #1a1c24;
+  z-index: 5;
+  transition: opacity 0.3s;
+  pointer-events: none;
 }
 
 /* Mensagem de Aviso */
 .adm-only-msg {
-    position: absolute;
-    inset: 0;
-    background: #f1c40f;
-    color: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-size: 13px;
-    font-weight: bold;
-    padding: 15px;
-    z-index: 10;
-    opacity: 0;
-    transform: translateY(100%);
-    transition: all 0.4s ease;
-    pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: #f1c40f;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 15px;
+  z-index: 10;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: all 0.4s ease;
+  pointer-events: none;
 }
 
 /* Estados de Bloqueio */
-.blur-active canvas, .blur-active img {
-    filter: blur(25px);
-    opacity: 0.1;
+.blur-active canvas,
+.blur-active img {
+  filter: blur(25px);
+  opacity: 0.1;
 }
 
 /* Animação da Mensagem */
 .show-msg .adm-only-msg {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.show-msg .qr-placeholder { opacity: 0; }
+.show-msg .qr-placeholder {
+  opacity: 0;
+}
 
-.qr-scroll-area { max-height: 400px; overflow-y: auto; }
+.qr-scroll-area {
+  max-height: 400px;
+  overflow-y: auto;
+}
 
 /*fim de QR*/
+/* Isso resolve a maioria dos problemas de amontoamento */
+.seu-elemento-bagunçado {
+  display: flex;
+  flex-wrap: wrap; /* Faz os itens pularem linha se não couberem */
+  justify-content: center;
+  gap: 10px; /* Dá espaço entre os itens */
+}

@@ -8,6 +8,49 @@ cards.forEach((c) => {
 
   total += n;
 });
+
+//sistema de bloqueio de scroll grobal
+const monitorarModais = () => {
+    const modais = document.querySelectorAll('.modal-overlay, .modal-container'); // Ajuste para a classe da sua modal
+    const body = document.body;
+
+    const verificarStatus = () => {
+        let algumaAberta = false;
+        
+        modais.forEach(modal => {
+            if (modal.classList.contains('active') || modal.style.display === 'flex') {
+                algumaAberta = true;
+            }
+        });
+
+        if (algumaAberta) {
+            const scrollY = window.scrollY;
+            body.style.position = 'fixed';
+            body.style.top = `-${scrollY}px`;
+            body.style.width = '100%';
+            body.classList.add('modal-open');
+        } else {
+            const scrollY = body.style.top;
+            body.style.position = '';
+            body.style.top = '';
+            body.classList.remove('modal-open');
+            window.scrollTo(0, parseInt(scrollY || '0') * -1);
+        }
+    };
+
+    const observer = new MutationObserver(verificarStatus);
+
+    modais.forEach(modal => {
+        observer.observe(modal, { attributes: true, attributeFilter: ['class', 'style'] });
+    });
+};
+
+document.addEventListener("DOMContentLoaded", monitorarModais);
+
+
+//fim do sistema de bloqueio de scroll grobal
+
+
 //sistam de cards da divs
 const MAX_VISIBLE = 4;
 
@@ -1638,3 +1681,87 @@ function renderizarPainel() {
     });
 }
 //FIM DOS QRS
+
+//testes js inst a site
+const CACHE_NAME = 'webapp-v1';
+const assets = ['/', '/index.html'];
+
+self.addEventListener('install', (e) => {
+  e.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(assets))
+  );
+});
+
+self.addEventListener('fetch', (e) => {
+  e.respondWith(
+    caches.match(e.request).then((res) => res || fetch(e.request))
+  );
+});
+let deferredPrompt;
+const installBtn = document.getElementById('installBtn');
+
+// Registra o Service Worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
+}
+
+// Captura o evento de instalação
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installBtn.style.display = 'block';
+});
+
+installBtn.addEventListener('click', async () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === 'accepted') {
+      installBtn.style.display = 'none';
+    }
+    deferredPrompt = null;
+  }
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const hintBtn = document.querySelector('.hint-scroll');
+  
+  if (hintBtn) {
+    hintBtn.addEventListener('click', () => {
+      // 1. Encontra a aba que está visível no momento
+      const activeTab = document.querySelector('.tab-content.active');
+      
+      if (activeTab) {
+        const scrollWrapper = activeTab.querySelector('.scroll-wrapper');
+
+        if (scrollWrapper) {
+          const scrollStep = 280; // Quanto ele move por clique
+          const currentScroll = scrollWrapper.scrollLeft;
+          const maxScroll = scrollWrapper.scrollWidth - scrollWrapper.clientWidth;
+
+          // 2. Lógica de Loop: 
+          // Se o scroll atual já estiver no fim (ou quase no fim), volta pro 0
+          if (currentScroll >= maxScroll - 5) {
+            scrollWrapper.scrollTo({
+              left: 0,
+              behavior: 'smooth'
+            });
+            
+            // Efeito visual opcional: girar o ícone quando volta ao início
+            const icon = hintBtn.querySelector('ion-icon');
+            if (icon) {
+              icon.style.transform = 'rotate(-180deg)';
+              setTimeout(() => icon.style.transform = 'rotate(0deg)', 400);
+            }
+          } else {
+            // Caso contrário, continua rolando para a direita
+            scrollWrapper.scrollBy({
+              left: scrollStep,
+              behavior: 'smooth'
+            });
+          }
+        }
+      }
+    });
+  }
+});
+

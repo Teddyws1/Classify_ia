@@ -2,21 +2,28 @@
    CONFIGURAÇÃO DE DADOS (DATABASE)
    ========================================================================== */
 const updateLogs = [
-     {
+// ... outras atualizações que você já tenha
+  {
     type: "FIX",
-    text: "Correção de erros das imagens",
-    color: "#ef4444", 
-  },
-     {
-    type: "NEW",
-    text: "nova  função de painel de compartilha com QR",
-    color: "#22c55e", 
+    text: "Ajuste fino no botão de fechar (X) do painel de compartilhamento via QR.",
+    color: "#3b82f6", // Azul para melhorias
   },
   {
-  type: "NEW",
-  text: "Nova função que mostra as últimas datas de atualização do site",
-  color: "#22c55e", 
-}
+    type: "NEW",
+    text: "Implementação de trava de scroll (No-Scroll) ao abrir painéis e modais.",
+    color: "#a855f7", // Roxo para sistemas core
+  },
+  {
+    type: "NEW",
+    text: "Smart Scroll v1.0: Sistema de Loop Infinito na lista de TOP IAs.",
+    color: "#22c55e", // Verde para novas funções
+  }
+  ,
+   {
+    type: "UI",
+    text: "melhorias nos (X) dos modals",
+    color: "#22c55e", 
+  },
 ];
 
 /* ==========================================================================
