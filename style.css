@@ -4821,7 +4821,7 @@ input[type="password"] {
 .bug-modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 0.51);
     display: none; /* JS muda para flex */
     align-items: center;
     justify-content: center;
@@ -4839,6 +4839,7 @@ input[type="password"] {
     border-radius: 15px;
     border: 1px solid #333;
     animation: bugFade 0.3s ease;
+    
 }
 
 .bug-header {
@@ -4852,7 +4853,7 @@ input[type="password"] {
 .close-btn {
     background: none;
     border: none;
-    color: #fff;
+    color: #facc15;
     font-size: 30px;
     cursor: pointer;
 }
@@ -4865,10 +4866,63 @@ input[type="password"] {
     width: 100%;
     background: #252833;
     border: 1px solid #444;
-    color: #fff;
+    color: #ffffff89;
     padding: 10px;
     border-radius: 8px;
     box-sizing: border-box;
+}
+
+/* Container principal */
+.upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: sans-serif;
+}
+
+/* O "Botão" customizado */
+.custom-file-upload {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #3b82f6; /* Azul moderno */
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.1s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Efeito Hover */
+.custom-file-upload:hover {
+  background-color: #2563eb;
+}
+
+/* Efeito ao clicar */
+.custom-file-upload:active {
+  transform: scale(0.98);
+}
+
+/* Estilo do texto do nome do arquivo */
+#file-name {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-style: italic;
+}
+/* Estilizando o BOTÃO dentro do input */
+#bugFile::file-selector-button {
+  background-color: #facc15; /* Azul */
+  color: rgb(0, 0, 0);              /* Cor do texto do botão */
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  margin-right: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
 }
 
 .btn-send-bug {
