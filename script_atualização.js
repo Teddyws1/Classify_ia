@@ -10,6 +10,11 @@ const updateLogs = [
   },
   {
     type: "NEW",
+    text: "novo sistema de reportar bugs",
+    color: "#22c55e", 
+  },
+  {
+    type: "NEW",
     text: "Implementação de trava de scroll (No-Scroll) ao abrir painéis e modais.",
     color: "#a855f7", // Roxo para sistemas core
   },

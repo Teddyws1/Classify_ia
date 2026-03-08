@@ -15,11 +15,12 @@
       src="https://cdn.jsdelivr.net/npm/ionicons@7.1.2/dist/ionicons/ionicons.esm.js"
     ></script>
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#facc15">
+<meta name="theme-color" content="#007bff">
     <script
       nomodule
       src="https://cdn.jsdelivr.net/npm/ionicons@7.1.2/dist/ionicons/ionicons.js"
     ></script>
+
     <script type="module" src="barra_de_pesquisa.js"></script>
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css" />
@@ -53,7 +54,6 @@
     <div id="overlay" class="overlay"></div>
     <!-- SIDEBAR -->
 
-  
     <aside id="sidebar" class="sidebar">
       <button id="closeSidebar" class="close-sidebar">✕</button>
 
@@ -63,12 +63,56 @@
         Artificial, tornando a pesquisa mais rápida, prática e eficiente.
       </p>
       <hr class="divider" />
+
+<!--sisteam de bug-->
+
+
+<div id="bug-overlay" class="bug-modal-overlay" onclick="fecharBugAoClicarFora(event)">
+    <div class="bug-modal-content" onclick="event.stopPropagation()">
+        <div class="bug-header">
+            <h3>Reportar Bug 🐞</h3>
+            <button type="button" class="close-btn" onclick="toggleBugModal()">&times;</button>
+        </div>
+        
+        <form id="bugForm">
+            <div class="input-group">
+                <label>O que aconteceu?</label>
+                <input type="text" id="bugTitle" placeholder="Ex: Erro ao carregar QR" required>
+            </div>
+
+            <div class="input-group">
+                <label>Gravidade / Categoria</label>
+                <select id="bugSeverity">
+                    <option value="Leve">Leve (Visual)</option>
+                    <option value="Moderado">Moderado</option>
+                    <option value="bugs">Bugs gerais</option>
+                    <option value="site não compátivel">Site não compatível</option>
+                    <option value="Critico">Crítico (Não funciona)</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>📸 Evidência (Opcional)</label>
+                <input type="file" id="bugFile" accept="image/*,video/*">
+            </div>
+
+            <div class="input-group">
+                <label>Descrição Detalhada</label>
+                <textarea id="bugDescription" rows="4" placeholder="Explique o que houve..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-send-bug">Enviar para Gmail</button>
+        </form>
+    </div>
+</div>
+
+<!--fim sisteam de bug-->
       <button class="btn-open-update-logs" onclick="handleUpdateModal(true)">
         <ion-icon name="newspaper-outline"></ion-icon>
         Atualizações
       </button>
+      
       <!--sistema de tela cheia-->
-
       <button id="toggleFullscreen">
         <ion-icon id="fsIcon" name="expand-outline"></ion-icon>
         <span class="text">Tela cheia</span>
@@ -273,25 +317,24 @@
             Sistema
           </h2>
           <span class="ultima">ultima atualização:</span>
-          <p class="datadeatuali">01/03/2026</p>
+          <p class="datadeatuali">08/03/2026</p>
           <!--divisorias modal da mensagem -->
           <div class="divisoirasnoe"></div>
-<button id="installBtn" style="display:none;">Instalar App</button>
+          <button id="installBtn" style="display: none">Instalar App</button>
           <p id="systemMessageText">
             Bem-vindos à nova atualização do site
             <span class="v6"> v6.14.2 chegouuu🎉😎Aproveite!</span>
           </p>
-          <br />
-          <span
-            >“No momento, não haverá novas atualizações, pois estamos sem
-            recursos. Em casos importantes, serão realizadas apenas atualizações
-            de correção de erros que interfiram no funcionamento do site.
-            Pedimos a compreensão de todos. data de início 08/02/2026”</span
-          >
         
+          <div class="divisoirasnoe"></div>
+          <br />
+          <button class="bug-fab" onclick="toggleBugModal()">
+    <span class="bug-icon">🐞</span>
+</button>
           <button id="closeModal">Fechar</button>
         </div>
       </div>
+      
       <!----modal de previa -->
       <!--fim SISTEMA DE VERÇÃO-->
       <div class="section">
@@ -334,7 +377,7 @@
       <div class="app-container">
         <!-- conteúdo -->
         <div class="versaobox">
-          <strong>v 6.13.1 Estável</strong>
+          <strong>v 6.14.2 beta</strong>
         </div>
       </div>
     </aside>
@@ -1104,20 +1147,7 @@
               src="https://www.google.com/s2/favicons?domain=gamma.app&sz=32"
             /><a href="https://gamma.app" target="_blank">Gamma</a>
           </li>
-          <li id="tome-item" class="ia-item">
-            <div class="ia-info">
-              <img
-                src="https://www.google.com/s2/favicons?domain=tome.app&sz=32"
-                class="ia-icon"
-              />
-
-              <a href="https://tome.app" target="_blank" class="ia-link"
-                >Tome</a
-              >
-
-              <span class="status-badge">Fora do Ar</span>
-            </div>
-          </li>
+      
         </ul>
       </div>
 
@@ -1175,15 +1205,6 @@
             <img
               src="https://www.google.com/s2/favicons?domain=junia.ai&sz=32"
             /><a href="https://www.junia.ai" target="_blank">Junia</a>
-          </li>
-          <li>
-            <img
-              src="https://i.postimg.cc/65fhv5C3/Picsart-26-02-28-23-59-04-979.png"
-              width="24"
-              height="24"
-              alt="Icon Journalist AI"
-            />
-            <a href="https://journalist.ai/" target="_blank">Journalist AI</a>
           </li>
         </ul>
       </div>

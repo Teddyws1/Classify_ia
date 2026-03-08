@@ -1539,28 +1539,7 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 });
 //testes
-//sistema de fora do ar 
-function checarStatusTome() {
-    const liTome = document.getElementById('tome-item');
-    const testeLink = new Image();
 
-    // Tenta carregar o ícone oficial (não o do Google) para testar o servidor real
-    testeLink.src = "https://tome.app/favicon.ico?t=" + new Date().getTime();
-
-    // Se o site responder, garantimos que o aviso esteja escondido
-    testeLink.onload = function() {
-        liTome.classList.remove('is-offline');
-    };
-
-    // Se o site NÃO responder (erro de conexão), mostramos o "Fora do Ar"
-    testeLink.onerror = function() {
-        liTome.classList.add('is-offline');
-    };
-}
-
-// Executa a verificação ao abrir a página
-window.addEventListener('load', checarStatusTome);
-//fim do sistema fora do ar
 
 //QRS
 
@@ -1673,13 +1652,17 @@ function renderizarPainel() {
         display.appendChild(card);
 
         // Gera o QR Code com 120px para caber no wrapper de 150px
-        new QRCode(qrDiv, {
-            text: item.url,
-            width: 120,
-            height: 120
-        });
+      new QRCode(qrDiv, {
+    text: item.url,
+    width: 125,
+    height: 125,
+    colorDark: "#facc15",  
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.H
+});
     });
 }
+
 //FIM DOS QRS
 
 //testes js inst a site
@@ -1765,3 +1748,57 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+//sisteam de isntalar web site
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+
+  
+  //sitema de bug
+  function toggleBugModal() {
+    const modal = document.getElementById('bug-overlay');
+    if (!modal) return;
+    const isVisible = modal.style.display === 'flex';
+    modal.style.display = isVisible ? 'none' : 'flex';
+}
+
+function fecharBugAoClicarFora(e) {
+    if (e.target.id === 'bug-overlay') toggleBugModal();
+}
+
+// Escuta o envio do formulário
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('bugForm');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const emailDev = "classifyyia2025@gmail.com";
+            const titulo = document.getElementById('bugTitle').value;
+            const gravidade = document.getElementById('bugSeverity').value;
+            const descricao = document.getElementById('bugDescription').value;
+            const arquivo = document.getElementById('bugFile').files[0];
+
+            let anexoMsg = arquivo ? `\n\n📌 ATENÇÃO: Anexe o arquivo "${arquivo.name}" manualmente no e-mail.` : "";
+
+            const subject = encodeURIComponent(`🚨 BUG: ${titulo}`);
+            const body = encodeURIComponent(
+                `RELATÓRIO DE ERRO\n` +
+                `----------------------------\n` +
+                `Gravidade: ${gravidade}\n` +
+                `Descrição: ${descricao}${anexoMsg}\n` +
+                `----------------------------\n` +
+                `Navegador: ${navigator.userAgent}`
+            );
+
+            window.location.href = `mailto:${emailDev}?subject=${subject}&body=${body}`;
+
+            if(arquivo) alert("Não esqueça de anexar a imagem no Gmail!");
+            
+            toggleBugModal();
+            this.reset();
+        });
+    }
+});
+
+  //fim do sistema de bug

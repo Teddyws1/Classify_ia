@@ -4771,7 +4771,16 @@ input[type="password"] {
   max-height: 400px;
   overflow-y: auto;
 }
-
+#qr-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  align-items: start;
+  width: 100%;
+  max-width: 1000px; /* Evita que os cards espalhem demais em telas UltraWide */
+  margin: 0 auto;
+}
 /*fim de QR*/
 /* Isso resolve a maioria dos problemas de amontoamento */
 .seu-elemento-bagunçado {
@@ -4780,3 +4789,101 @@ input[type="password"] {
   justify-content: center;
   gap: 10px; /* Dá espaço entre os itens */
 }
+/* sistema de bug */
+
+/* Botão */
+.bug-fab {
+    position: fixed;
+    bottom: 25%;
+    right: 15%;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: #f1c40f;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 999;
+    font-size: 22px;
+    transition: 0.3s;
+}
+/* Ajuste para Tablet e Telas Médias */
+@media (max-width: 3024px) {
+    .bug-fab {
+        bottom: 25%; /* Sobe um pouco menos para não cobrir o centro */
+        right: 15%; /* Fica mais perto da borda */
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* Modal Overlay */
+.bug-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: none; /* JS muda para flex */
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    backdrop-filter: blur(6px);
+    padding: 15px;
+}
+
+/* Caixa do Modal */
+.bug-modal-content {
+    background: #1a1c24;
+    width: 100%;
+    max-width: 420px;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #333;
+    animation: bugFade 0.3s ease;
+}
+
+.bug-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    color: #f1c40f;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Inputs */
+.input-group { margin-bottom: 15px; }
+.input-group label { display: block; color: #aaa; font-size: 13px; margin-bottom: 5px; }
+
+.input-group input, .input-group select, .input-group textarea {
+    width: 100%;
+    background: #252833;
+    border: 1px solid #444;
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.btn-send-bug {
+    width: 100%;
+    background: #f1c40f;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@keyframes bugFade {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/*fim sistema de bug */
