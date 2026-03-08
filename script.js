@@ -11,38 +11,38 @@ cards.forEach((c) => {
 
 //sistema de bloqueio de scroll grobal
 const monitorarModais = () => {
-    const modais = document.querySelectorAll('.modal-overlay, .modal-container'); // Ajuste para a classe da sua modal
-    const body = document.body;
+  const modais = document.querySelectorAll('.modal-overlay, .modal-container'); // Ajuste para a classe da sua modal
+  const body = document.body;
 
-    const verificarStatus = () => {
-        let algumaAberta = false;
-        
-        modais.forEach(modal => {
-            if (modal.classList.contains('active') || modal.style.display === 'flex') {
-                algumaAberta = true;
-            }
-        });
-
-        if (algumaAberta) {
-            const scrollY = window.scrollY;
-            body.style.position = 'fixed';
-            body.style.top = `-${scrollY}px`;
-            body.style.width = '100%';
-            body.classList.add('modal-open');
-        } else {
-            const scrollY = body.style.top;
-            body.style.position = '';
-            body.style.top = '';
-            body.classList.remove('modal-open');
-            window.scrollTo(0, parseInt(scrollY || '0') * -1);
-        }
-    };
-
-    const observer = new MutationObserver(verificarStatus);
+  const verificarStatus = () => {
+    let algumaAberta = false;
 
     modais.forEach(modal => {
-        observer.observe(modal, { attributes: true, attributeFilter: ['class', 'style'] });
+      if (modal.classList.contains('active') || modal.style.display === 'flex') {
+        algumaAberta = true;
+      }
     });
+
+    if (algumaAberta) {
+      const scrollY = window.scrollY;
+      body.style.position = 'fixed';
+      body.style.top = `-${scrollY}px`;
+      body.style.width = '100%';
+      body.classList.add('modal-open');
+    } else {
+      const scrollY = body.style.top;
+      body.style.position = '';
+      body.style.top = '';
+      body.classList.remove('modal-open');
+      window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    }
+  };
+
+  const observer = new MutationObserver(verificarStatus);
+
+  modais.forEach(modal => {
+    observer.observe(modal, { attributes: true, attributeFilter: ['class', 'style'] });
+  });
 };
 
 document.addEventListener("DOMContentLoaded", monitorarModais);
@@ -358,45 +358,45 @@ document.addEventListener("DOMContentLoaded", () => {
       closeSearch();
     }
 
-// CTRL + X → apaga tudo da barra de pesquisa
-if (e.ctrlKey && e.key.toLowerCase() === "x") {
-  e.preventDefault();
+    // CTRL + X → apaga tudo da barra de pesquisa
+    if (e.ctrlKey && e.key.toLowerCase() === "x") {
+      e.preventDefault();
 
-  // limpa os dois inputs
-  searchInput.value = "";
-  searchFloatInput.value = "";
+      // limpa os dois inputs
+      searchInput.value = "";
+      searchFloatInput.value = "";
 
-  // remove classe visual
-  searchBox.classList.remove("has-text");
+      // remove classe visual
+      searchBox.classList.remove("has-text");
 
-  // força reset da busca
-  searchInput.dispatchEvent(new Event("keyup"));
-}
+      // força reset da busca
+      searchInput.dispatchEvent(new Event("keyup"));
+    }
 
   });
-function openSearch() {
-  const offset = 12;
+  function openSearch() {
+    const offset = 12;
 
-  // garante que o elemento exista e seja medido
-  searchFloat.style.visibility = "hidden";
-  searchFloat.classList.add("active");
+    // garante que o elemento exista e seja medido
+    searchFloat.style.visibility = "hidden";
+    searchFloat.classList.add("active");
 
-  const boxWidth = searchFloat.offsetWidth;
-  const boxHeight = searchFloat.offsetHeight;
+    const boxWidth = searchFloat.offsetWidth;
+    const boxHeight = searchFloat.offsetHeight;
 
-  const maxX = window.innerWidth - boxWidth - offset;
-  const maxY = window.innerHeight - boxHeight - offset;
+    const maxX = window.innerWidth - boxWidth - offset;
+    const maxY = window.innerHeight - boxHeight - offset;
 
-  const posX = Math.max(offset, Math.min(mouseX + offset, maxX));
-  const posY = Math.max(offset, Math.min(mouseY + offset, maxY));
+    const posX = Math.max(offset, Math.min(mouseX + offset, maxX));
+    const posY = Math.max(offset, Math.min(mouseY + offset, maxY));
 
-  searchFloat.style.left = posX + "px";
-  searchFloat.style.top = posY + "px";
+    searchFloat.style.left = posX + "px";
+    searchFloat.style.top = posY + "px";
 
-  searchFloat.style.visibility = "visible";
-  searchFloatInput.focus();
-  isOpen = true;
-}
+    searchFloat.style.visibility = "visible";
+    searchFloatInput.focus();
+    isOpen = true;
+  }
 
 
   function closeSearch() {
@@ -1547,120 +1547,120 @@ document.addEventListener("DOMContentLoaded", () => {
 ///================js do QRS==============///
 // CONFIGURAÇÃO DOS LINKS
 const CONFIGS = [
-   { 
-        nome: "APP PÚBLICO", 
-        url: "https://teddyws1.github.io/Classify_ia/", 
-        privado: false 
-    },
-    
-    { 
-        nome: "SISTEMA PRINCIPAL ADM", 
-        url: "https://ddp433w0-5500.brs.devtunnels.ms/", 
-        privado: true 
-    },
-      { 
-        nome: "SISTEMA PRINCIPAL ADM", 
-        url: "https://6n7hkflq-5500.brs.devtunnels.ms/", 
-        privado: true 
-    },
-   
+  {
+    nome: "APP PÚBLICO",
+    url: "https://teddyws1.github.io/Classify_ia/",
+    privado: false
+  },
+
+  {
+    nome: "SISTEMA PRINCIPAL ADM",
+    url: "https://ddp433w0-5500.brs.devtunnels.ms/",
+    privado: true
+  },
+  {
+    nome: "SISTEMA PRINCIPAL ADM",
+    url: "https://6n7hkflq-5500.brs.devtunnels.ms/",
+    privado: true
+  },
+
 ];
 
-const SENHA_MESTRE = "2312"; 
+const SENHA_MESTRE = "2312";
 let autenticado = false;
 
 function toggleQRModal() {
-    const modal = document.getElementById('qr-overlay');
-    const isOpening = modal.style.display !== 'flex';
+  const modal = document.getElementById('qr-overlay');
+  const isOpening = modal.style.display !== 'flex';
 
-    if (isOpening) {
-        modal.style.display = 'flex';
-        document.body.classList.add('no-scroll');
-        renderizarPainel();
-    } else {
-        modal.style.display = 'none';
-        document.body.classList.remove('no-scroll');
-    }
+  if (isOpening) {
+    modal.style.display = 'flex';
+    document.body.classList.add('no-scroll');
+    renderizarPainel();
+  } else {
+    modal.style.display = 'none';
+    document.body.classList.remove('no-scroll');
+  }
 }
 
 function fecharAoClicarFora(e) {
-    if (e.target.id === 'qr-overlay') toggleQRModal();
+  if (e.target.id === 'qr-overlay') toggleQRModal();
 }
 
 function verificarSenha() {
-    const input = document.getElementById('pass-input');
-    if (input.value === SENHA_MESTRE) {
-        autenticado = true;
-        document.getElementById('login-section').style.display = 'none';
-        renderizarPainel();
-    } else {
-        alert("Senha Incorreta!");
-        input.value = '';
-    }
+  const input = document.getElementById('pass-input');
+  if (input.value === SENHA_MESTRE) {
+    autenticado = true;
+    document.getElementById('login-section').style.display = 'none';
+    renderizarPainel();
+  } else {
+    alert("Senha Incorreta!");
+    input.value = '';
+  }
 }
 
 function renderizarPainel() {
-    const display = document.getElementById('qr-display');
-    display.innerHTML = ''; 
+  const display = document.getElementById('qr-display');
+  display.innerHTML = '';
 
-    // Ordenar Público Primeiro
-    const ordenado = [
-        ...CONFIGS.filter(i => !i.privado),
-        ...CONFIGS.filter(i => i.privado)
-    ];
+  // Ordenar Público Primeiro
+  const ordenado = [
+    ...CONFIGS.filter(i => !i.privado),
+    ...CONFIGS.filter(i => i.privado)
+  ];
 
-    ordenado.forEach((item, idx) => {
-        const card = document.createElement('div');
-        card.className = 'qr-card';
-        
-        const name = document.createElement('p');
-        name.className = 'qr-name';
-        name.innerText = item.nome;
+  ordenado.forEach((item, idx) => {
+    const card = document.createElement('div');
+    card.className = 'qr-card';
 
-        const wrap = document.createElement('div');
-        wrap.className = 'qr-wrapper';
-        
-        if (item.privado && !autenticado) {
-            wrap.classList.add('blur-active');
-            
-            // Interrogação
-            const qMark = document.createElement('span');
-            qMark.className = 'qr-placeholder';
-            qMark.innerText = '?';
-            
-            // Mensagem ADM
-            const msg = document.createElement('div');
-            msg.className = 'adm-only-msg';
-            msg.innerText = "SOMENTE ADM TEM ACESSO";
-            
-            wrap.appendChild(qMark);
-            wrap.appendChild(msg);
+    const name = document.createElement('p');
+    name.className = 'qr-name';
+    name.innerText = item.nome;
 
-            // Clique para mostrar aviso
-            wrap.onclick = function() {
-                this.classList.add('show-msg');
-                setTimeout(() => this.classList.remove('show-msg'), 2000);
-            };
-        }
+    const wrap = document.createElement('div');
+    wrap.className = 'qr-wrapper';
 
-        const qrDiv = document.createElement('div');
-        qrDiv.id = `qrc-box-${idx}`;
+    if (item.privado && !autenticado) {
+      wrap.classList.add('blur-active');
 
-        wrap.appendChild(qrDiv);
-        card.appendChild(name);
-        card.appendChild(wrap); 
-        display.appendChild(card);
+      // Interrogação
+      const qMark = document.createElement('span');
+      qMark.className = 'qr-placeholder';
+      qMark.innerText = '?';
 
-        // Gera o QR Code com 120px para caber no wrapper de 150px
-      new QRCode(qrDiv, {
-    text: item.url,
-    width: 125,
-    height: 125,
-    colorDark: "#facc15",  
-    colorLight: "#ffffff",
-    correctLevel: QRCode.CorrectLevel.H
-});
+      // Mensagem ADM
+      const msg = document.createElement('div');
+      msg.className = 'adm-only-msg';
+      msg.innerText = "SOMENTE ADM TEM ACESSO";
+
+      wrap.appendChild(qMark);
+      wrap.appendChild(msg);
+
+      // Clique para mostrar aviso
+      wrap.onclick = function () {
+        this.classList.add('show-msg');
+        setTimeout(() => this.classList.remove('show-msg'), 2000);
+      };
+    }
+
+    const qrDiv = document.createElement('div');
+    qrDiv.id = `qrc-box-${idx}`;
+
+    wrap.appendChild(qrDiv);
+    card.appendChild(name);
+    card.appendChild(wrap);
+    display.appendChild(card);
+
+    // Gera o QR Code com 120px para caber no wrapper de 150px
+    new QRCode(qrDiv, {
+      text: item.url,
+      width: 125,
+      height: 125,
+      colorDark: "#facc15",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.H
     });
+  });
 }
 
 //FIM DOS QRS
@@ -1707,12 +1707,12 @@ installBtn.addEventListener('click', async () => {
 });
 document.addEventListener("DOMContentLoaded", () => {
   const hintBtn = document.querySelector('.hint-scroll');
-  
+
   if (hintBtn) {
     hintBtn.addEventListener('click', () => {
       // 1. Encontra a aba que está visível no momento
       const activeTab = document.querySelector('.tab-content.active');
-      
+
       if (activeTab) {
         const scrollWrapper = activeTab.querySelector('.scroll-wrapper');
 
@@ -1728,7 +1728,7 @@ document.addEventListener("DOMContentLoaded", () => {
               left: 0,
               behavior: 'smooth'
             });
-            
+
             // Efeito visual opcional: girar o ícone quando volta ao início
             const icon = hintBtn.querySelector('ion-icon');
             if (icon) {
@@ -1750,55 +1750,55 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //sisteam de isntalar web site
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js');
-  }
+  navigator.serviceWorker.register('sw.js');
+}
 
-  
-  //sitema de bug
-  function toggleBugModal() {
-    const modal = document.getElementById('bug-overlay');
-    if (!modal) return;
-    const isVisible = modal.style.display === 'flex';
-    modal.style.display = isVisible ? 'none' : 'flex';
+
+//sitema de bug
+function toggleBugModal() {
+  const modal = document.getElementById('bug-overlay');
+  if (!modal) return;
+  const isVisible = modal.style.display === 'flex';
+  modal.style.display = isVisible ? 'none' : 'flex';
 }
 
 function fecharBugAoClicarFora(e) {
-    if (e.target.id === 'bug-overlay') toggleBugModal();
+  if (e.target.id === 'bug-overlay') toggleBugModal();
 }
 
 // Escuta o envio do formulário
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('bugForm');
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
+  const form = document.getElementById('bugForm');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
 
-            const emailDev = "classifyyia2025@gmail.com";
-            const titulo = document.getElementById('bugTitle').value;
-            const gravidade = document.getElementById('bugSeverity').value;
-            const descricao = document.getElementById('bugDescription').value;
-            const arquivo = document.getElementById('bugFile').files[0];
+      const emailDev = "classifyyia2025@gmail.com";
+      const titulo = document.getElementById('bugTitle').value;
+      const gravidade = document.getElementById('bugSeverity').value;
+      const descricao = document.getElementById('bugDescription').value;
+      const arquivo = document.getElementById('bugFile').files[0];
 
-            let anexoMsg = arquivo ? `\n\n📌 ATENÇÃO: Anexe o arquivo "${arquivo.name}" manualmente no e-mail.` : "";
+      let anexoMsg = arquivo ? `\n\n📌 ATENÇÃO: Anexe o arquivo "${arquivo.name}" manualmente no e-mail.` : "";
 
-            const subject = encodeURIComponent(`🚨 BUG: ${titulo}`);
-            const body = encodeURIComponent(
-                `RELATÓRIO DE ERRO\n` +
-                `----------------------------\n` +
-                `Gravidade: ${gravidade}\n` +
-                `Descrição: ${descricao}${anexoMsg}\n` +
-                `----------------------------\n` +
-                `Navegador: ${navigator.userAgent}`
-            );
+      const subject = encodeURIComponent(`🚨 BUG: ${titulo}`);
+      const body = encodeURIComponent(
+        `RELATÓRIO DE ERRO\n` +
+        `----------------------------\n` +
+        `Gravidade: ${gravidade}\n` +
+        `Descrição: ${descricao}${anexoMsg}\n` +
+        `----------------------------\n` +
+        `Navegador: ${navigator.userAgent}`
+      );
 
-            window.location.href = `mailto:${emailDev}?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:${emailDev}?subject=${subject}&body=${body}`;
 
-            if(arquivo) alert("Não esqueça de anexar a imagem no Gmail!");
-            
-            toggleBugModal();
-            this.reset();
-        });
-    }
+      if (arquivo) alert("Não esqueça de anexar a imagem no Gmail!");
+
+      toggleBugModal();
+      this.reset();
+    });
+  }
 });
 
-  //fim do sistema de bug
+//fim do sistema de bug

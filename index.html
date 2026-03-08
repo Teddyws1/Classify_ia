@@ -14,8 +14,8 @@
       type="module"
       src="https://cdn.jsdelivr.net/npm/ionicons@7.1.2/dist/ionicons/ionicons.esm.js"
     ></script>
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#007bff">
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#007bff" />
     <script
       nomodule
       src="https://cdn.jsdelivr.net/npm/ionicons@7.1.2/dist/ionicons/ionicons.js"
@@ -64,54 +64,72 @@
       </p>
       <hr class="divider" />
 
-<!--sisteam de bug-->
+      <!--sisteam de bug-->
 
-
-<div id="bug-overlay" class="bug-modal-overlay" onclick="fecharBugAoClicarFora(event)">
-    <div class="bug-modal-content" onclick="event.stopPropagation()">
-        <div class="bug-header">
+      <div
+        id="bug-overlay"
+        class="bug-modal-overlay"
+        onclick="fecharBugAoClicarFora(event)"
+      >
+        <div class="bug-modal-content" onclick="event.stopPropagation()">
+          <div class="bug-header">
             <h3>Reportar Bug 🐞</h3>
-            <button type="button" class="close-btn" onclick="toggleBugModal()">&times;</button>
+            <button type="button" class="close-btn" onclick="toggleBugModal()">
+              &times;
+            </button>
+          </div>
+
+          <form id="bugForm">
+            <div class="input-group">
+              <label>O que aconteceu?</label>
+              <input
+                type="text"
+                id="bugTitle"
+                placeholder="Ex: Erro ao carregar QR"
+                required
+              />
+            </div>
+
+
+            <div class="input-group">
+              <label>Gravidade / Categoria</label>
+              <select id="bugSeverity">
+                <option value="Leve">Leve (Visual)</option>
+                <option value="Moderado">Moderado</option>
+                <option value="bugs">Bugs gerais</option>
+                <option value="Critico">Crítico (Não funciona)</option>
+                <option value="Critico">outros</option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <label>📸 Evidência (Opcional)</label>
+              <input type="file" id="bugFile" accept="image/*,video/*" />
+            </div>
+
+            <div class="input-group">
+              <label>Descrição Detalhada</label>
+              <textarea
+                id="bugDescription"
+                rows="4"
+                placeholder="Explique o que houve..."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn-send-bug">
+              Enviar para Gmail
+            </button>
+          </form>
         </div>
-        
-        <form id="bugForm">
-            <div class="input-group">
-                <label>O que aconteceu?</label>
-                <input type="text" id="bugTitle" placeholder="Ex: Erro ao carregar QR" required>
-            </div>
+      </div>
 
-            <div class="input-group">
-                <label>Gravidade / Categoria</label>
-                <select id="bugSeverity">
-                    <option value="Leve">Leve (Visual)</option>
-                    <option value="Moderado">Moderado</option>
-                    <option value="bugs">Bugs gerais</option>
-                    <option value="Critico">Crítico (Não funciona)</option>
-                    <option value="Critico">outros</option>
-                </select>
-            </div>
-
-            <div class="input-group">
-                <label>📸 Evidência (Opcional)</label>
-                <input type="file" id="bugFile" accept="image/*,video/*">
-            </div>
-
-            <div class="input-group">
-                <label>Descrição Detalhada</label>
-                <textarea id="bugDescription" rows="4" placeholder="Explique o que houve..." required></textarea>
-            </div>
-
-            <button type="submit" class="btn-send-bug">Enviar para Gmail</button>
-        </form>
-    </div>
-</div>
-
-<!--fim sisteam de bug-->
+      <!--fim sisteam de bug-->
       <button class="btn-open-update-logs" onclick="handleUpdateModal(true)">
         <ion-icon name="newspaper-outline"></ion-icon>
         Atualizações
       </button>
-      
+
       <!--sistema de tela cheia-->
       <button id="toggleFullscreen">
         <ion-icon id="fsIcon" name="expand-outline"></ion-icon>
@@ -325,16 +343,16 @@
             Bem-vindos à nova atualização do site
             <span class="v6"> v6.14.2 chegouuu🎉😎Aproveite!</span>
           </p>
-        
+
           <div class="divisoirasnoe"></div>
           <br />
           <button class="bug-fab" onclick="toggleBugModal()">
-    <span class="bug-icon">🐞</span>
-</button>
+            <span class="bug-icon">🐞</span>
+          </button>
           <button id="closeModal">Fechar</button>
         </div>
       </div>
-      
+
       <!----modal de previa -->
       <!--fim SISTEMA DE VERÇÃO-->
       <div class="section">
@@ -1147,7 +1165,6 @@
               src="https://www.google.com/s2/favicons?domain=gamma.app&sz=32"
             /><a href="https://gamma.app" target="_blank">Gamma</a>
           </li>
-      
         </ul>
       </div>
 
